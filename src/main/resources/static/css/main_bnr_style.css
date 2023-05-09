@@ -1,0 +1,122 @@
+@charset "EUC-KR";
+.main-bnr {
+	width:1200px;
+}
+
+.main-bnr body {
+  font-family: Arial;
+  margin: 0;
+}
+
+.main-bnr * {
+  box-sizing: border-box;
+}
+
+.main-bnr img {
+  vertical-align: middle;
+}
+
+/* Hide the images by default */
+.main-bnr .mySlides {
+  display: none;
+  height: 400px;
+  width: 1200px;
+  overflow:hidden;	/* 이미지크기조절 위해 overflow:hidden */
+}
+
+.main-bnr .slide-img-size {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.main-bnr .c
+
+/* 하단썸네일 이미지에 마우스 올렸을 때 효과 */
+.main-bnr .cursor {
+  cursor: pointer;
+}
+
+/* 이전, 다음버튼 설정 */
+.main-bnr .prev,
+.main-bnr .next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.main-bnr .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.main-bnr .prev:hover,
+.main-bnr .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.main-bnr .numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.main-bnr .caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+/* 
+.main-bnr .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+Six columns side by side
+.main-bnr .column {
+  float: left;
+  width: 16.66%;
+} */
+.main-bnr .row {
+	width:100%;
+	height: 30px;
+	display: table;
+	table-layout: fixed;
+	overflow:hidden;
+}
+.main-bnr .column {
+	display: table-cell;
+	object-fit: cover;
+	overflow:hidden;
+}
+.main-bnr .column-img {
+	object-fit: cover;
+	height: 100%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.main-bnr .demo {
+  opacity: 0.6;
+}
+
+.main-bnr .active,
+.main-bnr .demo:hover {
+  opacity: 1;
+}
