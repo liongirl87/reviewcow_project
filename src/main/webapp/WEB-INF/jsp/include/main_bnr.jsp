@@ -3,61 +3,63 @@
 <div class="d-flex justify-content-center">   
 	<div class="main-bnr">
 		<div class="mySlides">
-		  <div class="numbertext">1 / 6</div>
+		  <div class="numbertext numbertext-bg">1 / 6</div>
 		  <img src="/static/img/main_bnr01.png" class="slide-image-size">
 		</div>
 		
 		<div class="mySlides">
-		  <div class="numbertext">2 / 6</div>
+		  <div class="numbertext numbertext-bg">2 / 6</div>
 		  <img src="/static/img/main_bnr02.png" class="slide-image-size">
 		</div>
 		
 		<div class="mySlides">
-		  <div class="numbertext">3 / 6</div>
+		  <div class="numbertext numbertext-bg">3 / 6</div>
 		  <img src="/static/img/main_bnr03.png" class="slide-image-size">
 		</div>
 		    
 		<div class="mySlides">
-		  <div class="numbertext">4 / 6</div>
+		  <div class="numbertext numbertext-bg">4 / 6</div>
 		  <img src="/static/img/main_bnr04.png" class="slide-image-size">
 		</div>
 		
 		<div class="mySlides">
-		  <div class="numbertext">5 / 6</div>
+		  <div class="numbertext numbertext-bg">5 / 6</div>
 		  <img src="/static/img/main_bnr05.png" class="slide-image-size">
 		</div>
 		    
 		<div class="mySlides">
-		  <div class="numbertext">6 / 6</div>
+		  <div class="numbertext numbertext-bg">6 / 6</div>
 		  <img src="/static/img/main_bnr06.png" class="slide-image-size">
 		</div>
-		    
-		<a class="prev" onclick="plusSlides(-1)"><</a>
-		<a class="next" onclick="plusSlides(1)">></a>
+		<div class="d-flex justify-content-between">
+			<a class="prev" onclick="plusSlides(-1)"><</a>
+			<a class="next" onclick="plusSlides(1)">></a>
+		</div>
 		<div class="caption-container">
 	    <p id="caption"></p>
 		</div>
-		
+	<div class="d-flex justify-content-center">
 		<div class="row">
-		  <div class="column">
-		    <img class="demo cursor column-img" src="/static/img/main_bnr_slide01.png" style="width:100%" onclick="currentSlide(1)" alt="이미지설명1">
+		  <div class="column column-box cursor demo" onclick="currentSlide(1)">
+		   <span style="display:none;">1번 이미지</span>
 		  </div>
-		  <div class="column">
-		    <img class="demo cursor column-img" src="/static/img/main_bnr_slide01.png" style="width:100%" onclick="currentSlide(2)" alt="이미지설명2">
+		  <div class="column column-box demo cursor" onclick="currentSlide(2)">
+		  2번 이미지
 		  </div>
-		  <div class="column">
-		    <img class="demo cursor column-img" src="/static/img/main_bnr_slide01.png" style="width:100%" onclick="currentSlide(3)" alt="이미지설명3">
+		  <div class="column column-box demo cursor" onclick="currentSlide(3)">
+		  3번 이미지
 		  </div>
-		  <div class="column">
-		    <img class="demo cursor column-img" src="/static/img/main_bnr_slide01.png" style="width:100%" onclick="currentSlide(4)" alt="이미지설명4">
+		  <div class="column column-box demo cursor" onclick="currentSlide(4)">
+		  4번 이미지
 		  </div>
-		  <div class="column">
-		    <img class="demo cursor column-img" src="/static/img/main_bnr_slide01.png" style="width:100%" onclick="currentSlide(5)" alt="이미지설명5">
+		  <div class="column column-box demo cursor" onclick="currentSlide(5)">
+		  5번 이미지
 		  </div>    
-		  <div class="column">
-		    <img class="demo cursor" src="/static/img/main_bnr_slide01.png" style="width:100%" onclick="currentSlide(6)" alt="이미지설명6">
+		  <div class="column column-box demo cursor" onclick="currentSlide(6)">
+		  6번 이미지
 		  </div>
 		</div>
+	</div>	
 	</div>
 </div> 
 <script>
@@ -90,7 +92,7 @@
 	 		 }
 	 		 slides[slideIndex-1].style.display = "block";	// 슬라이드이미지 배열[n-1] 현재슬라이드의 display속성을 block으로 설정
 	 		 dots[slideIndex-1].className += " active";	// 인덱스버튼 배열[n-1] 현재 인덱스 버튼클래스에 active를 추가한다.
-	 		 captionText.innerHTML = dots[slideIndex-1].alt;	// 현재 인덱스버튼의 alt=""를 #caption에 표시한다.
+	 		 captionText.innerHTML = dots[slideIndex-1].textContent;	// 현재 인덱스버튼의 alt=""를 #caption에 표시한다.
 	 		 console.log(slides.length)
 	 	}
 	 	

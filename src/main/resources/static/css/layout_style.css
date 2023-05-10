@@ -59,7 +59,7 @@ a:link {
 	background:url("/static/img/arrow_menu_down.gif") 96% 50% no-repeat;
 	}
 /* list하단 테두리 */
-.rc-topMenu-right > li > ul { margin:0 0 0 -25px; padding: 2px;
+.rc-topMenu-right > li > ul { margin:0 0 0 -37px; padding: 2px;
  border:1px solid #ddd; border-top:1px solid #333; background:#fff}
 
 /* list하단 첫번째 자식은  border-top속성 제거 */
@@ -185,8 +185,3 @@ a:link {
 .footer-sns-icon li:hover a.facebook {background:#3b5998;}
 .footer-sns-icon li:hover a.youtube {background:#ff0000;}
 .footer-sns-icon li:hover a.naver {background:#03cf5d;}
-
-.main-bnr {
-	height:880px;
-	margin:55px 0 0 0;
-}

@@ -1,0 +1,13 @@
+@charset "EUC-KR";
+.category-box {
+	margin: 20px 0 0 0;
+	width:1200px;
+}
+
+
+.category-box > .category-box-child {
+	
+	width: 32%;
+	height: 160px;
+	background-color: rgb(211, 211, 211);
+}

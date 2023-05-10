@@ -3,17 +3,17 @@
 	width:1200px;
 }
 
+.main-bnr a:hover {
+	text-decoration: none;
+}
+
 .main-bnr body {
   font-family: Arial;
   margin: 0;
 }
 
 .main-bnr * {
-  box-sizing: border-box;
-}
-
-.main-bnr img {
-  vertical-align: middle;
+  box-sizing: border-box;	/* 박스크기를 테두리 기준으로 측정 */
 }
 
 /* Hide the images by default */
@@ -30,34 +30,34 @@
 	object-fit: cover;
 }
 
-.main-bnr .c
-
 /* 하단썸네일 이미지에 마우스 올렸을 때 효과 */
 .main-bnr .cursor {
   cursor: pointer;
 }
 
+/* .main-bnr .p-btn-div {
+} */
+
 /* 이전, 다음버튼 설정 */
 .main-bnr .prev,
 .main-bnr .next {
   cursor: pointer;
-  position: absolute;
-  top: 40%;
+  position: relative;
+  height: 65px;
   width: auto;
   padding: 16px;
-  margin-top: -50px;
+  margin-top: -230px;
   color: white;
   font-weight: bold;
   font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
+  border-radius: 0 15px 15px 0;
+  user-select: none;	/* text선택불가 */
+  -webkit-user-select: none;	/* text선택불가- 호환성위해추가 */
 }
 
 /* Position the "next button" to the right */
 .main-bnr .next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+  border-radius: 15px 0 0 15px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
@@ -72,43 +72,46 @@
   font-size: 12px;
   padding: 8px 12px;
   position: absolute;
-  top: 0;
+  border-radius: 15px;
+  top: 60px;
+  margin: 0 10px;
 }
 
+.main-bnr .numbertext-bg {
+	background-color: #333;
+	opacity: 0.6;
+	}
 /* Container for image text */
 .main-bnr .caption-container {
   text-align: center;
   background-color: #222;
   padding: 2px 16px;
   color: white;
-}
-/* 
-.main-bnr .row:after {
-  content: "";
-  display: table;
-  clear: both;
+  user-select: none;
 }
 
-Six columns side by side
-.main-bnr .column {
-  float: left;
-  width: 16.66%;
-} */
 .main-bnr .row {
 	width:100%;
-	height: 30px;
 	display: table;
 	table-layout: fixed;
-	overflow:hidden;
+	font-size: 12px;
+	text-align: center;
 }
 .main-bnr .column {
 	display: table-cell;
-	object-fit: cover;
-	overflow:hidden;
+/* 	object-fit: cover;
+	overflow:hidden; */
 }
-.main-bnr .column-img {
-	object-fit: cover;
-	height: 100%;
+
+.main-bnr .column-box {
+	opacity: 0.6;
+	background-color: rgb(211, 211, 211);
+	border-left: 1px solid #808080;
+}
+.main-bnr .column-box:first-child {border:none;}	
+
+.main-bnr .column-box:hover {
+	opacity: 1;
 }
 
 /* Add a transparency effect for thumnbail images */
