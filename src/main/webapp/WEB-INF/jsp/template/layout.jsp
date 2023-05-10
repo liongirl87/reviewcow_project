@@ -15,6 +15,7 @@
 <link rel="stylesheet" type="text/css" href="/static/css/layout_style.css">
 <link rel="stylesheet" type="text/css" href="/static/css/main_bnr_style.css">
 <link rel="stylesheet" type="text/css" href="/static/css/main_category_box_style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/deadline_product_style.css">
 <!-- XEICON CDN -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 </head>
@@ -28,6 +29,12 @@
 		</section>
 		<section>
 			<jsp:include page="../include/main_category_box.jsp" />
+		</section>
+		<section>
+			<jsp:include page="../include/deadline_product.jsp" />
+		</section>
+		<section>
+			<jsp:include page="../include/main_online_product.jsp" />
 		</section>
 		<section>
 			<jsp:include page="../${view}.jsp" />
