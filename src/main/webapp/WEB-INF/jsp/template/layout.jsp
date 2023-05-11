@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="/static/css/main_bnr_style.css">
 <link rel="stylesheet" type="text/css" href="/static/css/main_category_box_style.css">
 <link rel="stylesheet" type="text/css" href="/static/css/deadline_product_style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/join_style.css">
 <!-- XEICON CDN -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 </head>
@@ -24,21 +26,11 @@
 		<header>
 			<jsp:include page="../include/header.jsp" />
 		</header>
-		<section>
-			<jsp:include page="../include/main_bnr.jsp" />
-		</section>
-		<section>
-			<jsp:include page="../include/main_category_box.jsp" />
-		</section>
-		<section>
-			<jsp:include page="../include/deadline_product.jsp" />
-		</section>
-		<section>
-			<jsp:include page="../include/main_online_product.jsp" />
-		</section>
-		<section>
+		<c:forEach items="${viewList}" var="view">
+			<section>
 			<jsp:include page="../${view}.jsp" />
-		</section>
+			</section>
+		</c:forEach>
 		<footer>
 			<jsp:include page="../include/footer.jsp" />
 		</footer>

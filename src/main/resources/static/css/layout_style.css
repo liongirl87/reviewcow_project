@@ -94,6 +94,8 @@ a:link {
 .top-search-img:hover {
 	transition:all .5s ease-in-out; transform:scale(1.15,1.15);
 }
+
+/* footer ¼Ó¼º */
 .footer {
 /* 	background-color: #eee; */
 	border-top: 1px solid #333;
@@ -185,3 +187,5 @@ a:link {
 .footer-sns-icon li:hover a.facebook {background:#3b5998;}
 .footer-sns-icon li:hover a.youtube {background:#ff0000;}
 .footer-sns-icon li:hover a.naver {background:#03cf5d;}
+
+

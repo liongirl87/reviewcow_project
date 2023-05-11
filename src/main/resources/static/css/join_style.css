@@ -1,0 +1,144 @@
+@charset "EUC-KR";
+
+.join-top-div {
+	margin: 50px 0 0 0;
+}
+#join {
+	width: 700px;
+	margin: 0 0 50px 0;
+/* 	background-color: red; */
+	}
+
+#join .join-title {
+	font-weight: bold;
+	font-size: 15pt;
+}
+
+#join .essential-item {
+	color:#0066cc;
+	font-weight: bold;
+}
+
+#join .join-form {
+	font-size: 10pt;
+}
+
+#join > .join-form  .join-form-lineTop {
+	padding: 12px 0;
+	margin: 10px 0 0 0px;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+#join > .join-form  .join-form-line {
+	padding: 12px 0;
+	margin: 0 0 0 0px;
+	border-bottom: 1px solid #eee;
+}
+#join > .join-form  .join-form-line-none1 {
+	padding: 12px 0;
+	margin: 12px 0;
+}
+#join > .join-form  .join-form-line-none2 {
+	margin: 0 0 12px 0;}
+#join > .join-form  .join-form-line-none3 {
+	padding: 12px 0;
+	}	
+	
+#join > .join-form .join-form-line-text {
+	margin: 0 0 0 20px;
+	font-size: 13px;
+	color: #404040;
+}
+#join > .join-form > .semi-title {
+	font-weight: bold;
+	font-size: 15px;
+	margin: 20px 0 0 5px;
+}
+#join > .join-form .input-box {
+	position: absolute;
+	width: 200px;
+	height: 25px;
+	margin: 0 0 0 180px;
+	font-size: 13px;
+	background-color: rgb(238,238,238);
+}
+#join > .join-form .input-box-address1 {
+	position: absolute;
+	width: 100px;
+	height: 25px;
+	margin: 0 0 0 180px;
+	font-size: 13px;
+	background-color: rgb(238,238,238);
+	user-select: none;
+}
+#join > .join-form .input-box-address2 {
+	position: absolute;
+	width: 450px;
+	height: 25px;
+	margin: 0 0 0 180px;
+	font-size: 13px;
+	background-color: rgb(238,238,238);
+	user-select: none;	
+}
+#join > .join-form .input-box-address3 {
+	position: absolute;
+	width: 200px;
+	height: 25px;
+	margin: 0 0 0 180px;
+	font-size: 13px;
+	background-color: rgb(238,238,238);
+}
+#join > .join-form .input-box-address3-1 {
+	position: absolute;
+	width: 200px;
+	height: 25px;
+	margin: 0 0 0 385px;
+	font-size: 13px;
+	background-color: rgb(238,238,238);
+	user-select: none;
+}
+#join > .join-form .address-btn {
+	position: absolute;
+	width: 90px;
+	height: 25px;
+	margin: 0 0 0 285px;
+	border: 1px solid #808080;
+	border-radius: 5px;
+	background-color: rgb(198,198,198);
+	font-size: 12px;
+}
+#join > .join-form .duplicateId-btn {
+	position: absolute;
+	width: 90px;
+	height: 25px;
+	margin: 0 0 0 385px;
+	border: 1px solid #808080;
+	border-radius: 5px;
+	background-color: rgb(198,198,198);
+	font-size: 12px;
+}
+
+#join .member-type-div {
+	position: absolute;
+	margin: 0 0 0 175px;
+	font-size: 13px;
+}
+#join .radio-btn {
+	margin: 0 5px 3px 10px;
+	vertical-align: middle;
+}
+
+#join .influencer-box-padding {
+	padding: 12px 0;
+}
+#join .influencer-select-icon {
+	position: absolute;
+	margin: 0 0 0 175px;
+	cursor: pointer;
+}
+#join .influencer-select-icon .xi-2x:hover {
+	color: #0000CD;
+}
+#join .d-none {
+	display: none !important;
+}
