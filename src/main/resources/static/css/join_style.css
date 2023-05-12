@@ -52,7 +52,7 @@
 #join > .join-form > .semi-title {
 	font-weight: bold;
 	font-size: 15px;
-	margin: 20px 0 0 5px;
+	margin: 20px 0 0 10px;
 }
 #join > .join-form .input-box {
 	position: absolute;
@@ -141,4 +141,34 @@
 }
 #join .d-none {
 	display: none !important;
+}
+#join .agreement-text {
+	font-weight: bold;
+	font-size: 13px;
+	margin: 5px 0 0 12px;
+}
+#join .agreement-text-box {
+	height: 200px;
+	border: 1px solid rgb(198,198,198);
+	margin: 15px 0 0 10px ;
+	overflow: auto; /* div영역을 벗어나면 스크롤 생성 */
+}
+#join .agreement-text-box-small {
+	border: 1px solid rgb(198,198,198);
+	background-color: rgb(238,238,238);
+	margin: 8px 0 0 10px ;
+	height: 30px;
+}
+#join .join-btn {
+	border-radius: 8px;
+	border:none;
+	background-color: rgb(58,58,58);
+	color: white;
+	height: 40px;
+	width: 100px;
+}
+#join .join-btn:hover {
+
+	background-color: rgb(210,210,210);
+	color: #333;
 }

@@ -15,7 +15,7 @@
 			<div class="join-form-lineTop d-flex align-items-center">
 				<span class="join-form-line-text">아이디</span><span class="essential-item">*</span>
 				<input type="text" class="form-control input-box">
-				<input type="button" class="duplicateId-btn" value="주소검색" onclick="execDaumPostcode()">
+				<input type="button" class="duplicateId-btn" value="중복확인" onclick="execDaumPostcode()">
 			</div>
 			<div class="join-form-line d-flex align-items-center">
 				<span class="join-form-line-text">비밀번호</span><span class="essential-item">*</span>
@@ -100,6 +100,48 @@
 					<input type="text" class="form-control input-box">
 				</div>
 			</div>
+			<div class="semi-title">전체동의</div>
+			<div class="d-flex align-items-center agreement-text">
+				<input type="checkbox" id="agrre-all-btn"  name="scales" class="mr-1" onclick="agreeAll()">
+				<span>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</span>
+			</div>
+			<div class="semi-title">
+				<span>[필수]이용약관동의</span>
+			</div>
+			<div class="agreement-text-box">
+			‘오프라인 강자’ 이마트가 1분기 유통업계 1위 타이틀을 쿠팡에 내줬다. 이마트 연결 기준 매출액이 쿠팡에 뒤처진 것은 이번이 처음이다. 코로나 특수를 누린 지난해 역기저 효과에 고물가·고금리로 인한 소비심리 위축이 영향을 미쳤다.
+			이마트는 올해 1분기 연결 기준 순매출액이 작년 동기 대비 1.9% 오른 7조1354억원을 기록했다고 11일 공시했다. 같은 기간 영업이익은 137억원으로 60.4% 감소했다. 당기순이익은 99.7% 줄어든 27억원으로 적자를 간신히 면했다.
+			매출액은 1분기 매출 7조3990억원(분기 환율 1275.6원 기준)을 기록한 쿠팡보다 2600억원 이상 낮은 수치다. 양 사 격차는 1년 전인 지난해 1분기 8382억원에서 4분기 2338억원까지 줄어든 바 있다. 쿠팡이 매출액에서 이마트를 앞선 것은 이번이 처음이다. 이마트는 영업이익도 1362억원을 기록한 쿠팡에 크게 밀렸다.
+			본업 부진이 발목을 잡았다. 사업부별로 살펴보면 1분기 할인점 매출액은 3조169억원으로 2.5% 감소했다. 영업이익은 477억원으로 37.0% 감소했다. 트레이더스도 매출액 8184억원, 영업이익 84억원으로 각각 2.7%, 44.4% 동반 감소했다. 노브랜드 매출·영업이익 호조로 전문점 영업이익만 79억원 증가했다.
+			이마트 관계자는 “영업이익 감소 요인은 코로나 시기 성장에 대한 역기저효과와 불황으로 인한 장바구니 부담 상승”이라며 “올해 1분기 공휴일 수가 전년 대비 3일 감소했고 연수점·킨텍스점 리뉴얼 공사가 조기 진행되면서 매출 공백이 생겼다”고 설명했다.
+			연결 자회사를 살펴보면 온라인 자회사는 수익성 개선에 성공했다. SSG닷컴은 매출액 4213억원으로 0.9% 감소했지만 적자 규모를 100억원 이상 줄이며 영업손실 156억원을 기록했다. G마켓 또한 매출액은 3031억원으로 4.2% 줄었지만 영업손실 109억원으로 수익성 개선에 성공했다. 프리미엄·수익성 중심의 상품 구성 강화, 물류·마케팅 효율화를 통해 적자 개선을 이뤄냈다는 설명이다.
+			지난해 연간 흑자 전환에 성공한 조선호텔앤리조트는 투숙률 개선으로 호조세를 이어갔다. 매출액은 31.6% 늘어난 1194억원을 기록했으며 영업이익도 40억원으로 분기 흑자 전환했다. 반면에 이마트24는 1분기 영업손실 39억원으로 적자 폭이 확대됐다. 점포 수는 170개점 증가한 총 6512개점이다. 스타벅스는 매출액이 13.4% 상승한 6829억원을 기록했지만 환율 상승에 따른 원가 부담으로 영업이익은 29.3% 감소한 205억원을 기록했다. 스타필드를 운영하는 신세계프라퍼티는 영업이익 29억원을 기록하며 흑자 전환했다.
+			이마트 관계자는 “수익성 중심의 상품 강화, 오프라인 리뉴얼 등 미래를 위한 체질 개선을 이어나가고 있다”면서 “향후 수익을 담보한 지속 성장을 위해 노력할 것”이라고 말했다.
+			</div>
+			<div class="agreement-text-box-small agreement-text d-flex justify-content-end align-items-center">
+				<span>이용약관에 동의 하십니까?</span>
+				<input type="checkbox" id="agree-check1" name="agrreeChk" class="ml-1 mr-2">
+			</div>
+			<div class="semi-title">
+				<span>[필수]개인정보 수집 및 이용 동의</span>
+			</div>
+			<div class="agreement-text-box">
+			‘오프라인 강자’ 이마트가 1분기 유통업계 1위 타이틀을 쿠팡에 내줬다. 이마트 연결 기준 매출액이 쿠팡에 뒤처진 것은 이번이 처음이다. 코로나 특수를 누린 지난해 역기저 효과에 고물가·고금리로 인한 소비심리 위축이 영향을 미쳤다.
+			이마트는 올해 1분기 연결 기준 순매출액이 작년 동기 대비 1.9% 오른 7조1354억원을 기록했다고 11일 공시했다. 같은 기간 영업이익은 137억원으로 60.4% 감소했다. 당기순이익은 99.7% 줄어든 27억원으로 적자를 간신히 면했다.
+			매출액은 1분기 매출 7조3990억원(분기 환율 1275.6원 기준)을 기록한 쿠팡보다 2600억원 이상 낮은 수치다. 양 사 격차는 1년 전인 지난해 1분기 8382억원에서 4분기 2338억원까지 줄어든 바 있다. 쿠팡이 매출액에서 이마트를 앞선 것은 이번이 처음이다. 이마트는 영업이익도 1362억원을 기록한 쿠팡에 크게 밀렸다.
+			본업 부진이 발목을 잡았다. 사업부별로 살펴보면 1분기 할인점 매출액은 3조169억원으로 2.5% 감소했다. 영업이익은 477억원으로 37.0% 감소했다. 트레이더스도 매출액 8184억원, 영업이익 84억원으로 각각 2.7%, 44.4% 동반 감소했다. 노브랜드 매출·영업이익 호조로 전문점 영업이익만 79억원 증가했다.
+			이마트 관계자는 “영업이익 감소 요인은 코로나 시기 성장에 대한 역기저효과와 불황으로 인한 장바구니 부담 상승”이라며 “올해 1분기 공휴일 수가 전년 대비 3일 감소했고 연수점·킨텍스점 리뉴얼 공사가 조기 진행되면서 매출 공백이 생겼다”고 설명했다.
+			연결 자회사를 살펴보면 온라인 자회사는 수익성 개선에 성공했다. SSG닷컴은 매출액 4213억원으로 0.9% 감소했지만 적자 규모를 100억원 이상 줄이며 영업손실 156억원을 기록했다. G마켓 또한 매출액은 3031억원으로 4.2% 줄었지만 영업손실 109억원으로 수익성 개선에 성공했다. 프리미엄·수익성 중심의 상품 구성 강화, 물류·마케팅 효율화를 통해 적자 개선을 이뤄냈다는 설명이다.
+			지난해 연간 흑자 전환에 성공한 조선호텔앤리조트는 투숙률 개선으로 호조세를 이어갔다. 매출액은 31.6% 늘어난 1194억원을 기록했으며 영업이익도 40억원으로 분기 흑자 전환했다. 반면에 이마트24는 1분기 영업손실 39억원으로 적자 폭이 확대됐다. 점포 수는 170개점 증가한 총 6512개점이다. 스타벅스는 매출액이 13.4% 상승한 6829억원을 기록했지만 환율 상승에 따른 원가 부담으로 영업이익은 29.3% 감소한 205억원을 기록했다. 스타필드를 운영하는 신세계프라퍼티는 영업이익 29억원을 기록하며 흑자 전환했다.
+			이마트 관계자는 “수익성 중심의 상품 강화, 오프라인 리뉴얼 등 미래를 위한 체질 개선을 이어나가고 있다”면서 “향후 수익을 담보한 지속 성장을 위해 노력할 것”이라고 말했다.
+			</div>
+			<div class="agreement-text-box-small agreement-text d-flex justify-content-end align-items-center">
+				<span>개인정보 수집 및 이용에 동의하십니까?</span>
+				<input type="checkbox" id="agree-check2" name="agrreeChk" class="ml-1 mr-2">
+			</div>
+			<div class="d-flex justify-content-end mt-2">
+				<input type="button" class="join-btn" value="회원가입">
+			</div>
 		</div>
 	</div>
 </div>
@@ -167,6 +209,23 @@ $(document).ready(function(){
 		} else {
 			$(".other-url").addClass("d-none");
 		}
+	}
+	/* 이용약관 전체동의 */
+	agreeAll = function() {
+		var chkList = $("input[name=agrreeChk]");
+		
+		if ($('#agrre-all-btn').is(':checked')){
+			chkList.prop('checked',true);
+		} else {
+			chkList.prop('checked',false);
+		}
+/* 		if ($("#agree-check1").is(':checked') == true && $("#agree-check2").is(':checked') == true) {
+		$("#agree-check1").prop('checked',false);
+		$("#agree-check2").prop('checked',false);
+		}
+/* 		$("#.agrre-all-btn").attr('checked'); */
+/* 		$("#agree-check1").prop('checked',true);
+		$("#agree-check2").prop('checked',true); */
 	}
 	
 	/* 다음 주소API */
