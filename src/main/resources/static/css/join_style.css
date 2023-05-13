@@ -159,7 +159,7 @@
 	margin: 8px 0 0 10px ;
 	height: 30px;
 }
-#join .join-btn {
+#join #join-btn {
 	border-radius: 8px;
 	border:none;
 	background-color: rgb(58,58,58);
@@ -167,7 +167,7 @@
 	height: 40px;
 	width: 100px;
 }
-#join .join-btn:hover {
+#join #join-btn:hover {
 
 	background-color: rgb(210,210,210);
 	color: #333;

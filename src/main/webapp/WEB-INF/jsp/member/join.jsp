@@ -6,20 +6,20 @@
 		<div class="join-form">
 			<div class="join-form-lineTop d-flex"><span class="join-form-line-text">회원구분</span><span class="essential-item">*</span>
 				<div class="member-type-div">
-					<label><input type="radio" name="member_type" value="개인회원" class="radio-btn" checked="checked" onclick="member()">개인회원</label>
-					<label><input type="radio" name="member_type" value="인플루언서" class="radio-btn" onclick="influencerMember()">인플루언서</label>
-					<label><input type="radio" name="member_type" value="사업자" class="radio-btn" onclick="businessMember()">사업자</label>
+					<label><input type="radio" name="member-type" value="개인회원" class="radio-btn" checked="checked" onclick="member()">개인회원</label>
+					<label><input type="radio" name="member-type" value="인플루언서" class="radio-btn" onclick="influencerMember()">인플루언서</label>
+					<label><input type="radio" name="member-type" value="사업자" class="radio-btn" onclick="businessMember()">사업자</label>
 				</div>
 			</div>
 			<div class="semi-title">기본정보</div>
 			<div class="join-form-lineTop d-flex align-items-center">
 				<span class="join-form-line-text">아이디</span><span class="essential-item">*</span>
-				<input type="text" class="form-control input-box">
+				<input type="text" class="form-control input-box" id="loginId">
 				<input type="button" class="duplicateId-btn" value="중복확인" onclick="execDaumPostcode()">
 			</div>
 			<div class="join-form-line d-flex align-items-center">
 				<span class="join-form-line-text">비밀번호</span><span class="essential-item">*</span>
-				<input type="text" class="form-control input-box">
+				<input type="text" class="form-control input-box" id="password">
 			</div>
 			<div class="join-form-line d-flex align-items-center">
 				<span class="join-form-line-text">비밀번호 확인</span><span class="essential-item">*</span>
@@ -35,11 +35,11 @@
 			</div>
 			<div class="join-form-line-none2 d-flex align-items-center">
 				<span class="join-form-line-text">주소</span><span class="essential-item">*</span>
-				<input type="text" id="address" class="form-control input-box-address2" placeholder="기본주소" readonly/>
+				<input type="text" id="address" name="address01" class="form-control input-box-address2" placeholder="기본주소" readonly/>
 			</div>
 			<div class="join-form-line-none3 d-flex align-items-center">
-				<input type="text" id="detailAddress" class="form-control input-box-address3" placeholder="상세주소">
-				<input type="text" id="extraAddress" class="form-control input-box-address3-1" readonly/>
+				<input type="text" id="detailAddress" name="address02" class="form-control input-box-address3" placeholder="상세주소">
+				<input type="text" id="extraAddress" name="address03" class="form-control input-box-address3-1" readonly/>
 			</div>
 			<div class="join-form-lineTop d-flex align-items-center">
 				<span class="join-form-line-text">휴대전화</span><span class="essential-item">*</span>
@@ -140,7 +140,7 @@
 				<input type="checkbox" id="agree-check2" name="agrreeChk" class="ml-1 mr-2">
 			</div>
 			<div class="d-flex justify-content-end mt-2">
-				<input type="button" class="join-btn" value="회원가입">
+				<input type="button" id="join-btn" value="회원가입">
 			</div>
 		</div>
 	</div>
@@ -152,6 +152,17 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 $(document).ready(function(){
+	$("#join-btn").on("click",function(){
+		let memberType = $('input[name=member-type]:checked').val();
+		let loginId = $('#loginId').val();
+		let password = $('#password').val();
+		let name = $('#name').val();
+		let email = $('#email').val();
+		let address = $('#address').val();
+		alert(loginId);
+	});
+	
+	
 	member = function() {
 		$(".influencer").addClass("d-none");
 		$(".business-member").addClass("d-none");
@@ -188,28 +199,28 @@ $(document).ready(function(){
 		} else {
 			$(".youtube-url").addClass("d-none");
 		}
-	}
+	};
 	blog = function() {
 		if ($(".blog-url").hasClass("d-none") == true) {
 			$(".blog-url").removeClass("d-none");
 		} else {
 			$(".blog-url").addClass("d-none");
 		}
-	}
+	};
 	twitter = function() {
 		if ($(".twitter-url").hasClass("d-none") == true) {
 			$(".twitter-url").removeClass("d-none");
 		} else {
 			$(".twitter-url").addClass("d-none");
 		}
-	}
+	};
 	other = function() {
 		if ($(".other-url").hasClass("d-none") == true) {
 			$(".other-url").removeClass("d-none");
 		} else {
 			$(".other-url").addClass("d-none");
 		}
-	}
+	};
 	/* 이용약관 전체동의 */
 	agreeAll = function() {
 		var chkList = $("input[name=agrreeChk]");
@@ -219,14 +230,8 @@ $(document).ready(function(){
 		} else {
 			chkList.prop('checked',false);
 		}
-/* 		if ($("#agree-check1").is(':checked') == true && $("#agree-check2").is(':checked') == true) {
-		$("#agree-check1").prop('checked',false);
-		$("#agree-check2").prop('checked',false);
-		}
-/* 		$("#.agrre-all-btn").attr('checked'); */
-/* 		$("#agree-check1").prop('checked',true);
-		$("#agree-check2").prop('checked',true); */
-	}
+	};
+
 	
 	/* 다음 주소API */
 	execDaumPostcode = function() {
@@ -275,7 +280,7 @@ $(document).ready(function(){
                 document.getElementById("detailAddress").focus();
             }
         }).open();
-    }
+    };
 });
 
 </script>
