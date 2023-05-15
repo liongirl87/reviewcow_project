@@ -6,32 +6,40 @@
 		<div class="join-form">
 			<div class="join-form-lineTop d-flex"><span class="join-form-line-text">회원구분</span><span class="essential-item">*</span>
 				<div class="member-type-div">
-					<label><input type="radio" name="member-type" value="개인회원" class="radio-btn" checked="checked" onclick="member()">개인회원</label>
-					<label><input type="radio" name="member-type" value="인플루언서" class="radio-btn" onclick="influencerMember()">인플루언서</label>
-					<label><input type="radio" name="member-type" value="사업자" class="radio-btn" onclick="businessMember()">사업자</label>
+					<label><input type="radio" name="member-type" value="member" class="radio-btn" checked="checked" onclick="member()">개인회원</label>
+					<label><input type="radio" name="member-type" value="influencerMember" class="radio-btn" onclick="influencerMember()">인플루언서</label>
+					<label><input type="radio" name="member-type" value="businessMember" class="radio-btn" onclick="businessMember()">사업자</label>
 				</div>
 			</div>
 			<div class="semi-title">기본정보</div>
-			<div class="join-form-lineTop d-flex align-items-center">
-				<span class="join-form-line-text">아이디</span><span class="essential-item">*</span>
-				<input type="text" class="form-control input-box" id="loginId">
-				<input type="button" class="duplicateId-btn" value="중복확인" onclick="execDaumPostcode()">
+			<div class="join-form-lineTopIncludeText line-top">
+				<div class=" d-flex align-items-center">
+					<span class="join-form-line-text">아이디</span><span class="essential-item">*</span>
+					<input type="text" class="form-control input-box" id="loginId">
+					<input type="button" class="duplicateId-btn" value="중복확인" onclick="execDaumPostcode()">
+				</div>
+				<span class="hiddenText d-none idLengthWarning">아이디를 5자 이상 입력해주세요.</span>
 			</div>
-			<div class="join-form-line d-flex align-items-center">
+			<div>
+			</div>
+			<div class="join-form-line line-bottom line-top d-flex align-items-center">
 				<span class="join-form-line-text">비밀번호</span><span class="essential-item">*</span>
-				<input type="text" class="form-control input-box" id="password">
+				<input type="password" class="form-control input-box" id="password">
 			</div>
-			<div class="join-form-line d-flex align-items-center">
-				<span class="join-form-line-text">비밀번호 확인</span><span class="essential-item">*</span>
-				<input type="text" class="form-control input-box">
+			<div class="join-form-lineIncludeText">
+				<div class="d-flex align-items-center">
+					<span class="join-form-line-text">비밀번호 확인</span><span class="essential-item">*</span>
+					<input type="password" class="form-control input-box" id="passwordCheck">
+				</div>
+				<span class="d-none hiddenText passwordNotMatch">비밀번호가 일치하지 않습니다.</span>
 			</div>
-			<div class="join-form-line d-flex align-items-center">
+			<div class="join-form-line line-top d-flex align-items-center">
 				<span class="join-form-line-text">이름</span><span class="essential-item">*</span>
-				<input type="text" class="form-control input-box">
+				<input type="text" id="name" class="form-control input-box">
 			</div>
 			<div class="join-form-line-none1 d-flex align-items-center">
 				<input type="text" id="postcode" class="form-control input-box-address1" placeholder="우편번호" readonly/>
-				<input type="button" class="address-btn" value="주소검색" onclick="execDaumPostcode()">
+				<input type="button" class="address-btn" id="addressSearchBtn" value="주소검색" onclick="execDaumPostcode()">
 			</div>
 			<div class="join-form-line-none2 d-flex align-items-center">
 				<span class="join-form-line-text">주소</span><span class="essential-item">*</span>
@@ -51,7 +59,7 @@
 			</div>
 			<div class="join-form-line d-flex align-items-center">
 				<span class="join-form-line-text">이메일</span><span class="essential-item">*</span>
-				<input type="text" class="form-control input-box">
+				<input type="text" class="form-control input-box" id="email">
 			</div>
 			<div class="influencer d-none" onclick="influencerMember()">
 				<div class="join-form-line d-flex align-items-center influencer-box-padding">
@@ -67,42 +75,42 @@
 				</div>
 				<div class="insta-url join-form-line d-flex align-items-center d-none">
 					<span class="join-form-line-text">인스타</span><span class="essential-item">*</span>
-					<input type="text" class="form-control input-box" placeholder="인스타 ID를 입력해 주세요">
+					<input type="text" id="instagramId" class="form-control input-box" placeholder="인스타 ID를 입력해 주세요">
 				</div>	
 				<div class="facebook-url join-form-line d-flex align-items-center d-none" >
 					<span class="join-form-line-text">페이스북</span><span class="essential-item">*</span>
-					<input type="text" class="form-control input-box" placeholder="페이스북 ID를 입력해 주세요">
+					<input type="text" id="facebookUrl" class="form-control input-box" placeholder="페이스북 ID를 입력해 주세요">
 				</div>	
 				<div class="youtube-url join-form-line d-flex align-items-center d-none">
 					<span class="join-form-line-text">유튜브</span><span class="essential-item">*</span>
-					<input type="text" class="form-control input-box" placeholder="유튜브 ULR를 입력해 주세요">
+					<input type="text" id="youtubeUrl" class="form-control input-box" placeholder="유튜브 ULR를 입력해 주세요">
 				</div>	
 				<div class="blog-url join-form-line d-flex align-items-center d-none">
 					<span class="join-form-line-text">블로그</span><span class="essential-item">*</span>
-					<input type="text" class="form-control input-box" placeholder="블로그 ULR를 입력해 주세요">
+					<input type="text" id="blogUrl" class="form-control input-box" placeholder="블로그 ULR를 입력해 주세요">
 				</div>	
 				<div class="twitter-url join-form-line d-flex align-items-center d-none">
 					<span class="join-form-line-text">트위터</span><span class="essential-item">*</span>
-					<input type="text" class="form-control input-box" placeholder="트위터 ULR를 입력해 주세요">
+					<input type="text" id="twitterUrl" class="form-control input-box" placeholder="트위터 ULR를 입력해 주세요">
 				</div>	
 				<div class="other-url join-form-line d-flex align-items-center d-none">
 					<span class="join-form-line-text">그외</span><span class="essential-item">*</span>
-					<input type="text" class="form-control input-box" placeholder="그외 ULR를 입력해 주세요">
+					<input type="text" id="OtherUrl" class="form-control input-box" placeholder="그외 ULR를 입력해 주세요">
 				</div>	
 			</div>
 			<div class="business-member d-none">
 				<div class="join-form-line d-flex align-items-center">
 					<span class="join-form-line-text">상호명</span><span class="essential-item">*</span>
-					<input type="text" class="form-control input-box">
+					<input type="text" class="form-control input-box" id="businessName">
 				</div>
 				<div class="join-form-line d-flex align-items-center">
 					<span class="join-form-line-text">사업자 등록번호</span><span class="essential-item">*</span>
-					<input type="text" class="form-control input-box">
+					<input type="text" class="form-control input-box" id="businessLicenseNumber">
 				</div>
 			</div>
 			<div class="semi-title">전체동의</div>
 			<div class="d-flex align-items-center agreement-text">
-				<input type="checkbox" id="agrre-all-btn"  name="scales" class="mr-1" onclick="agreeAll()">
+				<input type="checkbox" id="agree-all-btn" class="mr-1" onclick="agreeAll()">
 				<span>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</span>
 			</div>
 			<div class="semi-title">
@@ -120,7 +128,7 @@
 			</div>
 			<div class="agreement-text-box-small agreement-text d-flex justify-content-end align-items-center">
 				<span>이용약관에 동의 하십니까?</span>
-				<input type="checkbox" id="agree-check1" name="agrreeChk" class="ml-1 mr-2">
+				<input type="checkbox" id="agree-check1" name="agreeChk" class="ml-1 mr-2" value="이용약관">
 			</div>
 			<div class="semi-title">
 				<span>[필수]개인정보 수집 및 이용 동의</span>
@@ -137,7 +145,7 @@
 			</div>
 			<div class="agreement-text-box-small agreement-text d-flex justify-content-end align-items-center">
 				<span>개인정보 수집 및 이용에 동의하십니까?</span>
-				<input type="checkbox" id="agree-check2" name="agrreeChk" class="ml-1 mr-2">
+				<input type="checkbox" id="agree-check2" name="agreeChk" class="ml-1 mr-2"  value="개인정보 수집 및 이용">
 			</div>
 			<div class="d-flex justify-content-end mt-2">
 				<input type="button" id="join-btn" value="회원가입">
@@ -154,19 +162,155 @@
 $(document).ready(function(){
 	$("#join-btn").on("click",function(){
 		let memberType = $('input[name=member-type]:checked').val();
-		let loginId = $('#loginId').val();
+		let loginId = $('#loginId').val().trim();
 		let password = $('#password').val();
-		let name = $('#name').val();
-		let email = $('#email').val();
-		var address = "";
+		let name = $('#name').val().trim();
+		let email = $('#email').val().trim();
+		let address = "";
 		$('input[name=addressName]').each(function(){
 			address += $(this).val();
 		});
-		alert(address);
 		let telePhoneNumber = $('#telePhoneNumber').val();
 		let mobilePhoneNumber = $('#mobilePhoneNumber').val();
+		
+		
+		/* memberType:influencerMember */
+		let instagramId = $("#instagramId").val().trim();
+		let facebookUrl = $("#facebookUrl").val().trim();
+		let youtubeUrl = $("#youtubeUrl").val().trim();
+		let blogUrl = $("#blogUrl").val().trim();
+		let twitterUrl = $("#twitterUrl").val().trim();
+		let OtherUrl = $("#OtherUrl").val().trim();
+		
+		/* memberType:businessMember */
+		let businessName = $("#businessName").val().trim();
+		let businessLicenseNumber = $("#businessLicenseNumber").val().trim();
+		
+		// validation
+		if(!loginId) {
+			alert("아이디를 입력하세요.");
+			document.getElementById("loginId").focus();
+			return;
+		}
+		if ($('.idLengthWarning').hasClass("d-none") == false) {
+			alert("아이디를 5자 이상 입력하세요.");
+			document.getElementById("loginId").focus();
+			return;
+		}
+		if(!password) {
+			alert("비밀번호를 입력하세요.");
+			document.getElementById("password").focus();
+			return;
+		}
+		if ($('.passwordNotMatch').hasClass("d-none") == false) {
+			alert("비밀번호가 일치하지 않습니다.");
+			document.getElementById("passwordCheck").focus();
+			return;
+		}
+		if(!name) {
+			alert("이름을 입력하세요.");
+			document.getElementById("name").focus();
+			return;
+		}
+		if(!address) {
+			alert("주소를 입력하세요.");
+			document.getElementById("addressSearchBtn").focus();
+			return;
+		}
+		if(!mobilePhoneNumber) {
+			alert('핸드폰번호를 입력하세요.');
+			document.getElementById("mobilePhoneNumber").focus();
+			return;
+		}
+		if(!email) {
+			alert('이메일을 입력하세요.');
+			document.getElementById("email").focus();
+			return;
+		}
+		// validation email 주소 확인
+		if (!$('#email').val().endsWith('.com')) {
+			alert("정상적인 email주소가 아닙니다.");
+			document.getElementById("email").focus();
+			return;
+		}
+		
+		// validation 이용약관 체크 항목 2개 
+		$('input[name=agreeChk]').each(function(){
+			console.log(this);
+			if (!$(this).is(':checked')) {
+				alert($(this).val()+"에 동의해주세요");
+				return;
+			}
+		});
+		
+		$.ajax({
+			//request
+			type:'POST'
+			, url: '/member/join'
+			, data: {"memberType":memberType
+					,"loginId":loginId
+					,"password":password
+					,"name":name
+					,"email":email
+					,"address":address
+					,"telePhoneNumber":telePhoneNumber
+					,"mobilePhoneNumber":mobilePhoneNumber
+					,"instagramId":instagramId
+					,"facebookUrl":facebookUrl
+					,"youtubeUrl":youtubeUrl
+					,"blogUrl":blogUrl
+					,"twitterUrl":twitterUrl
+					,"OtherUrl":OtherUrl
+					,"businessName":businessName
+					,"businessLicenseNumber":businessLicenseNumber}
+			,success:function(data){
+				if(data.code == 1) {
+					alert(data.result);
+					/* location.href="/main/main_view" */
+				} else {
+					alert(data.errorMessage);
+				}
+			}
+		})
 	});
 	
+	// validation id최소 글자수
+	$("#loginId").on("propertychange change paste input", function(){
+		var loginIdLength = $(this).val().length;
+		console.log(loginIdLength);
+		if ( loginIdLength < 5) {
+			$(".idLengthWarning").removeClass('d-none');
+		} else {
+			$(".idLengthWarning").addClass('d-none');
+		}
+	});
+	
+	//validation 암호일치 여부 확인
+	$("#passwordCheck").keyup(function(){
+		console.log($('#passwordCheck').val());
+		console.log($('#password').val());
+		if ($('#passwordCheck').val() == $('#password').val()) {
+			$('.passwordNotMatch').addClass('d-none');
+		} else {
+			$('.passwordNotMatch').removeClass('d-none');
+		}
+	});
+	// validation 핸드폰 010시작 확인
+	$('#mobilePhoneNumber').keyup(function(){
+		let mobilePhoneValidation = $('#mobilePhoneNumber').val();
+		if (mobilePhoneValidation.length > 3) {
+			if (!mobilePhoneValidation.startsWith('010')){
+				alert("핸드폰 번호는 010으로 시작해야합니다.");
+			}
+		}
+	});
+	
+	// validation 이메일 .com으로 끝나는지 확인
+	$('#email').change(function(){
+		if (!$('#email').val().endsWith('.com')) {
+			alert("정상적인 email주소가 아닙니다.");
+		}
+	});
 	
 	member = function() {
 		$(".influencer").addClass("d-none");
@@ -228,9 +372,9 @@ $(document).ready(function(){
 	};
 	/* 이용약관 전체동의 */
 	agreeAll = function() {
-		var chkList = $("input[name=agrreeChk]");
+		var chkList = $("input[name=agreeChk]");
 		
-		if ($('#agrre-all-btn').is(':checked')){
+		if ($('#agree-all-btn').is(':checked')){
 			chkList.prop('checked',true);
 		} else {
 			chkList.prop('checked',false);

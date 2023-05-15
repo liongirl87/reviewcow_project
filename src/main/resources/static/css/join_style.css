@@ -26,14 +26,37 @@
 #join > .join-form  .join-form-lineTop {
 	padding: 12px 0;
 	margin: 10px 0 0 0px;
-	border-top: 1px solid #eee;
-	border-bottom: 1px solid #eee;
+/* 	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee; */
 }
+
+#join > .join-form  .join-form-lineTopIncludeText {
+	padding: 12px 0;
+	margin: 10px 0 12px 0px;
+/* 	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee; */
+}
+
 #join > .join-form  .join-form-line {
 	padding: 12px 0;
 	margin: 0 0 0 0px;
+/* 	border-bottom: 1px solid #eee; */
+}
+
+#join > .join-form  .join-form-lineIncludeText {
+	padding: 12px 0;
+	margin: 0 0 12px 0px;
+/* 	border-bottom: 1px solid #eee; */
+}
+#join  .line-top {
+	border-top: 1px solid #eee;
+}
+
+#join  .line-bottom {
 	border-bottom: 1px solid #eee;
 }
+
+
 #join > .join-form  .join-form-line-none1 {
 	padding: 12px 0;
 	margin: 12px 0;
@@ -171,4 +194,10 @@
 
 	background-color: rgb(210,210,210);
 	color: #333;
+}
+#join .hiddenText {
+	position: absolute;
+	margin: 8px 0 0 180px;
+	font-size: 8px;
+	color: red;
 }
