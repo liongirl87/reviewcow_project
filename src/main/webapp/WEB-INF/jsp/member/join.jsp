@@ -35,19 +35,19 @@
 			</div>
 			<div class="join-form-line-none2 d-flex align-items-center">
 				<span class="join-form-line-text">林家</span><span class="essential-item">*</span>
-				<input type="text" id="address" name="address01" class="form-control input-box-address2" placeholder="扁夯林家" readonly/>
+				<input type="text" id="address" name="addressName" class="form-control input-box-address2" placeholder="扁夯林家" readonly/>
 			</div>
 			<div class="join-form-line-none3 d-flex align-items-center">
-				<input type="text" id="detailAddress" name="address02" class="form-control input-box-address3" placeholder="惑技林家">
-				<input type="text" id="extraAddress" name="address03" class="form-control input-box-address3-1" readonly/>
+				<input type="text" id="detailAddress" name="addressName" class="form-control input-box-address3" placeholder="惑技林家">
+				<input type="text" id="extraAddress" name="addressName" class="form-control input-box-address3-1" readonly/>
 			</div>
 			<div class="join-form-lineTop d-flex align-items-center">
 				<span class="join-form-line-text">绒措傈拳</span><span class="essential-item">*</span>
-				<input type="text" class="form-control input-box">
+				<input type="text" class="form-control input-box" id="mobilePhoneNumber">
 			</div>
 			<div class="join-form-line d-flex align-items-center">
 				<span class="join-form-line-text">老馆傈拳</span>
-				<input type="text" class="form-control input-box">
+				<input type="text" class="form-control input-box" id="telePhoneNumber">
 			</div>
 			<div class="join-form-line d-flex align-items-center">
 				<span class="join-form-line-text">捞皋老</span><span class="essential-item">*</span>
@@ -158,8 +158,13 @@ $(document).ready(function(){
 		let password = $('#password').val();
 		let name = $('#name').val();
 		let email = $('#email').val();
-		let address = $('#address').val();
-		alert(loginId);
+		var address = "";
+		$('input[name=addressName]').each(function(){
+			address += $(this).val();
+		});
+		alert(address);
+		let telePhoneNumber = $('#telePhoneNumber').val();
+		let mobilePhoneNumber = $('#mobilePhoneNumber').val();
 	});
 	
 	
