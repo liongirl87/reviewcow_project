@@ -271,6 +271,9 @@ $(document).ready(function(){
 					alert(data.errorMessage);
 				}
 			}
+			, error:function(request, status ,error) {
+				alert("요청에 실패했습니다 관리자에게 문의주세요");
+			}
 		})
 	});
 	

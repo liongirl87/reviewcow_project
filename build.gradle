@@ -28,6 +28,9 @@ dependencies {
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	// implementation 'javax.servlet:jstl:1.2'  // springboot ver 2.x 버전 2.x일때 사용
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0' // springboot ver 3.x
+	// lombok 1.18.26
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
