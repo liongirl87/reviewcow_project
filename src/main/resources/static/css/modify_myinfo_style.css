@@ -1,0 +1,32 @@
+@charset "EUC-KR";
+
+#side-view-right-Tdiv #modify-myInfoBtn {
+	font-size: 11pt;
+	border-radius: 8px;
+	border:none;
+	background-color: #1E90FF;
+	opacity: 0.8;
+	color: white;
+	height: 40px;
+	width: 120px;
+	margin: 20px 0 0 270px;
+}
+#side-view-right-Tdiv #modify-myInfoBtn:hover {
+	opacity: 1;
+}
+
+#side-view-right-Tdiv #modify-myInfoBtn-cancel {
+	font-size: 11pt;
+	border-radius: 8px;
+	border:none;
+	background-color: rgb(58,58,58);
+	color: white;
+	height: 40px;
+	width: 120px;
+	margin: 20px 0 0 10px;
+}
+
+#side-view-right-Tdiv #modify-myInfoBtn-cancel:hover {
+	background-color: rgb(210,210,210);
+	color: #333;
+}

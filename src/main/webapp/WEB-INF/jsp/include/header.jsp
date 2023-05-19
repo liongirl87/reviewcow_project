@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div class="d-flex justify-content-center header01 w-100 z-index">
 		<div id="header" class="d-flex justify-content-between align-items-end">
 		<div class="d-flex align-items-center">
@@ -16,8 +18,22 @@
 		</div>
 		<div class="d-flex align-items-end">
 			<ul class="nav rc-topMenu-right">
-				<li class="nav-item"><a href="#" class="nav-link mt-1">로그인</a></li>
-				<li class="nav-item"><a href="#" class="nav-link mt-1">회원가입</a></li>
+				<c:choose>
+					<c:when test="${empty member}">
+						<li class="nav-item"><a href="/member/login_view" class="nav-link mt-1">로그인</a></li>
+					</c:when>
+					<c:when test="${not empty member}">
+						<li class="nav-item"><a href="#" class="nav-link mt-1">${member.name}님</a></li>
+					</c:when>
+				</c:choose>
+				<c:choose>
+					<c:when test="${empty member}">
+						<li class="nav-item"><a href="/member/join_view" class="nav-link mt-1">회원가입</a></li>
+					</c:when>
+					<c:when test="${not empty member}">
+						<li class="nav-item"><a href="/member/sign_out" class="nav-link mt-1">로그아웃</a></li>
+					</c:when>
+				</c:choose>
 				<li class="nav-item"><a href="#" class="nav-link mt-1">이용안내</a></li>
 				<li class="nav-item"><a href="#" class="nav-link"><i class="xi-search xi-2x"></i></a></li>
 				<li class="nav-item"><a href="#" class="nav-link"><i class="xi-user-o xi-2x"></i></a></li>

@@ -20,7 +20,8 @@
  		)
  		values
  		(
- 			#{loginId}
+ 			#{memberType}
+ 			,#{loginId}
  			,#{password}
  			,#{salt}
  			,#{name}
@@ -33,5 +34,133 @@
  		)
  	
  	</insert>
- 
+ 	
+ 	 <insert id="insertinfluencerMember" parameterType="com.reviewcow.member.model.MemberJoinForm">
+ 		INSERT INTO `influencer_member`
+ 		(
+ 		   `memberLoginId`
+			,`instagramId`
+			,`facebookUrl`
+			,`youtubeUrl`
+			,`blogUrl`
+			,`twitterUrl`
+			,`OtherUrl`
+			,`createdAt`
+			,`updatedAt`
+ 		)
+ 		values
+ 		(
+ 			#{loginId}
+ 			,#{instagramId}
+ 			,#{facebookUrl}
+ 			,#{youtubeUrl}
+ 			,#{blogUrl}
+ 			,#{twitterUrl}
+ 			,#{OtherUrl}
+ 			,NOW()
+ 			,NOW()
+ 		)
+ 	
+ 	</insert>
+
+ 	 <insert id="insertbusinessMember" parameterType="com.reviewcow.member.model.MemberJoinForm">
+ 		INSERT INTO `business_member`
+ 		(
+			`memberLoginId`
+			,`businessName`
+			,`businessLicenseNumber`
+			,`createdAt`
+			,`updatedAt`
+ 		)
+ 		values
+ 		(
+ 			#{loginId}
+ 			,#{businessName}
+ 			,#{businessLicenseNumber}
+ 			,NOW()
+ 			,NOW()
+ 		)
+ 	
+ 	</insert>
+ 	<select id="selectMemberByLoginId" resultType="com.reviewcow.member.model.Member">
+ 		SELECT
+ 			`id`
+			,`memberType`
+			,`loginId`
+			,`password`
+			,`salt`
+			,`name`
+			,`email`
+			,`address`
+			,`telePhoneNumber`
+			,`mobilePhoneNumber`
+			,`nowPoint`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`member`
+		WHERE
+			`loginId` = #{loginId}
+ 	</select> 	
+ 	<select id="selectInfluencerMemberByLoginId" resultType="com.reviewcow.member.model.Influencer_Member">
+ 		SELECT	
+ 			`id`
+			,`memberLoginId`
+			,`instagramId`
+			,`facebookUrl`
+			,`youtubeUrl`
+			,`blogUrl`
+			,`twitterUrl`
+			,`OtherUrl`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`influencer_member`
+		WHERE
+			`memberLoginId` = #{loginId}
+ 	</select>
+ 	 <select id="selectBusinessMemberByLoginId" resultType="com.reviewcow.member.model.Business_Member">
+ 		SELECT	
+			`id`
+			,`memberLoginId`
+			,`businessName`
+			,`businessLicenseNumber`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`business_member`
+		WHERE
+			`memberLoginId` = #{loginId}
+ 	</select>
+ 	<update id="updateMemberByLoginId" parameterType="com.reviewcow.member.model.MemberJoinForm">
+	 	UPDATE `member`
+	 		SET
+	 			`email` = #{email}
+	 			, `mobilePhoneNumber` = #{mobilePhoneNumber}
+	 			, `updatedAt` = NOW()
+	 		WHERE
+	 			`loginId` = #{loginId}
+ 	</update>
+ 	 <update id="updateInfluencerByLoginId" parameterType="com.reviewcow.member.model.MemberJoinForm">
+	 	UPDATE `influencer_member`
+	 		SET
+	 			`instagramId` = #{instagramId}
+				, `facebookUrl` = #{facebookUrl}
+				, `youtubeUrl` = #{youtubeUrl}
+				, `blogUrl` = #{blogUrl}
+				, `twitterUrl` = #{twitterUrl}
+				, `OtherUrl` = #{OtherUrl}
+	 			, `updatedAt` = NOW()
+	 		WHERE
+	 			`memberLoginId` = #{loginId}
+ 	</update>
+ 	 <update id="updateBusinessMemberByLoginId" parameterType="com.reviewcow.member.model.MemberJoinForm">
+	 	UPDATE `business_member`
+	 		SET
+				`businessName` = #{businessName}
+				,`businessLicenseNumber` = #{businessLicenseNumber}
+	 		WHERE
+	 			`memberLoginId` = #{loginId}
+ 	</update>
+ 	
  </mapper>

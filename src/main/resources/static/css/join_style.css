@@ -5,8 +5,7 @@
 }
 #join {
 	width: 700px;
-	margin: 0 0 50px 0;
-/* 	background-color: red; */
+	margin: 16px 0 50px 0;
 	}
 
 #join .join-title {
@@ -200,4 +199,10 @@
 	margin: 8px 0 0 180px;
 	font-size: 8px;
 	color: red;
+}
+#join .hiddenText-success {
+	position: absolute;
+	margin: 8px 0 0 180px;
+	font-size: 8px;
+	color: #0080ff;
 }

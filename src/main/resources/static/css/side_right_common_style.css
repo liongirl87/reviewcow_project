@@ -1,0 +1,93 @@
+@charset "EUC-KR";
+/* 내정보 - 오른쪽-view 공통 CSS  */
+
+#side-view-right-Tdiv {
+	width: 700px;
+	margin: 0 0 50px 0;
+}
+
+#side-view-right-Tdiv .main-title {
+	font-weight: bold;
+	font-size: 15pt;
+}
+
+#side-view-right-Tdiv .semi-title {
+	font-weight: bold;
+	font-size: 15px;
+	margin: 20px 0 0 10px;
+}
+#side-view-right-Tdiv #form-div {
+	margin: 10px 0 0 0;
+}
+
+#side-view-right-Tdiv .form-div-child {
+	padding: 12px 0;
+	margin: 0 0 0 0px;
+/* 	border-bottom: 1px solid #eee; */
+}
+
+#side-view-right-Tdiv .form-inputBox {
+	position: absolute;
+	width: 200px;
+	height: 25px;
+	margin: 0 0 0 180px;
+	font-size: 13px;
+	background-color: rgb(238,238,238);
+	
+}
+#side-view-right-Tdiv .form-inputBox-on {
+	position: absolute;
+	width: 200px;
+	height: 25px;
+	margin: 0 0 0 180px;
+	font-size: 13px;
+	background-color: white;
+	
+}
+
+/* #side-view-right-Tdiv .input-side-btn {
+	position: absolute;
+	width: 90px;
+	height: 25px;
+	margin: 0 0 0 385px;
+	border: 1px solid #808080;
+	border-radius: 5px;
+	background-color: rgb(198,198,198);
+	font-size: 12px;
+} */
+
+#side-view-right-Tdiv .input-side-btn {
+	position: absolute;
+	height: 25px;
+	width: 90px;
+	margin: 0 0 0 385px;
+	border-radius: 5px;
+	border:none;
+	background-color: rgb(58,58,58);
+	color: white;
+	font-size: 12px;
+}
+#side-view-right-Tdiv .input-side-btn:hover {
+	background-color: rgb(210,210,210);
+	color: #333;
+}
+
+
+#side-view-right-Tdiv .text-style {
+	margin: 0 0 0 20px;
+	font-size: 13px;
+	color: #404040;
+}
+
+#side-view-right-Tdiv .form-inputBox-pm {
+	padding: 12px 0;
+	margin: 0 0 0 0px;
+/* 	border-bottom: 1px solid #eee; */
+}
+#side-view-right-Tdiv .line-top {
+	border-top: 1px solid #eee;
+}
+
+#side-view-right-Tdiv  .line-bottom {
+	border-bottom: 1px solid #eee;
+}

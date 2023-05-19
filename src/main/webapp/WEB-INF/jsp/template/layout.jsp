@@ -18,6 +18,12 @@
 <link rel="stylesheet" type="text/css" href="/static/css/main_category_box_style.css">
 <link rel="stylesheet" type="text/css" href="/static/css/deadline_product_style.css">
 <link rel="stylesheet" type="text/css" href="/static/css/join_style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/login_style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/side_menu_style.css">
+<!-- 내정보 2분할 화면 오른쪽view 공통 css -->
+<link rel="stylesheet" type="text/css" href="/static/css/side_right_common_style.css">
+
+<link rel="stylesheet" type="text/css" href="/static/css/modify_myinfo_style.css">
 <!-- XEICON CDN -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 </head>

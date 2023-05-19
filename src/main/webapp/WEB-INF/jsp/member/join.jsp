@@ -15,10 +15,12 @@
 			<div class="join-form-lineTopIncludeText line-top">
 				<div class=" d-flex align-items-center">
 					<span class="join-form-line-text">아이디</span><span class="essential-item">*</span>
-					<input type="text" class="form-control input-box" id="loginId">
-					<input type="button" class="duplicateId-btn" value="중복확인" onclick="execDaumPostcode()">
+					<input type="text" class="form-control input-box" id="loginId" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
+					<input type="button" id="checkDuplicatedId-btn" class="duplicateId-btn" value="중복확인"">
 				</div>
 				<span class="hiddenText d-none idLengthWarning">아이디를 5자 이상 입력해주세요.</span>
+				<span class="hiddenText d-none" id="idCheckDuplicated">이미 사용중인 ID입니다.</span>
+				<span class="hiddenText-success d-none" id="idCheckOk">사용 가능한 ID 입니다.</span>
 			</div>
 			<div>
 			</div>
@@ -152,7 +154,9 @@
 			</div>
 		</div>
 	</div>
+
 </div>
+
 <!-- 다음주소 api -->
 <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
@@ -160,6 +164,48 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 $(document).ready(function(){
+	
+	$('#name').keyup(function(){
+		let value = $(this).val();
+		
+/* 		this.value = this.value.replace(/[^a-zA-Z-_0-9]/g,''); */
+		
+		if ($(this).val().match(/[^a-zA-Z-_0-9]/g)) {
+			value.replace(/[^a-zA-Z-_0-9]/g,'');
+			alert("성공");
+		}
+	});
+	
+	
+	// 아이디 중복 확인
+	$("#checkDuplicatedId-btn").on("click",function(){
+		// 경고 문구 초기화
+		$('#idCheckDuplicated').addClass("d-none");
+		$('#idCheckOk').addClass("d-none");
+		
+		let loginId = $('#loginId').val().trim();
+		
+		if ( loginId.length < 5){
+			alert("아이디를 5자 이상 입력하세요.");
+			return;
+		}
+		$.ajax({
+			type: "GET"
+			, url: "/member/is_duplicated_id"
+			, data: {"loginId" : loginId}
+			,success:function(data){
+				if(data.result) {		// 아이디 중복(true)
+					$("#idCheckDuplicated").removeClass("d-none");
+				} else {	// 사용가능한 아이디
+					$("#idCheckOk").removeClass("d-none");
+				}
+			}
+			,error:function(request, status, error) {
+				alert("아이디 중복확인에 실패했습니다 관리자에게 문의주세요.");
+			}
+		});
+	});
+	
 	$("#join-btn").on("click",function(){
 		let memberType = $('input[name=member-type]:checked').val();
 		let loginId = $('#loginId').val().trim();
@@ -279,6 +325,10 @@ $(document).ready(function(){
 	
 	// validation id최소 글자수
 	$("#loginId").on("propertychange change paste input", function(){
+		// 경고 문구 초기화
+		$('#idCheckDuplicated').addClass("d-none");
+		$('#idCheckOk').addClass("d-none");
+		
 		var loginIdLength = $(this).val().length;
 		console.log(loginIdLength);
 		if ( loginIdLength < 5) {
@@ -286,6 +336,7 @@ $(document).ready(function(){
 		} else {
 			$(".idLengthWarning").addClass('d-none');
 		}
+		
 	});
 	
 	//validation 암호일치 여부 확인

@@ -1,0 +1,52 @@
+@charset "EUC-KR";
+
+#login-top-div {
+	margin: 50px 0 250px 0;
+}
+
+#login {
+	width: 700px;
+	margin: 0 0 50px 0;
+}
+
+#login .login-title {
+	font-weight: bold;
+	font-size: 15pt;
+}
+
+#login .login-input-box {
+	width: 250px;
+	border-radius: 20px;
+	font-size: 10pt;
+	color: #808080;
+	height: 40px;
+}
+#login #login-form-div {
+	margin: 50px 0 0 0;
+}
+#login .login-btn {
+	width: 250px;
+	background-color: #000;
+	color: #fff;
+	border-radius: 8px;
+	height:40px;
+}
+
+#login .small-btn-style {
+	background-color: rgb(210,210,210);
+	font-size: 12px;
+	width:120px;
+}
+#login .small-btn-margin {
+	margin: 0 0 0 10px;	
+}
+
+#login .login-btn:hover {
+	border: none;
+	background-color: rgb(210,210,210);
+	color: #333;
+}
+#login .small-btn-style:hover {
+	background-color: #000;
+	color: #fff;
+}
