@@ -1,0 +1,132 @@
+@charset "EUC-KR";
+
+#upload-product .product-div-line-box {
+	width: 600 px;
+	border: 1px solid #A0A0A0;
+	margin: 20px 0 0 30px;
+	padding: 0 0 20px 0;
+}
+#upload-product .product-div-line-box2 {
+	width: 600 px;
+	border: 1px solid #A0A0A0;
+	margin: 20px 0 0 30px;
+	padding: 0 0 48px 0;
+}
+
+#upload-product .product-semi-title {
+	font-weight: bold;
+	font-size: 15px;
+	margin: 10px 0 5px 12px;
+}
+#upload-product .red-stress-text {
+	color: #CC0000;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#upload-product .product-div-intext {
+	margin: 5px 0 5px 0;
+	}
+#upload-product .product-select-design {
+	width: 160px;
+	height: 35px;
+	border-radius: 6px;
+}
+
+#upload-product .product-text-wrap-div {
+	margin: 15px 0 10px 0;
+}
+
+#upload-product .product-text-wrap-div-rows {
+	margin: 15px 0 15px 0;
+}
+#upload-product select {
+	text-align: center;
+	font-size: 11pt;
+	color: #808080;
+}
+#upload-product .produc-input-box {
+	width: 640px;
+}
+#upload-product .product-append-div {
+	width: 240px;
+}
+#upload-product .product-text-margin {
+	margin:5px 8px 0 16px;
+}
+
+#upload-product .input-side-text{
+	color: #404040;
+	font-size: 11pt;
+	margin: 10px 0 0 0;
+}
+#upload-product .radio-side-text{
+	color: #404040;
+	font-size: 11pt;
+	margin: 0 0 0 0;
+}
+#upload-product .sell-type-div {
+	margin: 7px 0 0 8px;
+		font-size: 11pt;
+}
+
+#upload-product .input-location {
+	position: absolute;
+	margin: 0 0 0 110px;
+}
+
+#upload-product .only-line-div {
+	width:640px;
+	height: 1px;
+	/* background-color: red; */
+	margin: 0 0 0 12px;
+}
+
+#upload-product .progress-of-period-text{
+	color: #6495ED;
+	font-size: 11pt;
+	margin: 10px 0 0 0;
+}
+#upload-product .progress-of-period-text-stress {
+	font-size: 20pt;
+	font-weight:bold;
+}
+
+#upload-product .product-text-margin-date-total {
+	margin:0px 20px 0 50px;
+}
+#upload-product .product-text-margin-price-total {
+	margin:0px 20px 0 160px;
+}
+
+#upload-product .product-file-upload {
+	width: 120px;
+	border:1px solid #C0C0C0;
+	border-radius: 5px;
+	font-size:13px;
+}
+
+#upload-product .product-not-append-div {
+	width: 250px;
+}
+#upload-product .product-file-size {
+	position: absolute;
+	color: #6495ED;
+	font-size: 10pt;
+	margin: -5px 0 0 378px;
+}
+
+/* #upload-product .product-detail-textarea {
+ 	width: 600px;
+	height: 400px;
+	border-radius: 5px;
+	border:1px solid #a0a0a0;
+} */
+
+.ck-editor__editable {
+	height: 300px;
+}
+	
+.ck-editor {
+	width: 600px;	
+}	

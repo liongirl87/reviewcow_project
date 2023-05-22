@@ -6,7 +6,9 @@
 		<div id="header" class="d-flex justify-content-between align-items-end">
 		<div class="d-flex align-items-center">
 			<div class="top-logo ml-3">
-			<img src="/static/img/review-cow-top-logo.png" class="w-100 mt-3">
+			<a href="/main/main_view">
+				<img src="/static/img/review-cow-top-logo.png" class="w-100 mt-3">
+			</a>
 			</div>
 			<div class="top-search ml-3">
 				<form method="post" action="#">
@@ -36,7 +38,7 @@
 				</c:choose>
 				<li class="nav-item"><a href="#" class="nav-link mt-1">이용안내</a></li>
 				<li class="nav-item"><a href="#" class="nav-link"><i class="xi-search xi-2x"></i></a></li>
-				<li class="nav-item"><a href="#" class="nav-link"><i class="xi-user-o xi-2x"></i></a></li>
+				<li class="nav-item"><a href="/member/modify_myinfo_view" class="nav-link"><i class="xi-user-o xi-2x"></i></a></li>
 				<li class="nav-item"><a href="#" class="nav-link"><i class="xi-heart-o xi-2x"></i></a></li>
 				<li class="nav-item arrow"><a href="#" class="nav-link top-nav mr-3"><i class="xi-align-justify xi-2x"></i></a>
 					<ul class="sub-category01 sub-01 li-style-none parent-position" style="display:none ">

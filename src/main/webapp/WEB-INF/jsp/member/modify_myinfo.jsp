@@ -4,7 +4,7 @@
    
 <div class="d-flex justify-content-center">
 	<div id="side-view-right-Tdiv" class="mt-3">
-		<div class="main-title"><i class="xi-angle-left"></i>로그인</div>
+		<div class="main-title"><i class="xi-angle-left"></i>내정보</div>
 		<div class="semi-title">기본정보</div>
 		<div id="form-div">
 			<div class="form-inputBox-pm line-top d-flex align-items-center">

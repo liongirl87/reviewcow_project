@@ -9,7 +9,7 @@
 				<div class="mt-3">	
 					<c:choose>
 						<c:when test="${member.memberType eq 'businessMember'}">
-							<a href="#"><button type="button" class="side-button button-color1 button-margin">체험단 모집</button></a>
+							<a href="/sellpost/upload_product_view"><button type="button" class="side-button button-color1 button-margin">체험단 모집</button></a>
 							<a href="#"><button type="button" class="side-button button-color2 button-margin border-bot">체험단 관리</button></a>
 						</c:when>
 						<c:otherwise>
@@ -20,7 +20,7 @@
 					<div class="border-div border-bot"></div>
 				</div>
 				<ul>
-					<li class="mt-3"><a href="#">회원정보 수정</a></li>
+					<li class="mt-3"><a href="#" class="text-color-important">회원정보 수정</a></li>
 					<li class="text-margin"><a href="#">포인트관리</a></li>
 					<li><a href="#">문의하기</a></li>
 					<li class="text-margin"><a href="#">공지사항</a></li>

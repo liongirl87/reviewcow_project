@@ -45,17 +45,6 @@
 	
 }
 
-/* #side-view-right-Tdiv .input-side-btn {
-	position: absolute;
-	width: 90px;
-	height: 25px;
-	margin: 0 0 0 385px;
-	border: 1px solid #808080;
-	border-radius: 5px;
-	background-color: rgb(198,198,198);
-	font-size: 12px;
-} */
-
 #side-view-right-Tdiv .input-side-btn {
 	position: absolute;
 	height: 25px;
@@ -91,3 +80,4 @@
 #side-view-right-Tdiv  .line-bottom {
 	border-bottom: 1px solid #eee;
 }
+

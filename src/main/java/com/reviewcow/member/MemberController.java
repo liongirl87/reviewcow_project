@@ -36,7 +36,8 @@ public class MemberController {
 		return "redirect:/main/main_view";
 	}
 	// 사이드메뉴 테스트
-	@RequestMapping("/side_view")
+	
+	@RequestMapping("/modify_myinfo_view")
 	public String sideView(Model model) {
 		List<String> viewList = new ArrayList<>();
 		

@@ -3,8 +3,13 @@
 	margin: 50px 0 0 0;
 	font-size: 12pt;
 }
+
+.text-color-important {
+	color: #333 important;
+}
 #side-menu-top a,a:hover {
 	text-decoration:none;
+	color: #333 !important;
 }
 
 #side-menu-top-div ul {
@@ -14,8 +19,8 @@
 #side-menu-top-div #side-menu-div {
 	position: relative;
  	width: 300px;
-/* 	height: 10px;  */
 }
+
 #side-menu-top-div .side-menu {
 	position: absolute;
 	width: 180px;
