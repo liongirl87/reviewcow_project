@@ -4,6 +4,7 @@
 #side-view-right-Tdiv {
 	width: 700px;
 	margin: 0 0 50px 0;
+	min-height: 400px
 }
 
 #side-view-right-Tdiv .main-title {
