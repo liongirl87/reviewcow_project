@@ -168,11 +168,8 @@ $(document).ready(function(){
 	$('#name').keyup(function(){
 		let value = $(this).val();
 		
-/* 		this.value = this.value.replace(/[^a-zA-Z-_0-9]/g,''); */
-		
 		if ($(this).val().match(/[^a-zA-Z-_0-9]/g)) {
 			value.replace(/[^a-zA-Z-_0-9]/g,'');
-			alert("¼º°ø");
 		}
 	});
 	

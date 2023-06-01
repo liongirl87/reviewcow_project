@@ -16,7 +16,7 @@
 					 	<option value="" disabled selected>서비스종류</option>
 					    <option value="onlineProduct">온라인상품</option>
 					    <option value="offlineStore">오프라인상품</option>
-					    <option value="pressCorps">체험단</option>
+					    <option value="pressCorps">기자단</option>
 					</select>
 					<select name="order" id ="serviceCategory2-onlineProduct" class="custom-select product-select-design ml-2 d-none">
 					 	<option value="" disabled selected>선택</option>
@@ -83,15 +83,15 @@
 				</div>
 				<div class="d-flex justify-content-start product-text-wrap-div-rows-address">
 					<div class="input-group product-append-div-address2 mb-3 input-location">
-						<input type="text" id="address" class="form-control" placeholder="기본주소" readonly/>
+						<input type="text" id="address" name="addressName" class="form-control" placeholder="기본주소" readonly/>
 					</div>
 				</div>
 				<div class="d-flex justify-content-start product-text-wrap-div-rows-address">
 					<div class="input-group product-append-div mb-3 input-location">
-						<input type="text" id="detailAddress" class="form-control" placeholder="상세주소">
+						<input type="text" id="detailAddress" name="addressName" class="form-control" placeholder="상세주소">
 					</div>
 					<div class="input-group product-append-div mb-3 input-location-address">
-						<input type="text" id="extraAddress" class="form-control" readonly/>
+						<input type="text" id="extraAddress" name="addressName" class="form-control" readonly/>
 					</div>
 				</div>
 			</div>
@@ -170,7 +170,7 @@
 						<span class="end-date-text end-date-text-font d-none">종료일</span>
 					</div>
 					<div class="product-text-margin-date-total date-of-progressed d-none">
-						<span class="input-side-text progress-of-period-text">총 <span class="progress-of-period-text-stress"></span>일</span>
+						<span class="input-side-text progress-of-period-text">총 <span class="progress-of-period-text-stress progressOfCalculatedDay"></span>일</span>
 					</div>
 				</div>
 			</div>
@@ -185,7 +185,7 @@
 						<span class="input-side-text">지급원고료</span>
 					</div>
 					<div class="input-group product-append-div mb-3 input-location">
-						<input type="text" id="numberOfApplicants" class="form-control" placeholder="원고료를 입력하세요." maxlength='10' onkeyup="doComma(this)"/>
+						<input type="text" id="scriptFees" class="form-control" placeholder="원고료를 입력하세요." maxlength='10' onkeyup="doComma(this);doCalculate()"/>
 						<div class="input-group-append">
 						   <span class="input-group-text" id="basic-addon2">P</span>
 						 </div>
@@ -218,7 +218,7 @@
 						<span class="input-side-text">할인</span>
 					</div>
 					<div class="input-group product-append-div mb-3 input-location">
-						<input type="text" id="discountRate" class="form-control" placeholder="종료일을 선택하세요." onkeyup="doComma(this);doCalculate()" maxlength='10' />
+						<input type="text" id="discountRate" class="form-control" placeholder="할인가격을 입력하세요." onkeyup="doComma(this);doCalculate()" maxlength='10' />
 						<div class="input-group-append">
 						   	<select id="price-select-box" name="wonOrPercent">
 						   		<option value="won"><i class="xi-caret-down">원</i></option>
@@ -236,7 +236,7 @@
 					</div>
 					<div class="product-text-margin-price-total">
 						<span class="input-side-text">총 
-						<span id="finalPrice" class="progress-of-period-text-stress">14,400</span>원 <span>(<span class="paidPoint">9,600</span> 포인트 지급)</span></span>
+						<span id="finalPrice" class="progress-of-period-text-stress">00</span>원 <span>(<span class="paidPoint">00</span> 포인트 지급)</span></span>
 					</div>
 				</div>
 			</div>
@@ -260,7 +260,7 @@
 				</div>
 				<div class="product-text-wrap-div-rows">
 					<div class="product-text-margin product-file-size">
-						<span>권장크기: 520x380</span>
+						<span>권장크기: 520x520</span>
 					</div>
 				</div>
 			</div>
@@ -312,24 +312,30 @@
 				<div class="d-flex justify-content-end">
 					<span>모집인원: <span class="applicants-count-bottom">00</span>명</span>
 				</div>	
-				<div class="d-flex justify-content-end">	
-					<span>지급포인트: <span class="paidPoint">00</span>P</span>
-				</div>
-				<div class="d-flex justify-content-end">		
-					<span>수수료(10%): 10,000P</span>
+				<!-- 지급포인트, 수수료-[온라인,체험단] -->
+				<div class="onlineAndCorpsDisplay d-none">
+					<div class="d-flex justify-content-end">	
+						<span>지급포인트: <span class="paidPoint">00</span>P</span>
+					</div>
+					<div class="d-flex justify-content-end">		
+						<span>수수료(10%): <span class="commission">00</span>P</span>
+					</div>
 				</div>	
 			</div>
 		</div>
 		
 		<!-- 하단 결제금액-[공통] -->
 		<div class="product-total-bottom-text-line"></div>
-		<div class="d-flex justify-content-end">	
-			<div class="product-total-bottom-charge-text">
-				<div class="d-flex justify-content-end">
-					<span class="font-weight-bold mr-5">총 결제 금액</span>
-					<span class="product-total-bottom-text mr-2">총 <span class="applicants-count-bottom">00</span>명</span>
-					<span class="font-weight-bold"><span class="totlaPayment">00</span>P</span>
-				</div>	
+		<!-- 총결제금액 -[온라인,체험단] -->
+		<div class="onlineAndCorpsDisplay d-none">
+			<div class="d-flex justify-content-end">	
+				<div class="product-total-bottom-charge-text">
+					<div class="d-flex justify-content-end">
+						<span class="font-weight-bold mr-5">총 결제 금액</span>
+						<span class="product-total-bottom-text mr-2">총 <span class="applicants-count-bottom">00</span>명</span>
+						<span class="font-weight-bold"><span class="totlaPayment">00</span>P</span>
+					</div>	
+				</div>
 			</div>
 		</div>
 		<!-- 체험단모집-[공통] -->
@@ -366,6 +372,7 @@
 				$('#serviceCategory2-onlineProduct').removeClass('d-none');
 				$('#serviceCategory2-offlineStore').addClass('d-none');
 				
+				$('.onlineAndCorpsDisplay').removeClass('d-none');
 				$('.onlineDisplay').removeClass('d-none');
 				$('.offlineDisplay').addClass('d-none');
 				$('.corpsDisplay').addClass('d-none');
@@ -374,6 +381,7 @@
 				$('#serviceCategory2-offlineStore').removeClass('d-none');
 				$('#serviceCategory2-onlineProduct').addClass('d-none');
 				
+				$('.onlineAndCorpsDisplay').addClass('d-none');
 				$('.offlineDisplay').removeClass('d-none');
 				$('.onlineDisplay').addClass('d-none');
 				$('.corpsDisplay').addClass('d-none');
@@ -382,6 +390,7 @@
 				$('#serviceCategory2-onlineProduct').addClass('d-none');
 				$('#serviceCategory2-offlineStore').addClass('d-none');
 				
+				$('.onlineAndCorpsDisplay').removeClass('d-none');
 				$('.corpsDisplay').removeClass('d-none');
 				$('.onlineDisplay').addClass('d-none');
 				$('.offlineDisplay').addClass('d-none');
@@ -405,7 +414,13 @@
 		
 		$('#corpsFile').on('change', function(){
 			let fileName = this.files[0].name;
+			
+			let thumbnailImgPath = $('#file')[0].files[0];
+			let corpsFile = $('#corpsFile')[0].files[0];
+			console.log(thumbnailImgPath);
 			console.log(fileName);
+			
+			console.log(corpsFile);
 			$('#corpsFileNameInput').val(fileName)
 		});
 		
@@ -429,8 +444,7 @@
 					,success:function(data) {
 						/* location.reload(); */
 						$('.date-of-progressed').removeClass('d-none');
-						alert(data.code);
-						$('.progress-of-period-text-stress').text(data.code);
+						$('.progressOfCalculatedDay').text(data.code);
 					}
 				})
 			}
@@ -449,51 +463,127 @@
 				,success:function(data) {
 					/* location.reload(); */
 					$('.date-of-progressed').removeClass('d-none');
-					alert(data.code);
-					$('.progress-of-period-text-stress').text(data.code);
+					$('.progressOfCalculatedDay').text(data.code);
 				}
 			})
 		});
 		
 		$('#productSubmitBtn').on('click', function(){
-			alert("ddd");
-			
+			alert("1111");
+			/* 판매카테고리[공통] */
 			let serviceCategory1 = $('#serviceCategory1 option:checked').val();
-			let serviceCategory2 = $('#serviceCategory2 option:checked').val();
-			let serviceCategory3 = $('#serviceCategory3 option:checked').val();
-			
+			let serviceCategory2Online = $('#serviceCategory2-onlineProduct option:checked').val();
+			let serviceCategory2Offline = $('#serviceCategory2-offlineStore option:checked').val();
+			/* 상품이름[공통] */
 			let productName = $('#productName').val();
-			let productUrl = $('#productUrl').val();
+			/* 모집인원[공통] */
 			let numberOfApplicants = $('#numberOfApplicants').val();
 			
+			/* 모집방식(판매방식)[공통] - byOrderOfArrival/beChosenBySeller */
 			let salesMethod =$('input[name=salesMethod]:checked').val();
 			
+			/* 모집기간(시작일, 종료일)[공통] */
 			let startDate = $('#startDate').val();
 			let endDate = $('#endDate').val();
 			
-			let discountRate = $('#discountRate').val();
+			/* 상품설명[공통] */
 			let productDescriptions = theEditor.getData();
-			console.log(productDescriptions);
-			let thumbnailImgPath = $('#file').val();
 			
-			console.log(serviceCategory1);
-			console.log(salesMethod);
+			/* 썸네일 이미지[공통] */
+			let thumbnailImgPath = $('#file')[0].files[0];
 			console.log(thumbnailImgPath);
 			
+			/* 상품주소[온라인] */
+			let productUrl = $('#productUrl').val();
+			
+			/* 판매가격, 할인(율)(원)[온라인] */
+			let sellPrice = $('#sellPrice').val();
+			let discountRate = $('#discountRate').val();
+
+			/* 매장이름, 매장주소[오프라인] */
+			let storeName = $('#storeName').val(); 
+			let storeAddress = $('#postcode').val() + "," 
+								+ $('#address').val() + "," + $('#detailAddress').val() + "," + $('#extraAddress').val();
+			
+			/* 원고료[기자단] */
+			let scriptFees = $('#scriptFees').val()
+			/* 기자단양식[기자단] */
+			let corpsFile = $('#corpsFile')[0].files[0];
+			
 			let formData = new FormData();
-			formData.append("let serviceCategory1", serviceCategory1);
-			formData.append("let serviceCategory2", serviceCategory2);
-			formData.append("let serviceCategory3", serviceCategory3);
+			/* 공통 */
+			formData.append("serviceCategory1", serviceCategory1);
+			formData.append("serviceCategory2Online", serviceCategory2Online);
 			formData.append("productName", productName);
-			formData.append("productUrl", productUrl);
 			formData.append("numberOfApplicants", numberOfApplicants);
 			formData.append("salesMethod", salesMethod);
 			formData.append("startDate", startDate);
 			formData.append("endDate", endDate);
-			formData.append("discountRate", discountRate);
 			formData.append("productDescriptions", productDescriptions);
-			formData.append("thumbnailImgPath", thumbnailImgPath);
-			formData.append("discountRate", serviceCategory3);
+			formData.append("thumbnailImgPathOri", thumbnailImgPath);
+			
+			/* 온라인 */
+			if($('#serviceCategory1 option:checked').val() == 'onlineProduct') {
+			formData.append("productUrl", productUrl);
+			formData.append("sellPrice", sellPrice);
+			formData.append("discountRate", discountRate);
+			}
+			
+			
+			/* 오프라인 - 주소 때문에 조건문으로 오프라인시에만 stroName과 storeAddress를 입력처리*/
+			if($('#serviceCategory1 option:checked').val() == 'offlineStore') {
+				formData.append("serviceCategory2Offline", serviceCategory2Offline);
+				formData.append("storeName", storeName);
+				formData.append("storeAddress", storeAddress);
+			} 
+			
+			/* 기자단 - 파일첨부때문에 오류나기 때문에 기자단일 경우면 append할 수 있도록*/
+ 			if($('#serviceCategory1 option:checked').val() == 'pressCorps') {
+				formData.append("scriptFees", scriptFees);
+				formData.append("corpsFileOri", corpsFile);
+				}
+			
+			console.log("서비스카테고리1:" + serviceCategory1);
+			console.log("서비스카테고리2(온라인):" + serviceCategory2Online);
+			console.log("상품명:" + productName);
+			console.log("모집인원:" + numberOfApplicants);
+			console.log("모집방법:" + salesMethod);
+			console.log("시작일:" + startDate);
+			console.log("종료일:" + endDate);
+			console.log("상품설명:" + productDescriptions);
+			console.log("썸네일이미지:" + thumbnailImgPath);
+			console.log("****온라인 영역****");
+			console.log("인터넷주소:" + productUrl);
+			console.log("판매가격:" + sellPrice);
+			console.log("할인가격(율):" + discountRate);
+			console.log("****오프라인 영역****");
+			console.log("오프라인카테고리2:" + serviceCategory2Offline);
+			console.log("가계명:" + storeName);
+			console.log(storeAddress);
+			console.log("****기자단 영역****");
+			console.log("원고료:" + scriptFees);
+			console.log("기자단양식:" + corpsFile);
+			
+			$.ajax({
+				type:"POST"
+				,url:"/sellpost/upload_product"
+				,data:formData
+				,enctype:"multipart/form-data"
+				,processData:false
+				,contentType:false
+				
+				//response
+				,success:function(data){
+					if(data.code == 1) {
+						alert("success");
+					} else {
+						alert("체험단 등록에 실패하였습니다.");
+					}
+				}
+				,error:function(request, status, error) {
+					alert("체험단 등록 실패, 관리자에게 문의주세요");
+				}
+			});
 		});
 		
 		$.datepicker.setDefaults({
@@ -523,7 +613,6 @@
 		});
 		
 		doComma = function(str) {
-			/* alert(str); */
 	        if (str != null && str != '') {
 		        /* 문자를 숫자로 변환 => 숫자외 문자입력시 빈공간으로 교체 false시 0 */
 		        var tmps = parseInt(str.value.replace(/[^0-9]/g, '')) || '0';
@@ -538,17 +627,29 @@
 			let applicants = parseInt($('#numberOfApplicants').val().replaceAll(",", ""));
 			let discountPrice = parseInt($('#discountRate').val().replaceAll(",", ""));
 			
-			if ($('#numberOfApplicants').val() != ""){
-				alert("조건1");
+			let scriptFees = parseInt($('#scriptFees').val().replaceAll(",", ""));
+			
+			
+			
+			if($('#serviceCategory1 option:checked').val() == 'pressCorps') {
+				/* 지급포인트 */
+				$('.paidPoint').text((scriptFees).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+				/* 수수료(10%) */
+				$('.commission').text((scriptFees * 0.1).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+				/* 총 결제 금액 */
+				$('.totlaPayment').text(Math.floor(((scriptFees * applicants) * 1.1)).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+				return;
 			}
 			/* 인원  * 포인트 */
 			/* (인원 * 포인트) * 0.1 */
 			if ($('select[name=wonOrPercent] option:checked').val() == "percent"){
 				let paidPoint = (sellPrice - Math.ceil(sellPrice * ( 1 - (discountPrice / 100))));
-				$('.totlaPayment').text((applicants * paidPoint).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'))
+				$('.totlaPayment').text(Math.floor((applicants * (paidPoint * 1.1))).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+				$('.commission').text(((applicants * paidPoint) * 0.1).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
 				return;
 			} else if ($('select[name=wonOrPercent] option:checked').val() == "won") {
-				$('.totlaPayment').text((applicants * discountPrice).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'))
+				$('.totlaPayment').text(Math.floor((applicants * (discountPrice * 1.1))).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
+				$('.commission').text((discountPrice * 0.1).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));
 			}
 		}
 		

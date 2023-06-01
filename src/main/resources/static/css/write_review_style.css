@@ -1,0 +1,96 @@
+@charset "EUC-KR";
+
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+/* 평점 영역 */
+#writeReview #star-rating * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#writeReview #star-rating .rating-box {
+  background: #fff;
+  padding: 25px 50px 35px;
+  border-radius: 25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  width: 18%;
+}
+
+#writeReview #star-rating .rating-box .stars {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+}
+#writeReview #star-rating .stars i {
+  color: #e6e6e6;
+  font-size: 25px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+#writeReview #star-rating .stars i.active {
+  color: #ff9c1a;
+}
+
+/* 평점 영역 끝 */
+
+
+
+
+#writeReview {
+	margin:0 0 0 0;
+}
+#writeReview .product-name {
+	font-size: 12pt;
+	margin: 0 0 0 0;
+}
+
+#writeReview .top-header-div {
+	background-color: rgba(0,0,0,.05);
+	font-size: 10pt;
+	height: 30px;
+	border-bottom: 1px solid #A0A0A0;
+}
+
+#writeReview .writeReview-content-div {
+	padding: 10px 0;
+	margin: 3px 0 0 0px;
+	font-size:10pt;
+	border-bottom: 1px solid #A0A0A0;
+	height: 60px;
+}
+
+#writeReview .top-subject-div {
+	margin: 15px 0 0 0;
+}
+
+#writeReview .product-file-upload {
+	width: 90px;
+	height: 30px;
+	border:1px solid #ced4da;
+	border-radius: 0 0.25rem 0.25rem 0 ;
+	font-size:13px;
+	background-color:#e9ecef;
+}
+
+#writeReview .image-input-div {
+	border-radius: 0.25rem 0 0 0.25rem;
+	height: 30px;
+	background-color: white;
+}
+
+#writeReview .text-margin {
+	margin:0 0 0 20px;
+}
+#writeReview .rating-text {
+	margin:0 0 0 165px;
+	font-size: 28px;
+	font-weight: bold;
+}
+#writeReview .star-div {
+	margin: 0 0 0 20px;
+}
+#writeReview .review-file-input-box {
+	margin: 0 0 0 50px;
+}

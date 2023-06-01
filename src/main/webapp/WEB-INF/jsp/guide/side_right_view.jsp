@@ -4,6 +4,7 @@
 	<div id="side-view-right-Tdiv" class="mt-3">
 		<div class="main-title"><i class="xi-angle-left"></i>로그인</div>
 		<div class="semi-title">서비스종류</div>
+		<div class="product-total-bottom-text-line"></div>
 		<div id="form-div">
 			<div class="form-inputBox-pm d-flex align-items-center">
 				<span class="text-style">아이디</span><span class="essential-item">*</span>
@@ -12,9 +13,7 @@
 			</div>
 		</div>
 		<div class="form-inputBox-pm line-top d-flex align-items-center">
-			<span class="text-style">아이디</span><span class="essential-item">*</span>
-			<input type="text" class="form-inputBox form-control" id="loginId">
-			<input type="button" id="checkDuplicatedId-btn" class="input-side-btn" value="중복확인">
+			<textarea cols="50" rows="10"></textarea>
 		</div>
 	</div>
 </div>

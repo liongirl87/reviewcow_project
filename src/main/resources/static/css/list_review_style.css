@@ -1,0 +1,77 @@
+@charset "EUC-KR";
+
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+/* 평점 영역 */
+#star-rating * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#star-rating .rating-box {
+/*   position: relative; */
+  background: #fff;
+  padding: 25px 50px 35px;
+  border-radius: 25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  width: 18%;
+}
+
+#star-rating .rating-box .stars {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+}
+#star-rating .stars i {
+  color: #e6e6e6;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+#star-rating .stars i.active {
+  color: #ff9c1a;
+}
+
+/* 평점 영역 끝 */
+#reviewList .text-margin01 {
+	margin:0 0 0 0px;
+	width: 18%;
+}
+#reviewList .text-margin02 {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+#reviewList .text-margin03 {
+	margin:0 0 0 0px;
+	width: 47%;
+}
+#reviewList .text-margin04 {
+	margin:0 0 0 0px;
+	width: 20%;
+}
+#reviewList .reveiwList-content-div {
+	padding: 6px 0;
+	margin: 3px 0 0 0px;
+	font-size:10pt;
+	border-bottom: 1px solid #A0A0A0;
+}
+
+#reviewList .helpdesk-bottom-text-line {
+	width: 700px;
+	border-bottom: 1px solid #A0A0A0;
+	height: 1px;
+	margin: 15px 0 0 0px;
+}
+
+#reviewList .top-header-div {
+	background-color: rgba(0,0,0,.05);
+	font-size: 10pt;
+	height: 30px;
+	border-bottom: 1px solid #A0A0A0;
+}
+
+#reviewList .semi-title-margin {
+	margin:0 0 15px 0;
+}

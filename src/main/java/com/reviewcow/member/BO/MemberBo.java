@@ -1,9 +1,9 @@
-package com.reviewcow.member.BO;
+package com.reviewcow.member.bo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.reviewcow.member.DAO.MemberMapper;
+import com.reviewcow.member.dao.MemberMapper;
 import com.reviewcow.member.model.Business_Member;
 import com.reviewcow.member.model.Influencer_Member;
 import com.reviewcow.member.model.Member;

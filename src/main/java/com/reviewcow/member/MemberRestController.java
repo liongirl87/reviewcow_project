@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reviewcow.common.EncryptUtils;
-import com.reviewcow.member.BO.MemberBo;
+import com.reviewcow.member.bo.MemberBo;
 import com.reviewcow.member.model.Business_Member;
 import com.reviewcow.member.model.Influencer_Member;
 import com.reviewcow.member.model.Member;
@@ -125,6 +125,7 @@ public class MemberRestController {
 			
 			//세션에 유저정보 담기
 			session.setAttribute("member", member);
+			session.setAttribute("memberId", member.getId());
 			
 			return result;
 		} else {

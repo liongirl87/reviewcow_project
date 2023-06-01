@@ -7,9 +7,9 @@
 .text-color-important {
 	color: #333 important;
 }
-#side-menu-top a,a:hover {
+#side-menu-top a,a:hover,a:visited {
 	text-decoration:none;
-	color: #333 !important;
+	color: #333;
 }
 
 #side-menu-top-div ul {

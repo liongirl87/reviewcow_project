@@ -1,4 +1,4 @@
-package com.reviewcow.member.DAO;
+package com.reviewcow.member.dao;
 
 import org.springframework.stereotype.Repository;
 

@@ -1,0 +1,41 @@
+@charset "EUC-KR";
+
+
+#helpdesk-write .helpdesk-write-bottom-text-line {
+	width: 668px;
+	border-bottom: 1px solid #A0A0A0;
+	height: 1px;
+	margin: 15px 0 0 10px;
+}
+
+#helpdesk-write .product-select-design {
+	width: 160px;
+	height: 35px;
+	border-radius: 6px;
+}
+#helpdesk-write .helpdesk-subject-input {
+	width: 490px;
+	margin:0 0 0 5px;
+}
+
+#helpdesk-write .helpdesk-textarea {
+	width: 655px;
+	height: 300px;
+	margin: 0 0 0 15px;
+	border: 1px solid #ced4da;
+	resize: none;
+}
+#helpdesk-write .form-textbox {
+	margin: 0 0 0 0px;
+}
+
+#helpdesk-write #helpdeskSubmitBtn {
+	width: 120px;
+	height: 40px;
+	background-color: #6495ED;
+	border: none;
+	border-radius: 8px;
+	margin: 10px 30px 0 0;
+	color: white;
+	font-size: 13pt;
+}

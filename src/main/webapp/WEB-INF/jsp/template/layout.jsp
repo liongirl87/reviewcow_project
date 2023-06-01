@@ -17,6 +17,10 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<!-- Fontawesome CDN Link -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+
 <!-- 내가 만든 스타일시트  -->
 <link rel="stylesheet" type="text/css" href="/static/css/layout_style.css">
 <link rel="stylesheet" type="text/css" href="/static/css/main_bnr_style.css">
@@ -25,6 +29,12 @@
 <link rel="stylesheet" type="text/css" href="/static/css/join_style.css">
 <link rel="stylesheet" type="text/css" href="/static/css/login_style.css">
 <link rel="stylesheet" type="text/css" href="/static/css/side_menu_style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/helpdesk_write_style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/helpdesk_style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/manage_point_style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/list_review_style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/write_review_style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/product_detail_style.css">
 <!-- 내정보 2분할 화면 오른쪽view 공통 css -->
 <link rel="stylesheet" type="text/css" href="/static/css/side_right_common_style.css">
 

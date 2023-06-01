@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.reviewcow.applyproduct.dao.ApplyProductMapper">
+ 	
+ 	<insert id="insertApplyProductByMemberIdAndSellPostId" parameterType="map">
+ 		INSERT INTO `apply_product`
+ 		(
+ 			`memberId`
+			,`sellPostId`
+			,`createdAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{memberId}
+ 			,#{sellPostId}
+ 			,NOW()
+ 		)
+ 	</insert>
+ 	
+ 	<select id="selectApplyProductByMemberIdAndSellPostId" parameterType="map" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`apply_product`
+ 		WHERE
+ 			`memberId` = #{memberId} AND
+ 			`sellPostId` = #{sellPostId}
+ 	
+ 	</select>
+ 	
+ 	<delete id="deleteApplyProductByMemberIdAndSellPostId" parameterType="map">
+ 		DELETE
+ 		FROM
+ 			`apply_product`
+ 		WHERE
+			`memberId` = #{memberId} AND
+			`sellPostId` = #{sellPostId}
+ 	</delete>
+ 
+ </mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.reviewcow.like.dao.LikeMapper">
+ 
+ <insert id="insertLikeByLoginIdAndSellPostId" parameterType="map">
+ 	INSERT INTO `product_like` 
+ 	(
+		`memberId`
+		,`sellPostId`
+		,`createdAt`
+ 	)
+ 	VALUES
+ 	(
+ 		#{memberId}
+ 		,#{sellPostId}
+ 		,NOW()
+ 	)
+ </insert>
+ 
+<delete id="deleteLikeByLoginIdAndSellPostId" parameterType="map">
+ 	DELETE
+ 	FROM
+ 		`product_like`
+ 	WHERE
+		`memberId` = #{memberId} AND
+		`sellPostId` = #{sellPostId}
+
+</delete>
+
+<select id="selectLikeCountByLoginIdAndSellPostId" parameterType="map" resultType="int">
+	SELECT 
+		count(*)
+	FROM
+		`product_like`
+	WHERE
+		`memberId` = #{memberId} AND
+		`sellPostId` = #{sellPostId}
+
+</select>
+
+ <select id="selectLikeCountBySellPostId" parameterType="map" resultType="int">
+	SELECT 
+		count(*)
+	FROM
+		`product_like`
+	WHERE
+		`sellPostId` = #{sellPostId}
+</select>
+ 
+ 
+ </mapper>
