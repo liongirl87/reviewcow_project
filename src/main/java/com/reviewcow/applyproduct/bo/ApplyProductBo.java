@@ -20,4 +20,16 @@ public class ApplyProductBo {
 		}
 		
 	}
+	
+	public int applyApplicantsCount(int sellPostId) {
+		return applyProductMapper.selectApplyProductByMemberIdAndSellPostId(null, sellPostId);
+	}
+	
+	public boolean checkedApply(Integer memberId, int sellPostId) {
+		if (memberId == null) {
+			return false;
+		}
+		return applyProductMapper.selectApplyProductByMemberIdAndSellPostId(memberId, sellPostId) > 0;
+	}
+	
 }

@@ -30,11 +30,24 @@ public class MainController {
 		viewList.add("include/main_bnr");
 		viewList.add("include/main_category_box");
 		viewList.add("include/deadline_product");
+		viewList.add("include/hotitem_product");
 		viewList.add("include/main_online_product");
 		
-		List<CardView> cardList = mainBo.generateCardList(memberId);
+		// 마감임박 체험단
+		List<CardView> deadlineItemList = mainBo.generateCardList(memberId);
 		
-		model.addAttribute("cardList", cardList);
+		// 인기 체험단
+		List<CardView> hotItemList = mainBo.generateHotItem(memberId);
+		
+		// 온라인 상품
+		
+		// 오프라인 상품
+		
+		// 기자단
+		
+		
+		model.addAttribute("deadlineItemList", deadlineItemList);
+		model.addAttribute("hotItemList", hotItemList);
 		// layout.jsp의 section의 연결 주소를 model(view)에 담아서 보낸다
 		model.addAttribute("viewList", viewList);
 		return "template/layout";

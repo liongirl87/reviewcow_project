@@ -82,7 +82,20 @@
 			`sell_post`
 		WHERE `serviceCategory1` = 'onlineProduct'
 		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
-		ORDER BY TIMESTAMPDIFF(DAY, `startDate`, `endDate`);
+		ORDER BY TIMESTAMPDIFF(DAY, `startDate`, `endDate`)
+		LIMIT 8;
+ 	</select>
+ 	 
+ 	 <select id="selectSellPostListForHotItem" resultType="com.reviewcow.sellpost.model.SellPost">
+ 		SELECT A.*
+		FROM `sell_post` AS A
+		LEFT JOIN `apply_product` AS B
+		ON A.id = B.sellPostId
+		WHERE A.`serviceCategory1` = 'onlineProduct'
+		AND TIMESTAMPDIFF(DAY, now(), A.`endDate`) >= 0
+		GROUP BY B.`sellPostId`
+		ORDER BY count(B.`sellPostId`) DESC
+		LIMIT 8;
  	</select>
  	
  	<select id="selectSellPostbyPostId" resultType="com.reviewcow.sellpost.model.SellPost">

@@ -29,10 +29,16 @@ public class SellPostBo {
 		}
 		return sellPostMapper.selectSellPost(sellPostForm);
 	}
-	
+	// 마감임박 상품 불러오기
 	public List<SellPost> getSellPostListOrderByDeadlineForOnline() {
 		return sellPostMapper.selectSellPostListOrderByDeadlineForOnline();
 	}
+	
+	// 인기 상품 불러오기
+	public List<SellPost> getSellPostListForHotItem() {
+		return sellPostMapper.selectSellPostListForHotItem();
+	}
+	
 	
 	public SellPost getSellPostbyPostId(int postId) {
 		return sellPostMapper.selectSellPostbyPostId(postId);

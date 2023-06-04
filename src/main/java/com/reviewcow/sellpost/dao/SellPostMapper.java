@@ -14,5 +14,7 @@ public interface SellPostMapper {
 	
 	public List<SellPost> selectSellPostListOrderByDeadlineForOnline();
 	
+	public List<SellPost> selectSellPostListForHotItem();
+	
 	public SellPost selectSellPostbyPostId(int postId);
 }

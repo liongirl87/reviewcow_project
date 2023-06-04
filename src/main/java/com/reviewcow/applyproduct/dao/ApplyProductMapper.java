@@ -11,10 +11,11 @@ public interface ApplyProductMapper {
 			@Param("sellPostId") int sellPostId);
 
 	public int selectApplyProductByMemberIdAndSellPostId(
-			@Param("memberId") int memberId,
+			@Param("memberId") Integer memberId,
 			@Param("sellPostId") int sellPostId);
 	
 	public void deleteApplyProductByMemberIdAndSellPostId(
 			@Param("memberId") int memberId,
 			@Param("sellPostId") int sellPostId);
+	
 }

@@ -25,9 +25,10 @@
  		FROM
  			`apply_product`
  		WHERE
- 			`memberId` = #{memberId} AND
  			`sellPostId` = #{sellPostId}
- 	
+ 			<if test="memberId != null">
+ 			AND `memberId` = #{memberId} 
+ 			</if>
  	</select>
  	
  	<delete id="deleteApplyProductByMemberIdAndSellPostId" parameterType="map">
@@ -38,5 +39,7 @@
 			`memberId` = #{memberId} AND
 			`sellPostId` = #{sellPostId}
  	</delete>
+ 	
+ 	
  
  </mapper>

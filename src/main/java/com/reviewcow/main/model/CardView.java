@@ -26,4 +26,7 @@ public class CardView {
 	// 현재 지원자 수
 	private int nowApplicants;
 	
+	// 현재 로그인 회원이 지원했는지 여부
+	private boolean checkedApply;
+	
 }

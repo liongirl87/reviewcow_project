@@ -8,7 +8,7 @@
 			<div class="product-top-detail d-flex justify-content-between">
 				<div class="leftImgDiv">
 					<div class="thumbnailImg">
-						<img src="${sellPost.thumbnailImgPath}" alt="상품이미지" class="product-image">
+						<img src="${cardView.sellPost.thumbnailImgPath}" alt="상품이미지" class="product-image">
 					</div>
 					<div class="imgBotLine">
 					</div>
@@ -21,49 +21,49 @@
 				</div>
 				<div class="rightTextDiv">
 					<div class="titleText d-flex justify-content-end align-items-start">
-						${sellPost.productName}
+						${cardView.sellPost.productName}
 					</div>			
 					<div class="categoryDetail d-flex justify-content-end align-items-start">
 						<c:choose>
-							<c:when test="${sellPost.serviceCategory1 == 'onlineProduct'}">
+							<c:when test="${cardView.sellPost.serviceCategory1 == 'onlineProduct'}">
 								온라인
 							</c:when>
-							<c:when test="${sellPost.serviceCategory1 == 'offlineStore'}">
+							<c:when test="${cardView.sellPost.serviceCategory1 == 'offlineStore'}">
 								오프라인매장
 							</c:when>
-							<c:when test="${sellPost.serviceCategory1 == 'pressCorps'}">
+							<c:when test="${cardView.sellPost.serviceCategory1 == 'pressCorps'}">
 								기자단
 							</c:when>
 						</c:choose> | 
 						<c:choose>
-							<c:when test="${sellPost.serviceCategory2Online == 'smartstore'}" >
+							<c:when test="${cardView.sellPost.serviceCategory2Online == 'smartstore'}" >
 								스마트스토어
 							</c:when>
-							<c:when test="${sellPost.serviceCategory2Online == 'coupang'}" >
+							<c:when test="${cardView.sellPost.serviceCategory2Online == 'coupang'}" >
 								쿠팡
 							</c:when>
-							<c:when test="${sellPost.serviceCategory2Online == 'gmarket'}" >
+							<c:when test="${cardView.sellPost.serviceCategory2Online == 'gmarket'}" >
 								G마켓
 							</c:when>
-							<c:when test="${sellPost.serviceCategory2Online == 'auction'}" >
+							<c:when test="${cardView.sellPost.serviceCategory2Online == 'auction'}" >
 								옥션
 							</c:when>
-							<c:when test="${sellPost.serviceCategory2Online == '11st'}" >
+							<c:when test="${cardView.sellPost.serviceCategory2Online == '11st'}" >
 								11st
 							</c:when>
-							<c:when test="${sellPost.serviceCategory2Online == 'wemakeprice'}" >
+							<c:when test="${cardView.sellPost.serviceCategory2Online == 'wemakeprice'}" >
 								위메프
 							</c:when>
-							<c:when test="${sellPost.serviceCategory2Online == 'other'}" >
+							<c:when test="${cardView.sellPost.serviceCategory2Online == 'other'}" >
 								기타
 							</c:when>
 						</c:choose>
 						 | 포인트 리워드
 					</div>			
 					<div class="priceDiv d-flex justify-content-between align-items-start">
-						<div class="saleText">50%</div>
-						<div class="originalPrice"><fmt:formatNumber value="${sellPost.sellPrice}" type="number" />원</div>
-						<div class="price"><span class="font-weight-bold"><fmt:formatNumber value="${sellPost.sellPrice - sellPost.discountRate}" type="number" /></span>원</div>
+						<div class="saleText"><fmt:formatNumber value="${cardView.sellPost.discountRate / cardView.price * 100}" pattern="#" />%</div>
+						<div class="originalPrice"><fmt:formatNumber value="${cardView.sellPost.sellPrice}" type="number" />원</div>
+						<div class="price"><span class="font-weight-bold"><fmt:formatNumber value="${cardView.sellPost.sellPrice - cardView.sellPost.discountRate}" type="number" /></span>원</div>
 					</div>
 					<div class="rightTextDivBotLine">
 					</div>
@@ -72,12 +72,12 @@
 						<div class="rewardCoinImgDiv">
 							<img src="/static/img/coin.png" class="pointIcon" alt="Point-icon">
 						</div>
-						<span class="font-weight-bold"><fmt:formatNumber value="${sellPost.discountRate}" type="number" /></span>P 리워드
+						<span class="font-weight-bold"><fmt:formatNumber value="${cardView.sellPost.discountRate}" type="number" /></span>P 리워드
 					</div>
 					<div class="dateInfo d-flex justify-content-between align-items-center">
 						<div class="font-weight-bold ml-3">진행기간</div>
-						<fmt:formatDate var="startDate" value="${sellPost.startDate}" pattern="yyyy-MM-dd"/>
-						<fmt:formatDate var="endDate" value="${sellPost.endDate}" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate var="startDate" value="${cardView.sellPost.startDate}" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate var="endDate" value="${cardView.sellPost.endDate}" pattern="yyyy-MM-dd"/>
 						<div class="mr-2">${startDate} ~ ${endDate}</div>
 					</div>
 					<div class="applicantsInfo1">
@@ -85,11 +85,18 @@
 					</div>
 					<div class="applicantsInfo2 d-flex justify-content-center">
 						<div class="d-flex align-items-center">
-						<span class="">30 / ${sellPost.numberOfApplicants} </span><span class="h2 applicantsSideText"> 명</span>
+						<span class="">${cardView.nowApplicants} / ${cardView.sellPost.numberOfApplicants} </span><span class="h2 applicantsSideText"> 명</span>
 						</div>
 					</div>
 					<div class="applyBtnDiv">
-						<input type="button" value="지금신청하기" class="applyBtn" data-postid="${sellPost.id}">
+					<c:choose>
+						<c:when test="${cardView.checkedApply == true}">
+						<input type="button" value="취소하기" class="applyBtn" data-postid="${cardView.sellPost.id}">
+						</c:when>
+						<c:when test="${cardView.checkedApply == false}">
+						<input type="button" value="지금신청하기" class="applyBtn" data-postid="${cardView.sellPost.id}">
+						</c:when>
+					</c:choose>
 					</div>
 					<div class="likeAndShareBtnDiv d-flex justify-content-between">
 						<input type="button" value="찜하기" class="checkLikeBtn">
@@ -121,7 +128,7 @@
 					판매자 요청사항
 					</div>
 					<div class="requestedTermText">
-						${sellPost.productDescriptions}
+						${cardView.sellPost.productDescriptions}
 					</div>
 				</div>
 			</div>
