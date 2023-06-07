@@ -4,32 +4,32 @@
 	<div class="main-bnr">
 		<div class="mySlides">
 		  <div class="numbertext numbertext-bg">1 / 6</div>
-		  <img src="/static/img/main_bnr01.png" class="slide-image-size">
+		  <img src="/static/img/main_bnr01.jpg" class="slide-image-size">
 		</div>
 		
 		<div class="mySlides">
 		  <div class="numbertext numbertext-bg">2 / 6</div>
-		  <img src="/static/img/main_bnr02.png" class="slide-image-size">
+		  <img src="/static/img/main_bnr02.jpg" class="slide-image-size">
 		</div>
 		
 		<div class="mySlides">
 		  <div class="numbertext numbertext-bg">3 / 6</div>
-		  <img src="/static/img/main_bnr03.png" class="slide-image-size">
+		  <img src="/static/img/main_bnr03.jpg" class="slide-image-size">
 		</div>
 		    
 		<div class="mySlides">
 		  <div class="numbertext numbertext-bg">4 / 6</div>
-		  <img src="/static/img/main_bnr04.png" class="slide-image-size">
+		  <img src="/static/img/main_bnr04.jpg" class="slide-image-size">
 		</div>
 		
 		<div class="mySlides">
 		  <div class="numbertext numbertext-bg">5 / 6</div>
-		  <img src="/static/img/main_bnr05.png" class="slide-image-size">
+		  <img src="/static/img/main_bnr05.jpg" class="slide-image-size">
 		</div>
 		    
 		<div class="mySlides">
 		  <div class="numbertext numbertext-bg">6 / 6</div>
-		  <img src="/static/img/main_bnr06.png" class="slide-image-size">
+		  <img src="/static/img/main_bnr06.jpg" class="slide-image-size">
 		</div>
 		<div class="d-flex justify-content-between">
 			<a class="prev" onclick="plusSlides(-1)"><</a>
@@ -41,22 +41,22 @@
 	<div class="d-flex justify-content-center">
 		<div class="row">
 		  <div class="column column-box cursor demo" onclick="currentSlide(1)">
-		   <span style="display:none;">1번 이미지</span>
+		   패밀리세일 UP TO 50%
 		  </div>
 		  <div class="column column-box demo cursor" onclick="currentSlide(2)">
-		  2번 이미지
+		  23 S/S 시즌오프 전체세일
 		  </div>
 		  <div class="column column-box demo cursor" onclick="currentSlide(3)">
-		  3번 이미지
+		  23시즌 뉴 컬렉션 런칭
 		  </div>
 		  <div class="column column-box demo cursor" onclick="currentSlide(4)">
-		  4번 이미지
+		  2023 여름도 시원해 에어컨
 		  </div>
 		  <div class="column column-box demo cursor" onclick="currentSlide(5)">
-		  5번 이미지
+		  리뷰카우 와인하우스
 		  </div>    
 		  <div class="column column-box demo cursor" onclick="currentSlide(6)">
-		  6번 이미지
+		  여름에 떠나는 초특가여행
 		  </div>
 		</div>
 	</div>	

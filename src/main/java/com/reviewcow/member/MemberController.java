@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 @RequestMapping("/member")
 @Controller
@@ -35,7 +35,8 @@ public class MemberController {
 		// 화면 이동(로그인화면)
 		return "redirect:/main/main_view";
 	}
-	// 사이드메뉴 테스트
+	
+	// 내정보 수정하기
 	
 	@RequestMapping("/modify_myinfo_view")
 	public String sideView(Model model) {

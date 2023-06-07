@@ -19,7 +19,7 @@
 /* Hide the images by default */
 .main-bnr .mySlides {
   display: none;
-  height: 400px;
+  height: 600px;
   width: 1200px;
   overflow:hidden;	/* 이미지크기조절 위해 overflow:hidden */
 }

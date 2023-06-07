@@ -36,12 +36,39 @@ public class SellPostBo {
 	
 	// 인기 상품 불러오기
 	public List<SellPost> getSellPostListForHotItem() {
-		return sellPostMapper.selectSellPostListForHotItem();
+		return sellPostMapper.selectSellPostListForHotItem(null);
+	}
+	// 신청한 체험단 리스트 불러오기 (인기 상품 불러오기와 함께 Mapper 사용)
+	public List<SellPost> getApplySellPostListbyMemberId(Integer memberId) {
+		return sellPostMapper.selectSellPostListForHotItem(memberId);
 	}
 	
+	// 내가 찜한 상품 목록 리스트 불러오기
+	public List<SellPost> getLikeSellPostListbyMemberId(Integer memberId) {
+		return sellPostMapper.selectLikeSellPostListbyMemberId(memberId);
+	}
+	
+	// 온라인 상품 카테고리별 불러오기
+	public List<SellPost> getSellPostListOnlineProductByCategory(String categoryOnline2) {
+		return sellPostMapper.selectSellPostListOnlineProductByCategory(categoryOnline2);
+	}
+	
+	// 오프라인 상품 카테고리별 불러오기
+	public List<SellPost> getSellPostListOfflineProductByCategory(String categoryOffline2) {
+		return sellPostMapper.selectSellPostListOfflineProductByCategory(categoryOffline2);
+	}
+	
+	public List<SellPost> getSellPostListPressProduct() {
+		return sellPostMapper.selectSellPostListPressProduct();
+	}
 	
 	public SellPost getSellPostbyPostId(int postId) {
 		return sellPostMapper.selectSellPostbyPostId(postId);
+	}
+	
+	// 리뷰 리스트 가져오기
+	public List<SellPost> getSellPostListForReviewListBymemberId(Integer memberId){
+		return sellPostMapper.selectSellPostListForReviewListBymemberId(memberId);
 	}
 	
 }

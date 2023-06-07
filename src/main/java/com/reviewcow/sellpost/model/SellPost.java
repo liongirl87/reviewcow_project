@@ -32,4 +32,9 @@ public class SellPost {
 	private int cancelBySeller;
 	private Date createdAt;
 	private Date updatedAt;
+	
+	private int status;
+	private Date applicationCreatedAt;
+	
+	private Date likeCreatedAt;
 }

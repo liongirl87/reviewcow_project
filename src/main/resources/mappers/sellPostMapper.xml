@@ -82,21 +82,159 @@
 			`sell_post`
 		WHERE `serviceCategory1` = 'onlineProduct'
 		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
-		ORDER BY TIMESTAMPDIFF(DAY, `startDate`, `endDate`)
+		ORDER BY TIMESTAMPDIFF(DAY, now(), `endDate`)
 		LIMIT 8;
  	</select>
  	 
  	 <select id="selectSellPostListForHotItem" resultType="com.reviewcow.sellpost.model.SellPost">
+ 		<if test="memberId != null">
+ 		SELECT A.*, B.`status`,  B.`createdAt` applicationCreatedAt
+ 		</if>
+ 		<if test="memberId == null">
  		SELECT A.*
+ 		</if>
 		FROM `sell_post` AS A
-		LEFT JOIN `apply_product` AS B
+		LEFT JOIN `application` AS B
 		ON A.id = B.sellPostId
+		<if test="memberId == null">
 		WHERE A.`serviceCategory1` = 'onlineProduct'
+		</if>
+		<if test="memberId != null">
+		WHERE B.`memberId` = #{memberId}
+		</if>
 		AND TIMESTAMPDIFF(DAY, now(), A.`endDate`) >= 0
 		GROUP BY B.`sellPostId`
 		ORDER BY count(B.`sellPostId`) DESC
+		<if test="memberId == null">
 		LIMIT 8;
+		</if>
  	</select>
+
+	<select id="selectLikeSellPostListbyMemberId" resultType="com.reviewcow.sellpost.model.SellPost">
+		SELECT A.*, B.`createdAt` likeCreatedAt 
+		FROM `sell_post` AS A
+		RIGHT JOIN `product_like` AS B
+		ON A.id = B.sellPostId
+		WHERE TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		AND B.`memberId` = #{memberId}
+		ORDER BY B.`createdAt` DESC;
+	</select>
+ 	
+ 	<select id="selectSellPostListOnlineProductByCategory" resultType="com.reviewcow.sellpost.model.SellPost">
+ 		SELECT 
+	 		`id`
+			,`memberId`
+			,`serviceCategory1`
+			,`serviceCategory2Online`
+			,`serviceCategory2Offline`
+			,`productName`
+			,`numberOfApplicants`
+			,`salesMethod`
+			,`startDate`
+			,`endDate`
+			,`productDescriptions`
+			,`thumbnailImgPath`
+			,`productUrl`
+			,`sellPrice`
+			,`discountRate`
+			,`storeName`
+			,`storeAddress`
+			,`scriptFees`
+			,`corpsFile`
+			,`nowApplicants`
+			,`aprovalCondition`
+			,`cancelBySeller`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`sell_post`
+		WHERE
+			`serviceCategory2Online` = #{categoryOnline2}
+			AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+			ORDER BY TIMESTAMPDIFF(DAY, `startDate`, `endDate`)
+			LIMIT 8;			
+ 	</select>
+ 	
+ 	 <select id="selectSellPostListOfflineProductByCategory" resultType="com.reviewcow.sellpost.model.SellPost">
+ 		SELECT 
+	 		`id`
+			,`memberId`
+			,`serviceCategory1`
+			,`serviceCategory2Online`
+			,`serviceCategory2Offline`
+			,`productName`
+			,`numberOfApplicants`
+			,`salesMethod`
+			,`startDate`
+			,`endDate`
+			,`productDescriptions`
+			,`thumbnailImgPath`
+			,`productUrl`
+			,`sellPrice`
+			,`discountRate`
+			,`storeName`
+			,`storeAddress`
+			,`scriptFees`
+			,`corpsFile`
+			,`nowApplicants`
+			,`aprovalCondition`
+			,`cancelBySeller`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`sell_post`
+		WHERE
+			`serviceCategory2Offline` = #{categoryOffline2}
+			AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+			ORDER BY TIMESTAMPDIFF(DAY, `startDate`, `endDate`)
+			LIMIT 8;			
+ 	</select>
+  	
+ 	 
+ 	<select id="selectSellPostListPressProduct" resultType="com.reviewcow.sellpost.model.SellPost">
+ 		SELECT 
+	 		`id`
+			,`memberId`
+			,`serviceCategory1`
+			,`serviceCategory2Online`
+			,`serviceCategory2Offline`
+			,`productName`
+			,`numberOfApplicants`
+			,`salesMethod`
+			,`startDate`
+			,`endDate`
+			,`productDescriptions`
+			,`thumbnailImgPath`
+			,`productUrl`
+			,`sellPrice`
+			,`discountRate`
+			,`storeName`
+			,`storeAddress`
+			,`scriptFees`
+			,`corpsFile`
+			,`nowApplicants`
+			,`aprovalCondition`
+			,`cancelBySeller`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`sell_post`
+		WHERE
+			`serviceCategory1` = "pressCorps"
+			AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+			ORDER BY TIMESTAMPDIFF(DAY, `startDate`, `endDate`)
+			LIMIT 8;			
+ 	</select>
+ 	
+ 	<select id="selectSellPostListForReviewListBymemberId" resultType="com.reviewcow.sellpost.model.SellPost">
+ 		SELECT A.*
+		FROM `sell_post` AS A
+		RIGHT JOIN `application` AS B
+		ON A.id = B.sellPostId
+		WHERE B.memberId = #{memberId}
+		AND B.`status` = 1;
+ 	</select>
+ 	
  	
  	<select id="selectSellPostbyPostId" resultType="com.reviewcow.sellpost.model.SellPost">
  		SELECT 
@@ -129,5 +267,5 @@
 		WHERE
 			`id` = #{postId}			
  	</select>
- 
+
  </mapper>

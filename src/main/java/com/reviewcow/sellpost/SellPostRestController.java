@@ -19,7 +19,7 @@ import com.reviewcow.member.model.Member;
 import com.reviewcow.sellpost.bo.SellPostBo;
 import com.reviewcow.sellpost.model.SellPostUploadForm;
 
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 
 @RequestMapping("/sellpost")

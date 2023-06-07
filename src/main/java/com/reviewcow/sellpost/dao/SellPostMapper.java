@@ -14,7 +14,17 @@ public interface SellPostMapper {
 	
 	public List<SellPost> selectSellPostListOrderByDeadlineForOnline();
 	
-	public List<SellPost> selectSellPostListForHotItem();
+	public List<SellPost> selectSellPostListForHotItem(Integer memberId);
+	
+	public List<SellPost> selectLikeSellPostListbyMemberId(Integer memberId);
+	
+	public List<SellPost> selectSellPostListOnlineProductByCategory(String categoryOnline2);
+	
+	public List<SellPost> selectSellPostListOfflineProductByCategory(String categoryOffline2);
+	
+	public List<SellPost> selectSellPostListPressProduct();
 	
 	public SellPost selectSellPostbyPostId(int postId);
+	
+	public List<SellPost> selectSellPostListForReviewListBymemberId(Integer memberId);
 }

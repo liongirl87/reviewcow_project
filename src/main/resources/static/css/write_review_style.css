@@ -9,6 +9,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+#writeReview .top-review-div {
+	margin:0 0 0 20px;
+}
 #writeReview #star-rating .rating-box {
   background: #fff;
   padding: 25px 50px 35px;
@@ -42,14 +45,13 @@
 	margin:0 0 0 0;
 }
 #writeReview .product-name {
-	font-size: 12pt;
+	font-size: 16pt;
 	margin: 0 0 0 0;
 }
 
 #writeReview .top-header-div {
 	background-color: rgba(0,0,0,.05);
-	font-size: 10pt;
-	height: 30px;
+	height: 45px;
 	border-bottom: 1px solid #A0A0A0;
 }
 
@@ -84,7 +86,7 @@
 	margin:0 0 0 20px;
 }
 #writeReview .rating-text {
-	margin:0 0 0 165px;
+	margin:0 0 0 250px;
 	font-size: 28px;
 	font-weight: bold;
 }
@@ -93,4 +95,22 @@
 }
 #writeReview .review-file-input-box {
 	margin: 0 0 0 50px;
+}
+
+#writeReview #reviewSaveBtn {
+	border:none;
+	border-radius: 8px;
+	width: 120px;
+	height: 30px;
+	background-color:#1e90ff;
+	color:white;
+	opacity: 0.8;
+}
+#writeReview #fileNameInput {
+	width: 300px;
+}
+#writeReview #reviewComment {
+	width: 390px;
+	height: 30px;
+	margin: 0 0 0 75px;
 }

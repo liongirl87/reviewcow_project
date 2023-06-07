@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<div id="dedlineProduct" class="hotItem">
+<div id="dedlineProduct" class="mainView-i-style">
 	<div class="deadline d-flex justify-content-center">
 		<div class="title1">
 		인기 체험단

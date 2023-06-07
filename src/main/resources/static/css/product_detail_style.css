@@ -20,6 +20,11 @@
 	width:1200px; 
 	}	
 	
+#productDetail .productDetail-child-url {
+	margin: 0 0 20px 0;
+	width:1200px; 
+	}	
+	
 #productDetail .product-top-detail {
  	border: 1px solid #A0A0A0;
  	height: 780px;
@@ -30,13 +35,25 @@
  	border: 1px solid #A0A0A0;
  	height: 200px;
 	padding: 30px 30px 0 30px; 
-	
 }
+
 #productDetail .product-top-detail3 {
  	border: 1px solid #A0A0A0;
  	height: 400px;
 	padding: 30px 30px 0 30px; 
-	
+}
+
+#productDetail .product-top-detail-url {
+ 	border-bottom: 1px solid #A0A0A0;
+ 	border-right: 1px solid #A0A0A0;
+ 	border-left: 1px solid #A0A0A0;
+ 	height: 100px;
+	padding: 30px 30px 0 30px; 
+}
+
+#productDetail .product-top-detail-url input {
+ 	width: 900px;
+ 	margin: 0 0 0 20px;
 }
 
 #productDetail .leftImgDiv {
@@ -89,21 +106,24 @@
 #productDetail .priceDiv{
 	margin: 10px 0 0 0;
 	height: 80px;
-	position: relative;
+ 	position: relative; 
 }	
 
 #productDetail .priceDiv > .saleText {
 	font-size:35pt;
 	color: red;
+	margin: 0 86% 0 0;
+	position: absolute;
 }
 #productDetail .priceDiv > .originalPrice {
 	font-size:18pt;
 	text-decoration: line-through;
-	margin: 20px 0 0 36%;
+	margin: 20px 20px 0 30%;
 	color: #A0A0A0 ;
 	}
 #productDetail .priceDiv > .price {
 	font-size:30pt;
+	margin: 0 5px 0 00px;
 	}
 	
 #productDetail .rightTextDivBotLine	{
@@ -200,12 +220,37 @@
 }
 #productDetail .offeringServiceText{
 	margin: 10px 0 0 10px;
-	background-color: red;
 	height:100px;
 }
 
 #productDetail .requestedTermText{
 	margin: 10px 0 0 10px;
-	background-color: red;
 	height:300px;
 }
+
+
+#productDetail .checkLikeBtn > i {
+	font-size: 20pt;
+}
+
+#productDetail .checkLikeBtn > i.active {
+	font-size:20pt;
+	color: tomato;
+}
+
+#productDetail .checkLikeBtn > .i-off:hover {
+    transition: 1s ease-out;
+    color: tomato;
+    transform:scale(1.15,1.15);
+}
+
+#productDetail .checkLikeBtn > .i-on:hover {
+    transition: 1s ease-out;
+    color: #333;
+}
+
+
+#productDetail .product-top-detail-url  i {
+	font-size: 28pt;
+}
+

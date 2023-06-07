@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
- <mapper namespace="com.reviewcow.applyproduct.dao.ApplyProductMapper">
+ <mapper namespace="com.reviewcow.applyproduct.dao.ApplicationMapper">
  	
  	<insert id="insertApplyProductByMemberIdAndSellPostId" parameterType="map">
- 		INSERT INTO `apply_product`
+ 		INSERT INTO `application`
  		(
  			`memberId`
 			,`sellPostId`
@@ -23,7 +23,7 @@
  		SELECT
  			count(*)
  		FROM
- 			`apply_product`
+ 			`application`
  		WHERE
  			`sellPostId` = #{sellPostId}
  			<if test="memberId != null">
@@ -34,7 +34,7 @@
  	<delete id="deleteApplyProductByMemberIdAndSellPostId" parameterType="map">
  		DELETE
  		FROM
- 			`apply_product`
+ 			`application`
  		WHERE
 			`memberId` = #{memberId} AND
 			`sellPostId` = #{sellPostId}

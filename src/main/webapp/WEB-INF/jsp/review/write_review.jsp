@@ -3,37 +3,48 @@
 <div id="writeReview"class="d-flex justify-content-center">
 	<div id="side-view-right-Tdiv" class="mt-3">
 		<div class="main-title"><i class="xi-angle-left"></i>리뷰목록</div>
-		<div class="d-flex justify-content-between helpdesk-button-parentDiv semi-title-margin">
-		</div>
-		<div class="top-subject-div">
-			<div class="top-header-div d-flex align-items-center">
-				<div class="product-name ml-3">[좋은상품]두루마리 휴지 3set</div>
+		<div class="top-review-div">
+			<div class="d-flex justify-content-between helpdesk-button-parentDiv semi-title-margin">
 			</div>
-		</div>
-		<div class="d-flex align-items-center writeReview-content-div">
-			<div class="text-margin">리뷰 사진첨부</div>
-			<div class="input-location d-flex">
-				<input type="text" id="fileNameInput" class="form-control product-not-append-div image-input-div review-file-input-box" readonly/>
-					<div class="input-group-append">
-						<input type="button" id="imageUploadBtn" class="product-file-upload text-center" value="파일찾기">
-					</div>
-				<input type="file" id="file" class="d-none" accept=".gif, .jpg, .png, .jpeg">
+			<div class="top-subject-div">
+				<div class="top-header-div d-flex align-items-center">
+					<div class="product-name ml-3">${sellPost.productName}</div>
+				</div>	
 			</div>
-		</div>
-		<div class="d-flex align-items-center writeReview-content-div">
+			<div class="d-flex align-items-center writeReview-content-div">
+				<div class="text-margin">리뷰 사진첨부</div>
+				<div class="input-location d-flex">
+					<input type="text" id="fileNameInput" class="form-control product-not-append-div image-input-div review-file-input-box" readonly/>
+						<div class="input-group-append">
+							<input type="button" id="reviewImageUploadBtn" class="product-file-upload text-center" value="파일찾기">
+						</div>
+					<input type="file" id="reviewImageFile" class="d-none" accept=".gif, .jpg, .png, .jpeg">
+				</div>
+			</div>
+			<div class="d-flex align-items-center writeReview-content-div">
+				<div class="text-margin">한줄 리뷰</div>
+				<div class="input-location d-flex">
+					<input type="text" id="reviewComment" class="form-control review-file-input-box">
+				</div>
+			</div>
+			<div class="d-flex align-items-center writeReview-content-div">
 				<div class="text-margin">평점등록</div>
 				<div class="rating-text"><span class="rating-pointText">0</span>.0</div>
 				<div class="text-center star-div">
 					<div id="star-rating" class="rating-box">
 						<div class="stars">
-						    <i class="fa-solid fa-star" onclick="reviewPoint(1)"></i>
-						    <i class="fa-solid fa-star" onclick="reviewPoint(2)"></i>
-						    <i class="fa-solid fa-star" onclick="reviewPoint(3)"></i>
-						    <i class="fa-solid fa-star" onclick="reviewPoint(4)"></i>
-						    <i class="fa-solid fa-star" onclick="reviewPoint(5)"></i>
-						  </div>
-		  			</div>
-		  		</div>
+							<i class="fa-solid fa-star" onclick="reviewPoint(1)"></i>
+							<i class="fa-solid fa-star" onclick="reviewPoint(2)"></i>
+							<i class="fa-solid fa-star" onclick="reviewPoint(3)"></i>
+							<i class="fa-solid fa-star" onclick="reviewPoint(4)"></i>
+							<i class="fa-solid fa-star" onclick="reviewPoint(5)"></i>
+						</div>
+			  		</div>
+			  	</div>
+			</div>
+			<div class="d-flex justify-content-end">
+				<input type="button" class="mt-2" value="저장하기" id="reviewSaveBtn" data-post-id="${sellPost.id}">
+			</div>
 		</div>
 	</div>
 </div>
@@ -57,9 +68,58 @@ stars.forEach((star, index1) => {
 <script>
 
 $(document).ready(function(){
-	reviewPoint = function(int) {
-		$('.rating-pointText').text(int)
+	reviewPoint = function(n) {
+		$('.rating-pointText').text(n)
 	}
+	$("#reviewImageUploadBtn").on('click', function(){
+		// id="file" 클릭 호출
+		$('#reviewImageFile').click()
+	});
+	
+	$('#reviewImageFile').on('change', function(){
+		let fileName = this.files[0].name;
+		let check = $('#reviewImageFile')[0].files[0];
+		
+		console.log(fileName);
+		console.log(check);
+		$('#fileNameInput').val(fileName)
+	});
+	
+	$('#reviewSaveBtn').on('click', function(){
+		let point = $('.rating-pointText').text();
+		let reviewImgPath = $('#reviewImageFile')[0].files[0];
+		let comment = $('#reviewComment').val();
+		let sellPostId = $(this).data("post-id");
+		
+		console.log(sellPostId);
+		let formData = new FormData();
+		formData.append("point", point);
+		formData.append("reviewImgPath", reviewImgPath);
+		formData.append("comment", comment);
+		formData.append("sellPostId", sellPostId);
+		
+		$.ajax({
+			type:"POST"
+			,url:"/review/write_review"
+			,data:formData
+			,enctype:"multipart/form-data"
+			,processData:false
+			,contentType:false
+			
+			//response
+			,success:function(data){
+				if(data.code == 1) {
+					alert("success");
+				} else {
+					alert("리뷰 등록에 실패하였습니다.");
+				}
+			}
+			,error:function(request, status, error) {
+				alert("리뷰 등록 실패, 관리자에게 문의주세요");
+			}
+		});
+	});
+
 });
 
 </script>

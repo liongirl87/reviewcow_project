@@ -35,14 +35,21 @@
 }
 
 /* 평점 영역 끝 */
+#reviewList .main-table-div {
+	margin: 10px 0 0 30px ;
+	width: 700px;
+}
+
 #reviewList .text-margin01 {
 	margin:0 0 0 0px;
 	width: 18%;
 }
+
 #reviewList .text-margin02 {
 	margin:0 0 0 0px;
 	width: 15%;
 }
+
 #reviewList .text-margin03 {
 	margin:0 0 0 0px;
 	width: 47%;
@@ -73,5 +80,120 @@
 }
 
 #reviewList .semi-title-margin {
-	margin:0 0 15px 0;
+	margin:0 0 5px 20px;
+}
+
+
+/* apply_product_list 영역 */
+
+.apply_product_list  .main-table-div-applyProduct {
+	margin: 20px 0 0 30px ;
+	width: 700px;
+}
+
+.apply_product_list .text-margin02-circle {
+	margin:0 0 0 0px;
+	width: 15%;
+	background-color: #333;
+	border-radius: 10px;
+	color: white;
+}
+
+.apply_product_list .text-margin01-applyList {
+	margin:0 0 0 0px;
+	width: 18%;
+}
+.apply_product_list .text-margin02-applyList {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+
+.apply_product_list .text-margin03-applyList {
+	margin:0 0 0 0px;
+	width: 45%;
+}
+.apply_product_list .text-margin04-applyList {
+	margin:0 0 0 0px;
+	width: 17%;
+}
+.apply_product_list .text-margin05-applyList {
+	margin:0 0 0 0px;
+	width: 5%;
+}
+
+.apply_product_list .text-margin05-applyList  i {
+	font-size: 16pt;
+}
+
+.apply_product_list .text-margin04-applyList.approval {
+	color:#0066cc;
+}
+.apply_product_list .text-margin04-applyList.refuse {
+	color:red;
+}
+
+/* helpdesk 영역*/
+.helpdesk-div #helpdeskInquireBtn {
+/* 	position: absolute; */
+	width: 100px;
+	height: 30px;
+	background-color: #6495ED;
+	border: none;
+	border-radius: 8px;
+	margin: 12px -25px 0 0;
+/* 	margin: 20px 20px 0 84%; */
+	color: white;
+	font-size: 10pt;
+}
+
+/* 찜목록 영역 */
+
+.like_product_list  .main-table-div-applyProduct {
+	margin: 20px 0 0 30px ;
+	width: 700px;
+}
+
+.like_product_list .text-margin02-circle {
+	margin:0 0 0 0px;
+	width: 15%;
+	background-color: #333;
+	border-radius: 10px;
+	color: white;
+}
+
+.like_product_list .text-margin01-applyList {
+	margin:0 0 0 0px;
+	width: 20%;
+}
+.like_product_list .text-margin02-applyList {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+
+.like_product_list .text-margin03-applyList {
+	margin:0 0 0 0px;
+	width: 45%;
+}
+.like_product_list .text-margin04-applyList {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+.like_product_list .text-margin05-applyList {
+	margin:0 0 0 0px;
+	width: 5%;
+}
+
+.like_product_list .text-margin05-applyList  i {
+	font-size: 16pt;
+}
+.like_product_list .like-thumnailImg {
+	width:100px;
+	height:100px;
+	border-radius:15px;
+	overflow:hidden;
+}
+.like_product_list .thumnail-100s {
+	width:100%;
+	height:100%;
+	object-fit: cover;
 }

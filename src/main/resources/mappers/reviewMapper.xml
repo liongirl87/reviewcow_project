@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.reviewcow.review.dao.ReviewMapper">
+ 
+ <insert id="insertReviewByMemberId" parameterType="map">
+ 	INSERT INTO `review`
+ 	(
+		`memberId`
+		, `sellPostId`
+		, `point`
+		, `reviewImgPath`
+		, `comment`
+		, `createdAt`
+		, `updatedAt`
+ 	)
+ 	VALUES
+ 	(
+ 		#{memberId}
+ 		, #{sellPostId}
+ 		, #{point}
+ 		, #{reviewImgPath}
+ 		, #{comment}
+ 		, NOW()
+ 		, NOW()
+ 	)
+ 
+ </insert>
+ 
+ 
+ </mapper>

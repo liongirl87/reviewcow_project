@@ -19,8 +19,8 @@ import com.reviewcow.member.model.Influencer_Member;
 import com.reviewcow.member.model.Member;
 import com.reviewcow.member.model.MemberJoinForm;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @RequestMapping("/member")
 @RestController

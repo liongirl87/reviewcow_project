@@ -1,28 +1,28 @@
 @charset "EUC-KR";
 
-#dedlineProduct i{
+.mainView-i-style i{
  	position: absolute; 
 	font-size:15pt;
 	margin: -22px 0 0 0;
 }
 
-#dedlineProduct i.active{
+.mainView-i-style i.active{
 	font-size:15pt;
 	color: red;
 }
 
-#dedlineProduct .xi-heart-o{
+.mainView-i-style .xi-heart-o{
 	color: #808080;
 }
 
-#dedlineProduct i:hover {
+.mainView-i-style i:hover {
     transition: 1s ease-out;
     color: red;
     transform:scale(1.15,1.15);
 }
 
 
-#dedlineProduct .like-productText{
+.mainView-i-style .like-productText{
 	margin: 0 0 0 -15px;
 }
 .dealine-product {
@@ -34,8 +34,9 @@
 	width: 1200px;
 	font-size: 25px;
 	font-weight: bold;
-	margin: 20px 0 ;
+	margin: 20px 0 15px 0 ;
 	text-align: center;
+	padding: 5px 5px 5px 5px;
 }
 .dealine-product > .dealine-product-child {
 	width: 250px;
@@ -119,8 +120,22 @@
 	width: 90%;
 	height: 90%;
 	object-fit: cover;
-	
 }
+.product-icon-img-paper {
+	margin: 0 0 0px 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.product-icon-experienceGroup {
+	margin: 3px 0 0px 0;
+	width: 100%;
+	height: 100%;
+	font-size: 16pt;
+	object-fit: cover;
+}
+
 .coin-box {
 	width: 15px;
 	height: 15px;
@@ -139,10 +154,6 @@
 }
 
 
-/* 인기 체험단 */
-.hotItem {
-	margin: 15px 0 0 0;
-}
 
 /* 온라인상품 */
 .top-category-bar {

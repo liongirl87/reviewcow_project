@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.reviewcow.board.dao.HelpdeskMapper">
+ 	<insert id="insertHelpdeskWriting" parameterType="map">
+ 		INSERT INTO `helpdesk`
+ 		(
+ 			`memberId`
+			,`inquiryType`
+			,`inquiryTitle`
+			,`inquiryContent`
+			,`createdAt`
+			,`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{memberId}
+ 			, #{inquiryType}
+ 			, #{inquiryTitle}
+ 			, #{inquiryContent}
+ 			, NOW()
+ 			, NOW()
+ 		)
+ 	
+ 	</insert>
+ 	<select id="selectHelpdeskWritingListByMemberId" resultType="com.reviewcow.board.model.Helpdesk">
+ 		SELECT
+ 			`id`
+			, `memberId`
+			, `inquiryType`
+			, `inquiryTitle`
+			, `inquiryContent`
+			, `replyOrNot`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`helpdesk`
+		WHERE
+			`memberId` = #{memberId}
+ 	</select>
+ 
+ </mapper>

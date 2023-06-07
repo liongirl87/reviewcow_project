@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.reviewcow.main.bo.MainBo;
 import com.reviewcow.main.model.CardView;
 
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 @RequestMapping("/sellpost")
 @Controller
@@ -45,5 +45,31 @@ public class SellPostController {
 		model.addAttribute("viewList","sellpost/product_detail");
 		
 		return "template/layout";
+	}
+	
+	@GetMapping("/main_changeonline_category2")
+	public String changeMainOnlineProduct(
+			@RequestParam("categoryOnline2") String category,
+			HttpSession session,
+			Model model
+			) {
+		Integer memberId = (Integer)session.getAttribute("memberId");
+		List<CardView> onlineProductList = mainBo.generateOnlineProductByCategory(memberId, category);
+		model.addAttribute("onlineProductList", onlineProductList);
+		
+		return "include/main_online_product";
+	}
+	
+	@GetMapping("/main_changeoffline_category2")
+	public String changeMainOfflineProduct(
+			@RequestParam("categoryOffline2") String category,
+			HttpSession session,
+			Model model
+			) {
+		Integer memberId = (Integer)session.getAttribute("memberId");
+		List<CardView> offlineProductList = mainBo.generateOfflineProductByCategory(memberId, category);
+		model.addAttribute("offlineProductList", offlineProductList);
+		
+		return "include/main_offline_product";
 	}
 }

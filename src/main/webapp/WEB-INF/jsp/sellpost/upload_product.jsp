@@ -34,6 +34,7 @@
 					    <option value="foodstore">맛집</option>
 					    <option value="travel">여행</option>
 					    <option value="beauty">뷰티</option>
+					    <option value="other">그외</option>
 					</select>
 				</div>
 			</div>
