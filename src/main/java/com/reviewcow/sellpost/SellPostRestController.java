@@ -70,6 +70,7 @@ public class SellPostRestController {
 		Member sessionMember = (Member)session.getAttribute("member");
 	
 		sellPostForm.setMemberId(sessionMember.getId());
+		sellPostForm.setMemberLoginId(sessionMember.getLoginId());
 	
 		if (sellPostBo.addSellPost(sellPostForm)>0) {
 			result.put("code", 1);
