@@ -21,17 +21,56 @@
 				<div class="text-margin01 text-center">
 					<div id="star-rating" class="rating-box">
 						<div class="stars">
-						    <i class="fa-solid fa-star"></i>
-						    <i class="fa-solid fa-star"></i>
-						    <i class="fa-solid fa-star"></i>
-						    <i class="fa-solid fa-star"></i>
-						    <i class="fa-solid fa-star"></i>
+							<c:choose>
+								<c:when test="${empty review.reviewPoint}">
+									<i class="fa-solid fa-star"></i>
+									<i class="fa-solid fa-star"></i>
+									<i class="fa-solid fa-star"></i>
+									<i class="fa-solid fa-star"></i>
+									<i class="fa-solid fa-star"></i>
+								</c:when>
+								<c:when test="${not empty review.reviewPoint}">
+									<c:forEach begin='1' end="${review.reviewPoint}"> 
+								    <i class="fa-solid fa-star active"></i>
+								    </c:forEach>
+								    <c:forEach begin='1' end="${5 - review.reviewPoint}"> 
+								    <i class="fa-solid fa-star"></i>
+								    </c:forEach>
+								</c:when>
+								<c:otherwise>
+									<i class="fa-solid fa-star"></i>
+								</c:otherwise>
+							</c:choose>
 						  </div>
 		  			</div>
-		  		</div>	
-				<div class="text-margin02 text-center">리뷰 미작성</div>
-				<div class="text-margin03 text-center"><a href="/review/write_review_view?sellPostid=${review.id}">${review.productName}</a></div>
-				<div class="text-margin04 text-center">리뷰쓰기</div>
+		  		</div>
+		  		<c:choose>
+		  			<c:when test="${review.status == 0}">
+						<div class="text-margin02 text-center">대기중</div>
+		  			</c:when>
+		  			<c:when test="${review.status == 1}">
+						<div class="text-margin02 text-center">지급완료</div>
+		  			</c:when>
+		  			<c:when test="${review.status == 2}">
+						<div class="text-margin02 text-center">지급취소</div>
+		  			</c:when>
+		  		</c:choose>	
+		  			<c:choose>
+					<c:when test="${not empty review.reviewPoint}">
+						<div class="text-margin03 text-center"><a href="/review/write_review_view?sellPostid=${review.id}" class="pointNone" onclick="return false;">${review.productName}</a></div>
+					</c:when>
+					<c:when test="${empty review.reviewPoint}">
+						<div class="text-margin03 text-center"><a href="/review/write_review_view?sellPostid=${review.id}">${review.productName}</a></div>
+					</c:when>
+				</c:choose>
+				<c:choose>
+					<c:when test="${not empty review.reviewPoint}">
+						<div class="text-margin04 text-center">작성완료</div>
+					</c:when>
+					<c:when test="${empty review.reviewPoint}">
+						<div class="text-margin04 text-center">미작성</div>
+					</c:when>
+				</c:choose>
 			</div>
 			</c:forEach>
 		</div>

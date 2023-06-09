@@ -82,6 +82,9 @@
 #reviewList .semi-title-margin {
 	margin:0 0 5px 20px;
 }
+#reviewList .pointNone {
+  pointer-events: none;
+}
 
 
 /* apply_product_list ¿µ¿ª */
@@ -197,3 +200,4 @@
 	height:100%;
 	object-fit: cover;
 }
+

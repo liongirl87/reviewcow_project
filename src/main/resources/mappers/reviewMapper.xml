@@ -9,7 +9,7 @@
  	(
 		`memberId`
 		, `sellPostId`
-		, `point`
+		, `reviewPoint`
 		, `reviewImgPath`
 		, `comment`
 		, `createdAt`
@@ -27,6 +27,17 @@
  	)
  
  </insert>
- 
+ <select id="selectReviewListByMemberId" resultType="com.reviewcow.review.model.ReviewList">
+		SELECT A.`id`, A.`productName`, C.`reviewPoint` , D.`point`, D.`source`, D. `status`, D.`updatedAt`
+		FROM `sell_post` AS A
+		RIGHT JOIN `application` AS B
+		ON A.id = B.sellPostId
+        LEFT JOIN `review` AS C
+        ON B.sellPostId = C.sellPostId
+        LEFT JOIN `point` AS D
+        ON C.sellPostId = D.sellPostId
+		WHERE B.memberId = #{memberId}
+		AND B.`status` = 1;  
+ </select>
  
  </mapper>
