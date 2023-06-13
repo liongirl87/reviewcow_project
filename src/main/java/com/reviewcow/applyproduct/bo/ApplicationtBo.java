@@ -32,4 +32,8 @@ public class ApplicationtBo {
 		return applicationMapper.selectApplyProductByMemberIdAndSellPostId(memberId, sellPostId) > 0;
 	}
 	
+	public int countApplyProductbyMemberId(Integer memberId) {
+		return applicationMapper.countApplyProductbyMemberId(memberId);
+	}
+	
 }

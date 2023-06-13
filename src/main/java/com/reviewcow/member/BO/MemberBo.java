@@ -57,4 +57,9 @@ public class MemberBo {
 		memberMapper.updateBusinessMemberByLoginId(member);
 	}
 	
+	// 회원정보 불러오기 (포인트 조회)
+	public Member getMemberByMemberId(Integer memberId) {
+		return memberMapper.selectMemberByMemberId(memberId);
+	}
+	
 }

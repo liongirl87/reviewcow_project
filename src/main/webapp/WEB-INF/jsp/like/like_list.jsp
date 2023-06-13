@@ -33,11 +33,25 @@
 						<div class="text-margin02-circle text-center">기자단</div>
 					</c:when>
 				</c:choose>
-				<div class="text-margin03-applyList text-center"><a href="#">${likeList.productName}</a></div>
+				<div class="text-margin03-applyList text-center"><a href="/sellpost/product_detail_view?postId=${likeList.id}">${likeList.productName}</a></div>
 						<div class="text-margin04-applyList text-center font-weight-bold">진행중</div>
 				<div class="text-margin05-applyList text-center"><a href="#" class="cancelLikeBtn" data-postid="${likeList.id}"><i class="xi-close-circle"></i></a></div>
 			</div>
 			</c:forEach>
+			<!-- 페이징 버튼 TEST -->
+			<div class="list_number">
+	    		<div>
+		        	<div class="list_n_menu">
+		        		<a href="/like_list_view?postPage=${postPaging.nowPageNum - 1}" class="${postPaging.nowPageNum == 1 ? "disabled":"" }"><  이전</a>
+			        	<c:forEach begin="${postPaging.startPage}" end="${postPaging.endPage}" var="num">
+			        	<a href="/like_list_view?postPage=${num}" class="${postPaging.nowPageNum == num ? "current":"" }">${num}</a>
+			        	</c:forEach>
+			        	<a href="/like_list_view?postPage=${postPaging.nowPageNum + 1}" class="${postPaging.nowPageNum == postPaging.totalPages ? "disabled":"" }">다음  >
+			        	</a>
+		        	</div>
+	    		</div>
+			</div>
+			<!--  페이징 버튼 TEST 끝 -->
 		</div>	
 	</div>
 </div>

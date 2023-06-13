@@ -132,6 +132,28 @@
 		WHERE
 			`memberLoginId` = #{loginId}
  	</select>
+ 	<select id="selectMemberByMemberId" resultType="com.reviewcow.member.model.Member">
+ 		SELECT
+		 	`id`
+			,`memberType`
+			,`loginId`
+			,`password`
+			,`salt`
+			,`name`
+			,`email`
+			,`address`
+			,`telePhoneNumber`
+			,`mobilePhoneNumber`
+			,`nowPoint`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`member`
+		WHERE
+			`id` = #{memberId};	
+		
+ 	</select>
+ 	
  	<update id="updateMemberByLoginId" parameterType="com.reviewcow.member.model.MemberJoinForm">
 	 	UPDATE `member`
 	 		SET
@@ -162,5 +184,8 @@
 	 		WHERE
 	 			`memberLoginId` = #{loginId}
  	</update>
+ 	
+ 	
+ 	
  	
  </mapper>

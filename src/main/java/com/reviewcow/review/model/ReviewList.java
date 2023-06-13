@@ -11,7 +11,7 @@ public class ReviewList {
 	private String productName;
 	private Integer reviewPoint;
 	private int point;
-	private int source;
+	private int sort;
 	private int status;
 	private Date updatedAt;	
 	
@@ -27,8 +27,8 @@ public class ReviewList {
 	public int getPoint() {
 		return point;
 	}
-	public int getSource() {
-		return source;
+	public int getSort() {
+		return sort;
 	}
 	public int getStatus() {
 		return status;

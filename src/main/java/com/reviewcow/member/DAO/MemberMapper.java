@@ -27,6 +27,10 @@ public interface MemberMapper {
 	// 사업자회원 정보 가져오기
 	public Business_Member selectBusinessMemberByLoginId(String loginId);
 	
+	// 회원정보 불러오기(포인트 조회)
+	public Member selectMemberByMemberId(Integer memberId);
+	
+	
 	// 회원 정보 수정
 	public void updateMemberByLoginId(MemberJoinForm member);
 	

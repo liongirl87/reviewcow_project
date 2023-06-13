@@ -14,6 +14,8 @@ public interface ApplicationMapper {
 			@Param("memberId") Integer memberId,
 			@Param("sellPostId") int sellPostId);
 	
+	public int countApplyProductbyMemberId(Integer memberId);
+	
 	public void deleteApplyProductByMemberIdAndSellPostId(
 			@Param("memberId") int memberId,
 			@Param("sellPostId") int sellPostId);

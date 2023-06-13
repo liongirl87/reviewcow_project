@@ -109,7 +109,7 @@
 		LIMIT 8;
 		</if>
  	</select>
-
+ 	
 	<select id="selectLikeSellPostListbyMemberId" resultType="com.reviewcow.sellpost.model.SellPost">
 		SELECT A.*, B.`createdAt` likeCreatedAt 
 		FROM `sell_post` AS A
@@ -119,6 +119,29 @@
 		AND B.`memberId` = #{memberId}
 		ORDER BY B.`createdAt` DESC;
 	</select>
+	
+	<select id="selectLikeSellPostListByMemberIdForPaging" parameterType="map" resultType="com.reviewcow.sellpost.model.SellPost">
+		SELECT A.*, B.`createdAt` likeCreatedAt 
+		FROM `sell_post` AS A
+		RIGHT JOIN `product_like` AS B
+		ON A.id = B.sellPostId
+		WHERE TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		AND B.`memberId` = #{memberId}
+		ORDER BY B.`createdAt` DESC
+		LIMIT ${skipLimit} ,${limit};	
+	</select>
+	
+	
+	<select id="countLikeSellPostListbyMemberId" resultType="int">
+		SELECT count(*) 
+		FROM `sell_post` AS A
+		RIGHT JOIN `product_like` AS B
+		ON A.id = B.sellPostId
+		WHERE TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		AND B.`memberId` = #{memberId}
+		ORDER BY B.`createdAt` DESC;
+	</select>
+	
  	
  	<select id="selectSellPostListOnlineProductByCategory" resultType="com.reviewcow.sellpost.model.SellPost">
  		SELECT 
@@ -266,6 +289,16 @@
 			`sell_post`
 		WHERE
 			`id` = #{postId}			
+ 	</select>
+ 	
+ 	<select id="selectApplyProductListbyMemberIdForPaging" parameterType="map" resultType="com.reviewcow.sellpost.model.SellPost">
+		SELECT A.*, B.`status`,  B.`createdAt` applicationCreatedAt
+		FROM `sell_post` AS A
+		LEFT JOIN `application` AS B
+		ON A.id = B.sellPostId
+		WHERE B.`memberId` = #{memberId}
+		ORDER BY B.`createdAt` DESC
+		LIMIT ${skipLimit} ,${limit};
  	</select>
 
  </mapper>

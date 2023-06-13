@@ -2,6 +2,7 @@ package com.reviewcow.sellpost.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.reviewcow.sellpost.model.SellPost;
@@ -16,7 +17,19 @@ public interface SellPostMapper {
 	
 	public List<SellPost> selectSellPostListForHotItem(Integer memberId);
 	
+	public List<SellPost> selectApplyProductListbyMemberIdForPaging(
+			@Param("memberId") Integer memberId,
+			@Param("skipLimit") int skipLimit,
+			@Param("limit") int limit);
+	
 	public List<SellPost> selectLikeSellPostListbyMemberId(Integer memberId);
+	
+	public int countLikeSellPostListbyMemberId(Integer memberId);
+	
+	public List<SellPost> selectLikeSellPostListByMemberIdForPaging(
+			@Param("memberId") Integer memberId,
+			@Param("skipLimit") int skipLimit,
+			@Param("limit") int limit);
 	
 	public List<SellPost> selectSellPostListOnlineProductByCategory(String categoryOnline2);
 	

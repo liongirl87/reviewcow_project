@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.reviewcow.point.dao.PointMapper">
+ 	<select id="selectPointListByMemberId" resultType="com.reviewcow.point.model.Point">
+ 		SELECT
+ 			`id`
+			, `memberId`
+			, `sellPostId`
+			, `point`
+			, `sort`
+			, `status`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`point`
+		WHERE
+			`memberId` = #{memberId}
+		ORDER BY `createdAt` DESC;		
+ 	</select>
+ 	
+ 	<select id="selectNowPointByMemberId" resultType="int">
+ 		SELECT sum(`point`) 
+ 		FROM `point`
+        WHERE `memberId` = #{memberId}
+        AND `status` = 1;
+ 	</select>
+ 	
+ 	<select id="countPointContentsByMemberId" resultType="int">
+ 		SELECT count(*)
+ 		FROM `point`
+ 		WHERE `memberId` = #{memberId}
+ 	</select>
+ 	
+ 	<select id="selectPointListByMemberIdForPaging" parameterType="map" resultType="com.reviewcow.point.model.Point">
+ 		SELECT
+ 			`id`
+			, `memberId`
+			, `sellPostId`
+			, `point`
+			, `sort`
+			, `status`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`point`
+		WHERE
+			`memberId` = #{memberId}
+		ORDER BY `createdAt` DESC
+		LIMIT ${skipLimit} ,${limit};		
+ 	</select>
+ 	
+ </mapper>

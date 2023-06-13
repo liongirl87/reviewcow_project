@@ -23,7 +23,7 @@
 					<c:choose>
 						<c:when test="${member.memberType eq 'businessMember'}">
 							<li class="mt-3"><a href="/member/modify_myinfo_view" class="text-color-important">회원정보 수정</a></li>
-							<li class="text-margin"><a href="#">포인트관리</a></li>
+							<li class="text-margin"><a href="/point/manage_point_view">포인트관리</a></li>
 							<li><a href="/board/helpdesk_view">문의하기</a></li>
 							<li class="text-margin"><a href="#">공지사항</a></li>
 							<li class="text-margin"><a href="#">알림</a></li>
@@ -31,7 +31,7 @@
 						</c:when>
 						<c:otherwise>
 							<li class="mt-3"><a href="/member/modify_myinfo_view" class="text-color-important">회원정보 수정</a></li>
-							<li class="text-margin"><a href="#">포인트관리</a></li>
+							<li class="text-margin"><a href="/point/manage_point_view">포인트관리</a></li>
 							<li><a href="/board/helpdesk_view">문의하기</a></li>
 							<li class="text-margin"><a href="#">공지사항</a></li>
 							<li><a href="#">알림</a></li>

@@ -21,4 +21,12 @@ public class HelpdeskBo {
 	public List<Helpdesk> getHelpdeskWritingListByMemberId(Integer memberId) {
 		return helpdeskMapper.selectHelpdeskWritingListByMemberId(memberId);
 	}
+	
+	public int countPointContentsByMemberId(Integer memberId) {
+		return helpdeskMapper.countPointContentsByMemberId(memberId);
+	}
+	
+	public List<Helpdesk> getHelpdeskContentsByMemberIdForPaging (Integer memberId, int skipLimit, int limit){
+		return helpdeskMapper.selectHelpdeskContentsByMemberIdForPaging (memberId, skipLimit, limit);
+	}
 }

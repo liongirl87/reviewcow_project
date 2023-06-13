@@ -31,7 +31,7 @@
 					</c:when>
 				</c:choose>
 				
-				<div class="text-margin03-applyList text-center"><a href="#">${applyList.productName}</a></div>
+				<div class="text-margin03-applyList text-center"><a href="/sellpost/product_detail_view?postId=${applyList.id}">${applyList.productName}</a></div>
 				<c:choose>
 					<c:when test="${applyList.status == 0}">
 						<div class="text-margin04-applyList text-center font-weight-bold">대기중</div>
@@ -44,9 +44,22 @@
 					</c:when>
 				</c:choose>
 				<div class="text-margin05-applyList text-center"><a href="#" class="cancelBtn" data-postid="${applyList.id}" data-toggle="modal" data-target="#modal"><i class="xi-close-circle"></i></a></div>
-				
 			</div>
 			</c:forEach>
+			<!-- 페이징 버튼 TEST -->
+			<div class="list_number">
+	    		<div>
+		        	<div class="list_n_menu">
+		        		<a href="/application/apply_product_list_view?postPage=${postPaging.nowPageNum - 1}" class="${postPaging.nowPageNum == 1 ? "disabled":"" }"><  이전</a>
+			        	<c:forEach begin="${postPaging.startPage}" end="${postPaging.endPage}" var="num">
+			        	<a href="/application/apply_product_list_view?postPage=${num}" class="${postPaging.nowPageNum == num ? "current":"" }">${num}</a>
+			        	</c:forEach>
+			        	<a href="/application/apply_product_list_view?postPage=${postPaging.nowPageNum + 1}" class="${postPaging.nowPageNum == postPaging.totalPages ? "disabled":"" }">다음  >
+			        	</a>
+		        	</div>
+	    		</div>
+			</div>
+			<!--  페이징 버튼 TEST 끝 -->
 		</div>	
 	</div>
 </div>

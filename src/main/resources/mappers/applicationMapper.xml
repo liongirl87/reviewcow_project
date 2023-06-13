@@ -31,6 +31,15 @@
  			</if>
  	</select>
  	
+ 	<select id="countApplyProductbyMemberId" resultType="int">
+        SELECT count(*)
+        FROM `sell_post` AS A
+		LEFT JOIN `application` AS B
+		ON A.id = B.sellPostId
+		WHERE B.`memberId` = #{memberId} 
+ 	</select>
+ 	
+ 	
  	<delete id="deleteApplyProductByMemberIdAndSellPostId" parameterType="map">
  		DELETE
  		FROM
@@ -39,6 +48,8 @@
 			`memberId` = #{memberId} AND
 			`sellPostId` = #{sellPostId}
  	</delete>
+ 	
+ 	
  	
  	
  

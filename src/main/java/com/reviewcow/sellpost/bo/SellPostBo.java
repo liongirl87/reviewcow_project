@@ -43,10 +43,26 @@ public class SellPostBo {
 		return sellPostMapper.selectSellPostListForHotItem(memberId);
 	}
 	
+	public List<SellPost> getApplyProductListbyMemberIdForPaging(Integer memberId, int skipLimit, int limit) {
+		return sellPostMapper.selectApplyProductListbyMemberIdForPaging(memberId, skipLimit, limit);
+	}
+	
 	// 내가 찜한 상품 목록 리스트 불러오기
 	public List<SellPost> getLikeSellPostListbyMemberId(Integer memberId) {
 		return sellPostMapper.selectLikeSellPostListbyMemberId(memberId);
 	}
+	
+	public List<SellPost> getLikeSellPostListByMemberIdForPaging(Integer memberId, int skipLimit, int limit){
+		return sellPostMapper.selectLikeSellPostListByMemberIdForPaging(memberId, skipLimit, limit);
+	}
+	
+	
+	// 내가 찜한 상품 목록 리스트 불러오기(카운트 FOR paging)
+	public int countLikeSellPostListbyMemberId(Integer memberId) {
+		return sellPostMapper.countLikeSellPostListbyMemberId(memberId);
+	}
+	
+	
 	
 	// 온라인 상품 카테고리별 불러오기
 	public List<SellPost> getSellPostListOnlineProductByCategory(String categoryOnline2) {

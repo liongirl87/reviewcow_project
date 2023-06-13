@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<div id="reviewList"class="d-flex justify-content-center">
+<div id="reviewList" class="d-flex justify-content-center">
 	<div id="side-view-right-Tdiv" class="mt-3">
 		<div class="main-title"><i class="xi-angle-left"></i>¸®ºä¸ñ·Ï</div>
 		<div class="helpdesk-button-parentDiv semi-title-margin">

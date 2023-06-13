@@ -28,7 +28,7 @@
  
  </insert>
  <select id="selectReviewListByMemberId" resultType="com.reviewcow.review.model.ReviewList">
-		SELECT A.`id`, A.`productName`, C.`reviewPoint` , D.`point`, D.`source`, D. `status`, D.`updatedAt`
+		SELECT A.`id`, A.`productName`, C.`reviewPoint` , D.`point`, D.`sort`, D. `status`, D.`updatedAt`
 		FROM `sell_post` AS A
 		RIGHT JOIN `application` AS B
 		ON A.id = B.sellPostId
