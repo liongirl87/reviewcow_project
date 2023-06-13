@@ -15,10 +15,13 @@ public interface PointMapper {
 	
 	public int selectNowPointByMemberId(Integer memberId);
 	
-	public int countPointContentsByMemberId(Integer memberId);
+	public int countPointContentsByMemberId(
+			@Param("memberId") Integer memberId,
+			@Param("status") Integer status);
 	
 	public List<Point> selectPointListByMemberIdForPaging(
 			@Param("memberId") Integer memberId,
+			@Param("status") Integer status,
 			@Param("skipLimit") int skipLimit,
 			@Param("limit") int limit);
 }

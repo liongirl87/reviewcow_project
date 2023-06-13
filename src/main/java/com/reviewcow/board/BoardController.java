@@ -3,24 +3,27 @@ package com.reviewcow.board;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.reviewcow.board.bo.HelpdeskBo;
 import com.reviewcow.board.model.Helpdesk;
-import com.reviewcow.point.model.Point;
+import com.reviewcow.member.bo.MemberBo;
 import com.reviewcow.postpaging.model.PostPagingDTO;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 	@Autowired
 	private HelpdeskBo helpdeskBo;
+	@Autowired
+	private MemberBo memberBo;
 
 	@RequestMapping("/helpdesk_write_view")
 	public String helpdeskWrite(Model model) {
@@ -65,4 +68,47 @@ public class BoardController {
 		
 		return "template/layout";
 	}
+	
+	@GetMapping("/helpdesk_detail")
+	public String helpdeskDetail(
+			@RequestParam(value = "postId", required=false) Integer postId,
+			Model model,
+			HttpSession session) {
+		List<String> viewList = new ArrayList<>();
+		
+		Helpdesk helpdesk = helpdeskBo.gethelpdeskContentsByPostId(postId);
+		
+		String memberLoginId = memberBo.getMemberLoginIdForHelpdesk(helpdesk.getMemberId());
+		
+		
+		viewList.add("include/side_menu");
+		viewList.add("board/helpdesk_detail");
+		model.addAttribute("viewList", viewList);
+		model.addAttribute("helpdesk", helpdesk);
+		model.addAttribute("memberLoginId", memberLoginId);
+		
+		return "template/layout";
+	}
+	
+	@GetMapping("/helpdesk_modify")
+	public String helpdeskModify(
+			@RequestParam(value = "postId", required=false) Integer postId,
+			Model model,
+			HttpSession session) {
+		List<String> viewList = new ArrayList<>();
+		
+		Helpdesk helpdesk = helpdeskBo.gethelpdeskContentsByPostId(postId);
+		
+		String memberLoginId = memberBo.getMemberLoginIdForHelpdesk(helpdesk.getMemberId());
+		
+		
+		viewList.add("include/side_menu");
+		viewList.add("board/helpdesk_modify");
+		model.addAttribute("viewList", viewList);
+		model.addAttribute("helpdesk", helpdesk);
+		model.addAttribute("memberLoginId", memberLoginId);
+		
+		return "template/layout";
+	}
+	
 }

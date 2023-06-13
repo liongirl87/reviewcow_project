@@ -66,5 +66,21 @@
 		LIMIT ${skipLimit} ,${limit};	
  	
  	</select>
+ 	
+ 	<select id="selecthelpdeskContentsByPostId" resultType="com.reviewcow.board.model.Helpdesk">
+ 		SELECT
+ 			`id`
+			, `memberId`
+			, `inquiryType`
+			, `inquiryTitle`
+			, `inquiryContent`
+			, `replyOrNot`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`helpdesk`
+ 		WHERE
+ 			`id` = #{postId}
+ 	</select>
  
  </mapper>

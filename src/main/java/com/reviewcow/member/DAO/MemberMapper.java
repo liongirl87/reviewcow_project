@@ -30,6 +30,7 @@ public interface MemberMapper {
 	// 회원정보 불러오기(포인트 조회)
 	public Member selectMemberByMemberId(Integer memberId);
 	
+	public String selectMemberLoginIdForHelpdesk(int memberId);
 	
 	// 회원 정보 수정
 	public void updateMemberByLoginId(MemberJoinForm member);

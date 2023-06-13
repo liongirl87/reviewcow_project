@@ -22,12 +22,12 @@ public class PointBo {
 		return pointMapper.selectNowPointByMemberId(memberId);
 	}
 	
-	public int countPointContentsByMemberId(Integer memberId) {
-		return pointMapper.countPointContentsByMemberId(memberId);
+	public int countPointContentsByMemberId(Integer memberId, Integer status) {
+		return pointMapper.countPointContentsByMemberId(memberId, status);
 	}
 	
 	// 수동으로 누른 페이징 버튼에 따라서 포스트 가져오기
-	public List<Point> getPointListByMemberIdForPaging(Integer memberId, int skipLimit, int limit){
-		return pointMapper.selectPointListByMemberIdForPaging(memberId, skipLimit, limit);
+	public List<Point> getPointListByMemberIdForPaging(Integer memberId, Integer status, int skipLimit, int limit){
+		return pointMapper.selectPointListByMemberIdForPaging(memberId, status, skipLimit, limit);
 	}
 }

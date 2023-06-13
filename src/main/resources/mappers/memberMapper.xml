@@ -185,6 +185,12 @@
 	 			`memberLoginId` = #{loginId}
  	</update>
  	
+ 	<select id="selectMemberLoginIdForHelpdesk" resultType="String">
+ 		SELECT `loginId` 
+ 		FROM `member`
+        WHERE `id` = #{memberId}
+ 	</select>
+ 	
  	
  	
  	

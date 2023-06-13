@@ -126,6 +126,7 @@ public class MemberRestController {
 			//세션에 유저정보 담기
 			session.setAttribute("member", member);
 			session.setAttribute("memberId", member.getId());
+			session.setAttribute("memberLoginId", member.getLoginId());
 			
 			return result;
 		} else {

@@ -24,7 +24,7 @@
 					<fmt:formatDate var="dateOfCreated" value="${helpdeskList.createdAt}" pattern="yyyy-MM-dd"/>
 					<div class="text-margin01 text-center">${dateOfCreated}</div>
 					<div class="text-margin02 text-center">${helpdeskList.inquiryType}</div>
-					<div class="text-margin03 text-center"><a href="#">${helpdeskList.inquiryTitle}</a></div>
+					<div class="text-margin03 text-center"><a href="/board/helpdesk_detail?postId=${helpdeskList.id}">${helpdeskList.inquiryTitle}</a></div>
 					<c:choose>
 						<c:when test="${helpdeskList.replyOrNot == 0}">
 							<div class="text-margin04 text-center">�̴亯</div>

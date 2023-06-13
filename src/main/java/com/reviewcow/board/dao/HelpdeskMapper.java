@@ -23,4 +23,7 @@ public interface HelpdeskMapper {
 			@Param("memberId") Integer memberId,
 			@Param("skipLimit") int skipLimit,
 			@Param("limit") int limit);
+	
+	public Helpdesk selecthelpdeskContentsByPostId(Integer postId);
 }
+

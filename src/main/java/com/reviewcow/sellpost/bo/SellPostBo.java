@@ -87,4 +87,5 @@ public class SellPostBo {
 		return sellPostMapper.selectSellPostListForReviewListBymemberId(memberId);
 	}
 	
+	
 }

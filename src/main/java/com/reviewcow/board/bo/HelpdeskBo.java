@@ -29,4 +29,8 @@ public class HelpdeskBo {
 	public List<Helpdesk> getHelpdeskContentsByMemberIdForPaging (Integer memberId, int skipLimit, int limit){
 		return helpdeskMapper.selectHelpdeskContentsByMemberIdForPaging (memberId, skipLimit, limit);
 	}
+	
+	public Helpdesk gethelpdeskContentsByPostId(Integer postId) {
+		return helpdeskMapper.selecthelpdeskContentsByPostId(postId);
+	}
 }

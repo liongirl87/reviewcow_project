@@ -27,10 +27,14 @@
         AND `status` = 1;
  	</select>
  	
- 	<select id="countPointContentsByMemberId" resultType="int">
+ 	<select id="countPointContentsByMemberId" parameterType="map" resultType="int">
  		SELECT count(*)
  		FROM `point`
  		WHERE `memberId` = #{memberId}
+ 		<if test="status != null">
+		AND `status` = #{status} 		
+ 		</if>
+ 		
  	</select>
  	
  	<select id="selectPointListByMemberIdForPaging" parameterType="map" resultType="com.reviewcow.point.model.Point">
@@ -47,6 +51,9 @@
 			`point`
 		WHERE
 			`memberId` = #{memberId}
+		<if test="status != null">
+		AND `status` = #{status} 		
+ 		</if>	
 		ORDER BY `createdAt` DESC
 		LIMIT ${skipLimit} ,${limit};		
  	</select>

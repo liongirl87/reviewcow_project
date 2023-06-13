@@ -62,4 +62,8 @@ public class MemberBo {
 		return memberMapper.selectMemberByMemberId(memberId);
 	}
 	
+	// 1:1 문의글 memberId로 memberLoginId 가져오기
+	public String getMemberLoginIdForHelpdesk(int memberId) {
+		return memberMapper.selectMemberLoginIdForHelpdesk(memberId);
+	}
 }
