@@ -300,5 +300,86 @@
 		ORDER BY B.`createdAt` DESC
 		LIMIT ${skipLimit} ,${limit};
  	</select>
+ 	
+ 	<select id="countSellPostStatusbyMemberId" parameterType="map" resultType="int">
+ 		SELECT count(*)
+		FROM 
+			`sell_post` A
+        RIGHT JOIN 
+			`application` AS B
+        ON A.`id` = B.`sellPostId`    
+		WHERE 
+			A.`memberId` = #{memberId}          
+		AND B.`status` = #{aprovalCondition}
+		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0;
+ 	</select>
+ 	
+ 	 <select id="countSellPostStatusFinishedByMemberId" resultType="int">
+ 		SELECT count(*)
+		FROM 
+			`sell_post`
+		WHERE 
+			`memberId` = #{memberId}
+		AND aprovalCondition = 0
+		AND <![CDATA[TIMESTAMPDIFF(DAY, now(), `endDate`) < 0]]> 
+ 	</select>
+ 	
+ 	<select id="countApplicantsStatusByMemberId" resultType="int">
+ 		SELECT count(*)
+		FROM 
+			`sell_post` AS A
+		RIGHT JOIN 
+			`application` AS B
+		ON A.id = B.sellPostId
+		WHERE A.`memberId` = #{memberId}
+		AND B.`status` = #{aprovalCondition}
+		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0;
+ 	</select>
+ 	
+ 	<select id="selectSellPostListStatusByMemberId" parameterType="map" resultType="com.reviewcow.sellpost.model.SellPost">
+ 		SELECT
+ 			`id`
+			,`memberId`
+			,`serviceCategory1`
+			,`serviceCategory2Online`
+			,`serviceCategory2Offline`
+			,`productName`
+			,`numberOfApplicants`
+			,`salesMethod`
+			,`startDate`
+			,`endDate`
+			,`productDescriptions`
+			,`thumbnailImgPath`
+			,`productUrl`
+			,`sellPrice`
+			,`discountRate`
+			,`storeName`
+			,`storeAddress`
+			,`scriptFees`
+			,`corpsFile`
+			,`nowApplicants`
+			,`aprovalCondition`
+			,`cancelBySeller`
+			,`createdAt`
+			,`updatedAt`
+		FROM 
+			`sell_post`
+		WHERE 
+			`memberId` = #{memberId}
+		AND aprovalCondition = #{aprovalCondition}
+		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		LIMIT ${skipLimit} ,${limit};
+ 	</select>
+	
+	<select id="countSellPostListStatusByMemberId" parameterType="map" resultType="int">
+ 		SELECT
+ 			count(*)
+		FROM 
+			`sell_post`
+		WHERE 
+			`memberId` = #{memberId}
+		AND aprovalCondition = #{aprovalCondition}
+		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+ 	</select>
 
  </mapper>

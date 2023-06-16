@@ -35,6 +35,7 @@
 <link rel="stylesheet" type="text/css" href="/static/css/list_review_style.css">
 <link rel="stylesheet" type="text/css" href="/static/css/write_review_style.css">
 <link rel="stylesheet" type="text/css" href="/static/css/product_detail_style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/manage_applicants_style.css">
 <!-- 내정보 2분할 화면 오른쪽view 공통 css -->
 <link rel="stylesheet" type="text/css" href="/static/css/side_right_common_style.css">
 

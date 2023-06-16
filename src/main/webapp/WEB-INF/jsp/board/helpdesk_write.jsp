@@ -31,8 +31,7 @@ $(document).ready(function(){
 	$('#helpdeskSubmitBtn').on('click',function(){
 		let category = $('#helpDeskCategory option:checked').val();
 		let subject = $('.helpdesk-subject-input').val();
-		let content = $('.helpdesk-textarea').val();
-		
+		let content = $('.helpdesk-textarea').val().replace(/\n/g, "<br>");
 		
 		$.ajax({
 			url:"/board/helpdesk_write"
@@ -41,6 +40,7 @@ $(document).ready(function(){
 			,success:function(data) {
 				if(data.code == 1) {
 					alert("성공");
+					location.href = "/board/helpdesk_view";
 				} else {
 					alert("실패");
 				}

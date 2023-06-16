@@ -40,4 +40,24 @@ public interface SellPostMapper {
 	public SellPost selectSellPostbyPostId(int postId);
 	
 	public List<SellPost> selectSellPostListForReviewListBymemberId(Integer memberId);
+	
+	public int countSellPostStatusbyMemberId(
+			@Param("memberId") int memberId,
+			@Param("aprovalCondition") int aprovalCondition);
+	
+	public int countApplicantsStatusByMemberId(
+			@Param("memberId") int memberId,
+			@Param("aprovalCondition") int aprovalCondition);
+	
+	public int countSellPostStatusFinishedByMemberId(int memberId);
+	
+	public List<SellPost> selectSellPostListStatusByMemberId(
+			@Param("memberId") int memberId,
+			@Param("aprovalCondition") int aprovalCondition,
+			@Param("skipLimit") int skipLimit,
+			@Param("limit") int limit);
+	
+	public int countSellPostListStatusByMemberId(
+			@Param("memberId") int memberId,
+			@Param("aprovalCondition") int aprovalCondition);
 }

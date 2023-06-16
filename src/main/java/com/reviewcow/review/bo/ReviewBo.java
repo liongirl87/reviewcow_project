@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.reviewcow.common.FileManagerService;
 import com.reviewcow.member.model.Member;
 import com.reviewcow.review.dao.ReviewMapper;
+import com.reviewcow.review.model.Review;
 import com.reviewcow.review.model.ReviewList;
 
 @Service
@@ -28,5 +29,8 @@ public class ReviewBo {
 	}
 	public List<ReviewList> getReviewListByMemberId(Integer memberId) {
 		return reviewMapper.selectReviewListByMemberId(memberId);
+	}
+	public Review getReviewByMemberIdAndSellPostId(int memberId, int sellPostId) {
+		return reviewMapper.selectReviewByMemberIdAndSellPostId(memberId, sellPostId);
 	}
 }

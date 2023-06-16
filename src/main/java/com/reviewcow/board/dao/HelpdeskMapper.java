@@ -25,5 +25,11 @@ public interface HelpdeskMapper {
 			@Param("limit") int limit);
 	
 	public Helpdesk selecthelpdeskContentsByPostId(Integer postId);
+	
+	public int deleteHelpdsekByPostId(int postId);
+	
+	public int updateHelpdeskByPostId(
+			@Param("content") String content,
+			@Param("postId") int postId);
 }
 

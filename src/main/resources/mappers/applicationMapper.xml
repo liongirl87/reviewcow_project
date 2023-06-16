@@ -48,9 +48,37 @@
 			`memberId` = #{memberId} AND
 			`sellPostId` = #{sellPostId}
  	</delete>
+ 	<select id="selectStatusApplicantsList" parameterType="map" resultType="com.reviewcow.applyproduct.model.ManageApplicants">
+ 	    SELECT 
+ 	    A.`id` sellPostId
+ 	    , A.`productName`
+ 	    , B.`id` applicationId
+ 	    , B.`status` applicationStatus
+ 	    , B.`createdAt` applicationCreatedAt
+ 	    , C.`id` memberId
+ 	    , C.`loginId` memberLoginId
+ 	    , C.`name` memberName
+		FROM 
+			`sell_post` AS A
+		RIGHT JOIN 
+			`application` AS B
+		ON A.`id` = B.`sellPostId`
+        LEFT JOIN
+			`member` AS C
+        ON B.`memberId` = C.`id`     
+		WHERE A.`memberId` = #{memberId}
+		AND B.`status` = #{aprovalCondition}
+		AND TIMESTAMPDIFF(DAY, now(), A.`endDate`) >= 0
+		LIMIT ${skipLimit} ,${limit};
+ 	</select>
  	
- 	
- 	
- 	
+ 	<update id="approvalApplicantBySellpostId" parameterType="map">
+ 		UPDATE `application`
+ 		SET
+ 			`status` = #{status}
+ 		WHERE
+ 			`memberId` = #{memberId}
+ 		AND `sellPostId` = #{sellPostId};		
+ 	</update>
  
  </mapper>

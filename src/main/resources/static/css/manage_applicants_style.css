@@ -1,0 +1,38 @@
+@charset "EUC-KR";
+
+#manage-applicants .manage-div-box1 {
+	border: 1px solid #C0C0C0;
+	border-radius: 10px;
+	width: 700px;
+}
+
+#manage-applicants .manage-div{
+	margin: 0 0 0 20px;
+}
+#manage-applicants .manage-sub-title {
+	font-size: 12pt;
+	font-weight: bold;
+	margin: 10px 15px 0 15px;
+	border-bottom: 1px solid rgb(0,0,0,0.4);
+	padding: 0 0 5px 0;
+}
+
+#manage-applicants .manage-content-parent {
+	padding: 15px 20px 15px 20px;
+}
+
+#manage-applicants .manage-content-div {
+ 	width: 20%; 
+	text-align: center;
+}
+#manage-applicants .manage-content-div-text-number {
+	margin: 15px 0 0 0 ;
+	padding: 0 0 10px 0;
+}
+
+#manage-applicants .manage-right-line {
+	border-right: 1px solid rgb(0,0,0,0.2);
+}
+#manage-applicants .f-red {
+	color: #cc0000;
+}

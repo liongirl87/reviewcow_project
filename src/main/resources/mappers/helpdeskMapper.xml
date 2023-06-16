@@ -82,5 +82,20 @@
  		WHERE
  			`id` = #{postId}
  	</select>
+ 	<delete id="deleteHelpdsekByPostId" parameterType="int">
+ 		DELETE
+	 	FROM
+	 		`helpdesk`
+	 	WHERE
+	 		`id` = #{postId}
+ 	</delete>
+ 	<update id="updateHelpdeskByPostId" parameterType="map">
+ 		UPDATE `helpdesk`
+ 		SET
+ 			`inquiryContent` = #{content}
+ 			, `updatedAt` = NOW()
+ 		WHERE
+ 			`id` = #{postId}
+ 	</update>
  
  </mapper>

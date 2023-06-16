@@ -40,4 +40,21 @@
 		AND B.`status` = 1;  
  </select>
  
+ <select id="selectReviewByMemberIdAndSellPostId" parameterType="map" resultType="com.reviewcow.review.model.Review">
+ 	SELECT
+ 		`id`
+		, `memberId`
+		, `sellPostId`
+		, `reviewPoint`
+		, `reviewImgPath`
+		, `comment`
+		, `createdAt`
+		, `updatedAt`
+	FROM
+		`review`
+	WHERE
+		`memberId` = #{memberId}
+	AND `sellPostId` = #{sellPostId}
+ </select>
+ 
  </mapper>

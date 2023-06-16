@@ -4,7 +4,7 @@
    
 <div class="d-flex justify-content-center">
 	<div id="side-view-right-Tdiv" class="mt-3">
-		<div class="main-title"><i class="xi-angle-left"></i>내정보</div>
+		<div class="main-title"><a href="javascript:history.back()"><i class="xi-angle-left"></i></a>내정보</div>
 		<div class="semi-title">기본정보</div>
 		<div id="form-div">
 			<div class="form-inputBox-pm line-top d-flex align-items-center">
@@ -128,7 +128,7 @@
 						location.reload();
 					}
 				}
-				,error:function(request, request, error) {
+				,error:function(request, status, error) {
 					alert("요청에 실패했습니다 관리자에게 문의주세요");
 				}
 			})

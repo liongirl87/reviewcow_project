@@ -35,7 +35,7 @@
 			</div>
 			<div class="d-flex justify-content-end mt-3">
 				<input type="button" id="helpdeskModifyBtn" class="helpdesk-bot-buttons text-center mr-1" value="수정" onclick="location.href='/board/helpdesk_modify?postId=${helpdesk.id}'">		
-				<input type="button" id="helpdeskDeleteBtn" class="helpdesk-bot-buttons text-center mr-1" value="삭제">		
+				<input type="button" id="helpdeskDeleteBtn" class="helpdesk-bot-buttons text-center mr-1" value="삭제" data-postid="${helpdesk.id}">		
 				<input type="button" class="helpdesk-bot-buttons text-center" value="목록" onclick="location.href='/board/helpdesk_view'">		
 			</div>
 			<div class="helpdesk-reply-div mt-3">
@@ -52,8 +52,27 @@
 </div>
 <script>
 $(document).ready(function(){
-	$('#helpdeskModifyBtn').on('click', function(){
-		alert("ddd");
+	
+	$('#helpdeskDeleteBtn').on('click', function(){
+		let postId = $(this).data("postid");
+		alert(postId);
+		
+		$.ajax({
+			type:"DELETE"
+			, url:"/board/helpdesk_delete"
+			, data: {"postId":postId}
+			, success:function(data){
+				if(data.code == 1){
+					alert("성공");
+					location.href = "/board/helpdesk_view";
+				} else {
+					alert(data.errorMessage);
+				}
+			}
+			, error:function(request, status, error) {
+				alert("삭제실패, 관리자에게 문의");
+			}
+		});
 	});
 
 });

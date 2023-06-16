@@ -72,3 +72,71 @@
 #managePoint-view .mp-contentList-div {
 	min-height: 300px;
 }
+#managePoint-view .small-date-font {
+	font-size: 10pt;
+	color: #A0A0A0;
+}
+
+/* status_product 영역 */
+#managePoint-view .statusProduct-header-childText1 {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+#managePoint-view .statusProduct-header-childText2 {
+	margin:0 0 0 0px;
+	width: 25%;
+}
+#managePoint-view .statusProduct-header-childText3 {
+	margin:0 0 0 0px;
+	width: 40%;
+}
+#managePoint-view .statusProduct-header-childText4 {
+	margin:0 0 0 0px;
+	width: 10%;
+}
+#managePoint-view .statusProduct-header-childText5 {
+	margin:0 0 0 0px;
+	width: 10%;
+}
+/*온라인상품, 기자단,오프라인  */
+#managePoint-view .statusProduct-category-style {
+	font-size: 10px;
+	background-color: #333;
+	border-radius: 10px;
+	color: white;
+	padding: 2px 10px 2px 10px;
+} 
+
+/* status_applicants 영역 */
+#managePoint-view .statusApplicants-header-childText1 {
+	margin:0 0 0 0px;
+	width: 30%;
+}
+#managePoint-view .statusApplicants-header-childText2 {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+#managePoint-view .statusApplicants-header-childText3 {
+	margin:0 0 0 0px;
+	width: 30%;
+}
+#managePoint-view .statusApplicants-header-childText4 {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+#managePoint-view .statusApplicants-header-childText5 {
+	margin:0 0 0 0px;
+	width: 30%;
+}
+#managePoint-view .statusApplicants-btn-style {
+	font-size: 10pt;
+	background-color: white;
+	border: 1px solid #C0C0C0;
+	border-radius: 2px;
+}
+#managePoint-view .statusApplicants-btn-style:hover {
+	background-color: rgba(0,0,0,.05);
+}
+#managePoint-view .displayNone {
+	display:none;
+}

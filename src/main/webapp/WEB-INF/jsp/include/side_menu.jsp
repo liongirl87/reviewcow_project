@@ -10,7 +10,7 @@
 					<c:choose>
 						<c:when test="${member.memberType eq 'businessMember'}">
 							<a href="/sellpost/upload_product_view"><button type="button" class="side-button button-color1 button-margin">체험단 모집</button></a>
-							<a href="#"><button type="button" class="side-button button-color2 button-margin border-bot">체험단 관리</button></a>
+							<a href="/application/manage_applicants_view"><button type="button" class="side-button button-color2 button-margin border-bot">체험단 관리</button></a>
 						</c:when>
 						<c:otherwise>
 							<a href="/application/apply_product_list_view"><button type="button" class="side-button button-color1 button-margin">신청한 체험단</button></a>

@@ -33,4 +33,12 @@ public class HelpdeskBo {
 	public Helpdesk gethelpdeskContentsByPostId(Integer postId) {
 		return helpdeskMapper.selecthelpdeskContentsByPostId(postId);
 	}
+	
+	public boolean deleteHelpdsekByPostId(int postId) {
+		return helpdeskMapper.deleteHelpdsekByPostId(postId) > 0;
+	}
+	
+	public boolean updateHelpdeskByPostId(String content, int postId) {
+		return helpdeskMapper.updateHelpdeskByPostId(content, postId) > 0;
+	}
 }
