@@ -62,6 +62,16 @@
 	color: #333;
 }
 
+#side-view-right-Tdiv .hidden-pw-text {
+	margin: 0px 0 0 330px;
+	font-size: 11px;
+}
+
+#side-view-right-Tdiv .hidden-pw-text1 {
+	margin: 0px 0 0 360px;
+	font-size: 11px;
+}
+
 
 #side-view-right-Tdiv .text-style {
 	margin: 0 0 0 20px;

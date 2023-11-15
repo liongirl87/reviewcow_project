@@ -16,4 +16,28 @@ public interface HelpdeskMapper {
 			@Param("inquiryTitle") String subject,
 			@Param("inquiryContent") String content);
 	public List<Helpdesk> selectHelpdeskWritingListByMemberId(Integer memberId);
+	
+	public int countPointContentsByMemberId(Integer memberId);
+	
+	public List<Helpdesk> selectHelpdeskListByMemberId (
+			@Param("memberId") Integer memberId,
+			@Param("skipLimit") int skipLimit,
+			@Param("limit") int limit);
+	
+	public Helpdesk selecthelpdeskContentsByPostId(Integer postId);
+	
+	public int deleteHelpdsekByPostId(int postId);
+	
+	public int updateHelpdeskByPostId(
+			@Param("content") String content,
+			@Param("postId") int postId);
+	
+	public int countHelpdesk();
+	
+	public List<Helpdesk> selectHelpdeskList(
+			@Param("skipLimit") int skipLimit,
+			@Param("limit") int limit);
+	
+	public int countHelpdeskRepliesByHelpdeskId(int helpdeskId);
 }
+

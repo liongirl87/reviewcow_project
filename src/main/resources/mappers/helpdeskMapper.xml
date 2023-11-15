@@ -24,6 +24,7 @@
  		)
  	
  	</insert>
+ 	
  	<select id="selectHelpdeskWritingListByMemberId" resultType="com.reviewcow.board.model.Helpdesk">
  		SELECT
  			`id`
@@ -31,7 +32,6 @@
 			, `inquiryType`
 			, `inquiryTitle`
 			, `inquiryContent`
-			, `replyOrNot`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -39,5 +39,95 @@
 		WHERE
 			`memberId` = #{memberId}
  	</select>
+ 	
+ 	<select id="countPointContentsByMemberId" resultType="int">
+ 		SELECT count(*)
+ 		FROM
+ 			`helpdesk`
+ 		WHERE
+ 			`memberId` = #{memberId}
+ 	</select>
+ 	
+ 	<select id="selectHelpdeskListByMemberId" parameterType="map" resultType="com.reviewcow.board.model.Helpdesk">
+ 		SELECT
+ 			`id`
+			, `memberId`
+			, `inquiryType`
+			, `inquiryTitle`
+			, `inquiryContent`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`helpdesk`
+ 		WHERE
+			`memberId` = #{memberId}
+		ORDER BY `createdAt` DESC
+		LIMIT ${skipLimit} ,${limit};	
+ 	
+ 	</select>
+ 	
+ 	<select id="selecthelpdeskContentsByPostId" resultType="com.reviewcow.board.model.Helpdesk">
+ 		SELECT
+ 			`id`
+			, `memberId`
+			, `inquiryType`
+			, `inquiryTitle`
+			, `inquiryContent`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`helpdesk`
+ 		WHERE
+ 			`id` = #{postId}
+ 	</select>
+ 	
+ 	<delete id="deleteHelpdsekByPostId" parameterType="int">
+ 		DELETE
+	 	FROM
+	 		`helpdesk`
+	 	WHERE
+	 		`id` = #{postId}
+ 	</delete>
+ 	
+ 	<update id="updateHelpdeskByPostId" parameterType="map">
+ 		UPDATE `helpdesk`
+ 		SET
+ 			`inquiryContent` = #{content}
+ 			, `updatedAt` = NOW()
+ 		WHERE
+ 			`id` = #{postId}
+ 	</update>
+ 	
+ 	<select id="countHelpdesk" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`helpdesk`
+ 	</select>
+ 	
+ 	<select id="selectHelpdeskList" parameterType="map" resultType="com.reviewcow.board.model.Helpdesk">
+ 		SELECT
+ 			`id`
+			,`memberId`
+			,`inquiryType`
+			,`inquiryTitle`
+			,`inquiryContent`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`helpdesk`
+		ORDER BY `createdAt` DESC	
+		LIMIT ${skipLimit} ,${limit};
+ 	</select>
+ 	
+ 	<select id="countHelpdeskRepliesByHelpdeskId" resultType="int">
+	 	SELECT count(*)
+		FROM
+			`helpdesk` AS A
+		RIGHT JOIN `helpdesk_reply` AS B
+		ON A.`id` = B.`helpdeskId`
+		WHERE A.`id` = #{helpdeskId};
+ 	</select>
+ 	
  
  </mapper>

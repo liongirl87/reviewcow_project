@@ -44,8 +44,8 @@
 					</div>
 				</div>
 				<div class="product-info">
-					<div class="d-flex prduct-IN align-items-center">
-						<div class="product-icon">
+					<div class="d-flex prduct-IN align-items-center justify-content-center">
+						<div class="product-icon d-flex align-items-center justify-content-center">
 						<c:choose>
 							<c:when test="${card.sellPost.serviceCategory2Online == 'smartstore'}" >
 								<img src="/static/img/naver_icon.png" alt="스마트스토어" class="product-icon-img">
@@ -76,7 +76,7 @@
 						<div class="product-name">${card.sellPost.productName}</div>
 					</div>
 					<div class="d-flex align-items-center">
-						<div class="sale-per"><fmt:formatNumber value="${card.sellPost.discountRate / card.price * 100}" pattern="#" />%</div>
+						<div class="sale-per"><fmt:formatNumber value="${card.sellPost.discountRate / card.sellPost.sellPrice * 100}" pattern="#" />%</div>
 						<div class="sale-price"><fmt:formatNumber value="${card.price}" type="number" />원</div>
 						<div class="original-price"><fmt:formatNumber value="${card.sellPost.sellPrice}" type="number" />원</div>
 					</div>

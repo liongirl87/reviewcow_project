@@ -1,0 +1,271 @@
+@charset "EUC-KR";
+.top-logo-div {background-color: #A0A0A0; height: 40px;}
+.text-logo {font-size: 20pt; color: white; opacity: 0.7;}
+section {height: 500px;}
+
+a {	text-decoration: none;}
+
+.id-box {
+/* 	position:absolute; */
+	width: 200px;
+	margin: 0 0 0 30px;
+}
+
+.pw-box {
+/* 	position:absolute; */
+	width: 200px;
+	margin: 0 0 0 21px;
+}
+.confirm-btn {
+	border: none;
+	background-color:#1E90FF;
+	color: white;
+	opacity: 0.8;
+	border-radius: 5px;
+	padding: 5px 20px 5px 20px;
+	margin: 5px 0 0 0;
+}
+.confirm-btn:hover {
+	opacity: 1;
+}
+
+.login-box {
+	border:1px solid rgb(0,0,0,0.2);
+	border-radius: 10px;
+	width: 400px;
+	height: 300px;
+	position: relative;
+}
+.login-top-text {
+	border-radius: 10px 10px 0 0;
+	background-color: rgb(0,0,0,0.7);
+	width: 100%;
+	color: white;
+	font-size: 18pt;
+	padding: 5px;
+	
+}
+
+/* admin-sidemenu */
+.admin-side-div {
+	position: relative;
+	background-color: rgb(0,0,0,0.8);
+	position: absolute;
+	width:200px;
+	height: 600px;
+	
+}
+.admin-side-div  .subject-text {
+/* 	font-weight: bold; */
+	font-size: 14pt;
+	margin: 10px 0 0 0;
+	
+}
+
+.admin-side-div  .subject-text:hover,.subject-text-sub:hover {
+	opacity: 1;
+} 
+
+.admin-side-div  .subject-text-div {
+
+	margin: 10px 0 0 -15px;
+}
+.admin-side-div i {
+
+	margin: 5px 0 0 0px;
+}
+.admin-side-div .number-sub-li {
+	margin: 0 0 0 -20px;
+}
+.admin-side-div a {
+ 	text-decoration: none; 
+	color: white;
+	opacity: 0.6;
+}
+
+.admin-side-div ul {
+ list-style: none
+ }
+
+
+/* admin-manage-view */
+.admin-manage-div {
+	margin: 0 0 0 200px;
+}
+
+/* admin-top */
+.admin-top-div {
+	height:50px;
+	width: 100%;
+	background-color: rgb(0,0,0,0.85);
+	font-size: 10pt;
+}
+
+.admin-top-div .admin-border {
+	border-right: 1px solid grey;
+	font-size: 8pt;
+}
+
+/* admin_business_member */
+
+#business-list-div {
+	margin: 50px 0 0 280px;
+}
+#business-list-div .business-list-table {
+	width: 70%;
+}
+#business-list-div .text-div-width0 {
+	width: 10%;
+}
+
+#business-list-div .text-div-width1 {
+	width: 15%;
+}
+#business-list-div .text-div-width2 {
+	width: 15%;
+}
+#business-list-div .text-div-width3 {
+	width: 20%;
+}
+
+#business-list-div .text-div-noticeTitle {
+	width: 40%;
+}
+#business-list-div .text-div-date {
+	width: 30%;
+} 
+
+#business-list-div .text-div-width4 {
+	width: 20%;
+}
+#business-list-div .text-div-width5 {
+	width: 15%;
+}
+
+#business-list-div .text-div-width6 {
+	width: 15%;
+}
+#business-list-div .top-text-div {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 3px;
+	background-color: rgb(0,0,0,.05);
+}
+#business-list-div .bot-line {
+	border-bottom: 1px solid black;
+}
+#business-list-div .top-title {
+	border-right:1px solid #C0C0C0;
+	text-align:center;
+}
+
+#business-list-div .top-title:last-child {
+	border:none;
+}
+#business-list-div .button {
+	font-size: 10pt;
+}
+
+#business-list-div .textarea-div {
+	margin: 0 0 0 50px;
+}
+
+/* admin_helpdesk_detail */
+#helpdesk-detail-top {
+	margin: 50px 0 0 280px;
+}
+
+#helpdesk-detail-top .helpdesk-detail-div {
+	
+	width: 50%;
+}
+
+
+#helpdesk-detail-top .helpdesk-reply-del {
+	margin: 7px 0 0 10px;
+	
+}
+
+#helpdesk-detail-top .helpdesk-subject-div {
+	height:40px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+#helpdesk-detail-top .helpdesk-subject-div:first-child {
+	border-bottom:none;
+}
+#helpdesk-detail-top .hepldesk-subject-title1 {
+	width: 20%;
+	height: 100%;
+	border-right: 1px solid black;
+	background-color: rgb(0,0,0,0.1);
+
+}
+#helpdesk-detail-top .hepldesk-subject-title2 {
+	width: 80%;
+	height: 100%;
+	margin: 0 0 0 10px;
+}
+
+#helpdesk-detail-top .hepldesk-date-div {
+	font-size: 9pt;
+	color: rgb(0,0,0,0.7);
+	border-bottom: 1px solid rgb(0,0,0,0.3);
+}
+#helpdesk-detail-top .hepldesk-content-div {
+	top:100px;
+	border-bottom: 1px solid black;
+}
+#helpdesk-detail-top .hepldesk-content-text {
+	margin: 0 0 100px 0; 	
+}
+
+#helpdesk-detail-top .hepldesk-pre-reply {
+	border: 1px solid black;
+}
+#helpdesk-detail-top .hepldesk-pre-reply-top {
+	border-bottom: 1px solid black;
+	background-color: rgb(0,0,0,0.05);
+}
+#helpdesk-detail-top .hepldesk-pre-reply-date {
+	margin: 5px 0 0 520px;
+	font-size: 10pt;
+}
+
+#helpdesk-detail-top .hepldesk-pre-reply-writer {
+	margin: 0 0 0 10px;
+}
+
+/* admin_write_notice */
+#helpdesk-detail-top .notice-textarea {
+	width: 665px;
+	height: 300px;
+	border: 1px solid #ced4da;
+	resize: none;
+}
+
+#helpdesk-detail-top .notice-select-design {
+	width: 160px;
+	height: 35px;
+	border-radius: 6px;
+} 
+#helpdesk-detail-top .notice-title-input {
+	width: 490px;
+	margin:0 0 0 5px;
+}
+#helpdesk-detail-top .notice-submit-btn {
+	margin: 0 60px 0 0;
+	
+}
+
+
+
+/* 하단 페이징 css */
+/*서브(리스트)_페이지넘버*/
+    .list_number{padding-top:25px; text-align:center; font-size: 10pt}
+    .list_n_menu {padding:3px; MARGIN:3px; TEXT-ALIGN: center}
+    .list_n_menu A {padding:5px 8px 4px 8px; MARGIN: 2px; BORDER: #ccc 1px solid; COLOR: #999; TEXT-DECORATION: none}
+    .list_n_menu A:hover {BORDER:#999 1px solid; COLOR: #666;}
+/*  .list_n_menu A:active {BORDER:#999 1px solid; COLOR: #666;} */
+    .list_n_menu .current {BORDER: #117bff 1px solid; FONT-WEIGHT: bold; MARGIN: 2px; COLOR: #036cb4 !important; }
+    .list_n_menu .disabled {BORDER: #eee 1px solid; padding:5px 8px 4px 8px; MARGIN: 2px; COLOR: #ddd; pointer-events: none; cursor: default !important;}

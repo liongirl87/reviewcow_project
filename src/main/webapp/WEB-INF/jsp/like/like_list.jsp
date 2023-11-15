@@ -6,7 +6,7 @@
 <!-- list_review_style.css 같이사용 -->
 <div id="reviewList"class="d-flex justify-content-center like_product_list">
 	<div id="side-view-right-Tdiv" class="mt-3">
-		<div class="main-title"><i class="xi-angle-left"></i>찜목록</div>
+		<div class="main-title"><a href="javascript:history.back()"><i class="xi-angle-left"></i></a>찜목록</div>
 		<div class="main-table-div-applyProduct">
 			<div class="form-inputBox-pm d-flex align-items-center top-header-div">
 					<div class="text-margin01-applyList text-center"></div>
@@ -33,11 +33,24 @@
 						<div class="text-margin02-circle text-center">기자단</div>
 					</c:when>
 				</c:choose>
-				<div class="text-margin03-applyList text-center"><a href="#">${likeList.productName}</a></div>
-						<div class="text-margin04-applyList text-center font-weight-bold">진행중</div>
-				<div class="text-margin05-applyList text-center"><a href="#" class="cancelLikeBtn" data-postid="${likeList.id}"><i class="xi-close-circle"></i></a></div>
+				<div class="text-margin03-applyList text-center"><a href="/sellpost/product_detail_view?postId=${likeList.id}">${likeList.productName}</a></div>
+				<div class="text-margin04-applyList text-center"><a href="#" class="cancelLikeBtn" data-postid="${likeList.id}"><i class="xi-close-circle"></i></a></div>
 			</div>
 			</c:forEach>
+			<!-- 페이징 버튼 -->
+			<div class="list_number">
+	    		<div>
+		        	<div class="list_n_menu">
+		        		<a href="/like_list_view?postPage=${postPaging.nowPageNum - 1}" class="${postPaging.nowPageNum == 1 ? "disabled":"" }"><  이전</a>
+			        	<c:forEach begin="${postPaging.startPage}" end="${postPaging.endPage}" var="num">
+			        	<a href="/like_list_view?postPage=${num}" class="${postPaging.nowPageNum == num ? "current":"" }">${num}</a>
+			        	</c:forEach>
+			        	<a href="/like_list_view?postPage=${postPaging.nowPageNum + 1}" class="${postPaging.nowPageNum == postPaging.totalPages ? "disabled":"" }">다음  >
+			        	</a>
+		        	</div>
+	    		</div>
+			</div>
+			<!--  페이징 버튼 끝 -->
 		</div>	
 	</div>
 </div>
@@ -46,22 +59,27 @@
 $(document).ready(function(){
 	$('.cancelLikeBtn').on('click', function(e){
 		e.preventDefault;
+		let delLikeSellPostId = "/like/" + $(this).data("postid");
+		let result = confirm("해당 상품을 찜목록에서 삭제 하시겠습니까?")
 		
-		let likeSellPostId = "/like/" + $(this).data("postid");
-	    
+		if(result) {
+			
+		} else {
+			return;
+		}
+		
  		$.ajax({
-			url: likeSellPostId
- 		
+			url: delLikeSellPostId
 			,success:function(data) {
 				if(data.code == 1) {
-					alert("좋아요성공");
+					alert("삭제하였습니다.");
 					location.reload();
 				} else {
-					alert("좋아요 실패, 로그인 해주세요");
+					alert("삭제 실패, 로그인 해주세요");
 				}
 			}
 			,error:function(request, status, error) {
-				alert("좋아요에 실패하였습니다 관리자에게 문의해주세요")
+				alert("삭제에 실패하였습니다 관리자에게 문의해주세요")
 			}
 		}); 
 	});

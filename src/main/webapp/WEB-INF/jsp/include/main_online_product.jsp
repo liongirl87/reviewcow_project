@@ -11,13 +11,13 @@
 	<div class="d-flex justify-content-center">
 		<div class="online-product d-flex justify-content-center"><!-- w:1200px -->
 			<div class="top-category-bar d-flex"><!--w:100%  -->
-				<div class="top-category-child" onclick="moveCategoryOnline(1)"><span>스마트스토어</span></div>
-				<div class="top-category-child" onclick="moveCategoryOnline(2)">쿠팡</div>
-				<div class="top-category-child" onclick="moveCategoryOnline(3)">지마켓</div>
-				<div class="top-category-child" onclick="moveCategoryOnline(4)">옥션</div>
-				<div class="top-category-child" onclick="moveCategoryOnline(5)">11번가</div>
-				<div class="top-category-child" onclick="moveCategoryOnline(6)">위메프</div>
-				<div class="top-category-child" onclick="moveCategoryOnline(7)">그외</div>
+				<div class="top-category-child ${onlineCategory == 'smartstore' ? 'active':'' }" onclick="moveCategoryOnline(1)">스마트스토어</div>
+				<div class="top-category-child ${onlineCategory == 'coupang' ? 'active':'' }" onclick="moveCategoryOnline(2)">쿠팡</div>
+				<div class="top-category-child ${onlineCategory == 'gmarket' ? 'active':'' }" onclick="moveCategoryOnline(3)">지마켓</div>
+				<div class="top-category-child ${onlineCategory == 'auction' ? 'active':'' }" onclick="moveCategoryOnline(4)">옥션</div>
+				<div class="top-category-child ${onlineCategory == '11st' ? 'active':'' }" onclick="moveCategoryOnline(5)">11번가</div>
+				<div class="top-category-child ${onlineCategory == 'wemakeprice' ? 'active':'' }" onclick="moveCategoryOnline(6)">위메프</div>
+				<div class="top-category-child ${onlineCategory == 'other' ? 'active':'' }" onclick="moveCategoryOnline(7)">그외</div>
 			</div>
 		</div>
 	</div>
@@ -89,7 +89,7 @@
 						<div class="product-name">${card.sellPost.productName}</div>
 					</div>
 					<div class="d-flex align-items-center">
-						<div class="sale-per"><fmt:formatNumber value="${card.sellPost.discountRate / card.price * 100}" pattern="#" />%</div>
+						<div class="sale-per"><fmt:formatNumber value="${card.sellPost.discountRate / card.sellPost.sellPrice * 100}" pattern="#" />%</div>
 						<div class="sale-price"><fmt:formatNumber value="${card.price}" type="number" />원</div>
 						<div class="original-price"><fmt:formatNumber value="${card.sellPost.sellPrice}" type="number" />원</div>
 					</div>
@@ -108,7 +108,7 @@
 	</div>
 	<div class="deadline-more d-flex justify-content-center">
 		<div class="more-product-btn">
-		<a href="#">온라인상품 더 보기</a>
+		<a href="/main/online_product_view">온라인상품 더 보기</a>
 		</div>
 	</div>
 </div>

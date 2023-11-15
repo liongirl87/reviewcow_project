@@ -17,9 +17,15 @@ public class FileManagerService {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	// 실제 업로드 된 이미지가 저장될 경로(서버) - 상수
+<<<<<<< HEAD
 	//public static final String FILE_UPLOAD_PATH = "C:\\7_spring_project_solo\\reviewcow\\workspace\\images/";
 	
 	public static final String FILE_UPLOAD_PATH = "/home/ec2-user/images/";
+=======
+	// 커밋을 위한 주석
+	public static final String FILE_UPLOAD_PATH = "C:\\7_spring_project_solo\\reviewcow\\workspace\\images/";
+	//public static final String FILE_UPLOAD_PATH = "/home/ec2-user/images/";
+>>>>>>> master
 	
 	// input:MultipartFile(이미지파일), loginId
 	// output:image path(String)

@@ -3,7 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.reviewcow.sellpost.dao.SellPostMapper">
- 	<insert id="selectSellPost" parameterType="com.reviewcow.sellpost.model.SellPostUploadForm">
+ 	<insert id="insertSellPost" parameterType="com.reviewcow.sellpost.model.SellPostUploadForm">
  		INSERT INTO `sell_post`
  		(	
 			`memberId`
@@ -12,7 +12,6 @@
 			,`serviceCategory2Offline`
 			,`productName`
 			,`numberOfApplicants`
-			,`salesMethod`
 			,`startDate`
 			,`endDate`
 			,`productDescriptions`
@@ -35,7 +34,6 @@
 			,#{serviceCategory2Offline}
 			,#{productName}
 			,#{numberOfApplicants}
-			,#{salesMethod}
 			,#{startDate}
 			,#{endDate}
 			,#{productDescriptions}
@@ -61,7 +59,6 @@
 			,`serviceCategory2Offline`
 			,`productName`
 			,`numberOfApplicants`
-			,`salesMethod`
 			,`startDate`
 			,`endDate`
 			,`productDescriptions`
@@ -73,8 +70,7 @@
 			,`storeAddress`
 			,`scriptFees`
 			,`corpsFile`
-			,`nowApplicants`
-			,`aprovalCondition`
+			,`approvalCondition`
 			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
@@ -82,6 +78,7 @@
 			`sell_post`
 		WHERE `serviceCategory1` = 'onlineProduct'
 		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		AND `approvalCondition` = 1
 		ORDER BY TIMESTAMPDIFF(DAY, now(), `endDate`)
 		LIMIT 8;
  	</select>
@@ -103,13 +100,14 @@
 		WHERE B.`memberId` = #{memberId}
 		</if>
 		AND TIMESTAMPDIFF(DAY, now(), A.`endDate`) >= 0
+		AND `approvalCondition` = 1
 		GROUP BY B.`sellPostId`
 		ORDER BY count(B.`sellPostId`) DESC
 		<if test="memberId == null">
 		LIMIT 8;
 		</if>
  	</select>
-
+ 	
 	<select id="selectLikeSellPostListbyMemberId" resultType="com.reviewcow.sellpost.model.SellPost">
 		SELECT A.*, B.`createdAt` likeCreatedAt 
 		FROM `sell_post` AS A
@@ -119,6 +117,29 @@
 		AND B.`memberId` = #{memberId}
 		ORDER BY B.`createdAt` DESC;
 	</select>
+	
+	<select id="selectLikeSellPostListByMemberIdForPaging" parameterType="map" resultType="com.reviewcow.sellpost.model.SellPost">
+		SELECT A.*, B.`createdAt` likeCreatedAt 
+		FROM `sell_post` AS A
+		RIGHT JOIN `product_like` AS B
+		ON A.id = B.sellPostId
+		WHERE TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		AND B.`memberId` = #{memberId}
+		ORDER BY B.`createdAt` DESC
+		LIMIT ${skipLimit} ,${limit};	
+	</select>
+	
+	
+	<select id="countLikeSellPostListbyMemberId" resultType="int">
+		SELECT count(*) 
+		FROM `sell_post` AS A
+		RIGHT JOIN `product_like` AS B
+		ON A.id = B.sellPostId
+		WHERE TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		AND B.`memberId` = #{memberId}
+		ORDER BY B.`createdAt` DESC;
+	</select>
+	
  	
  	<select id="selectSellPostListOnlineProductByCategory" resultType="com.reviewcow.sellpost.model.SellPost">
  		SELECT 
@@ -129,7 +150,6 @@
 			,`serviceCategory2Offline`
 			,`productName`
 			,`numberOfApplicants`
-			,`salesMethod`
 			,`startDate`
 			,`endDate`
 			,`productDescriptions`
@@ -141,8 +161,7 @@
 			,`storeAddress`
 			,`scriptFees`
 			,`corpsFile`
-			,`nowApplicants`
-			,`aprovalCondition`
+			,`approvalCondition`
 			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
@@ -151,8 +170,11 @@
 		WHERE
 			`serviceCategory2Online` = #{categoryOnline2}
 			AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+			AND `approvalCondition` = 1
 			ORDER BY TIMESTAMPDIFF(DAY, `startDate`, `endDate`)
-			LIMIT 8;			
+			<if test="limit == null">
+			LIMIT 8;
+			</if>			
  	</select>
  	
  	 <select id="selectSellPostListOfflineProductByCategory" resultType="com.reviewcow.sellpost.model.SellPost">
@@ -164,7 +186,6 @@
 			,`serviceCategory2Offline`
 			,`productName`
 			,`numberOfApplicants`
-			,`salesMethod`
 			,`startDate`
 			,`endDate`
 			,`productDescriptions`
@@ -176,8 +197,7 @@
 			,`storeAddress`
 			,`scriptFees`
 			,`corpsFile`
-			,`nowApplicants`
-			,`aprovalCondition`
+			,`approvalCondition`
 			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
@@ -187,7 +207,10 @@
 			`serviceCategory2Offline` = #{categoryOffline2}
 			AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
 			ORDER BY TIMESTAMPDIFF(DAY, `startDate`, `endDate`)
-			LIMIT 8;			
+			AND `approvalCondition` = 1
+			<if test="limit == null">
+			LIMIT 8;		
+			</if>	
  	</select>
   	
  	 
@@ -200,7 +223,6 @@
 			,`serviceCategory2Offline`
 			,`productName`
 			,`numberOfApplicants`
-			,`salesMethod`
 			,`startDate`
 			,`endDate`
 			,`productDescriptions`
@@ -212,8 +234,7 @@
 			,`storeAddress`
 			,`scriptFees`
 			,`corpsFile`
-			,`nowApplicants`
-			,`aprovalCondition`
+			,`approvalCondition`
 			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
@@ -222,6 +243,7 @@
 		WHERE
 			`serviceCategory1` = "pressCorps"
 			AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+			AND `approvalCondition` = 1
 			ORDER BY TIMESTAMPDIFF(DAY, `startDate`, `endDate`)
 			LIMIT 8;			
  	</select>
@@ -245,7 +267,6 @@
 			,`serviceCategory2Offline`
 			,`productName`
 			,`numberOfApplicants`
-			,`salesMethod`
 			,`startDate`
 			,`endDate`
 			,`productDescriptions`
@@ -257,8 +278,7 @@
 			,`storeAddress`
 			,`scriptFees`
 			,`corpsFile`
-			,`nowApplicants`
-			,`aprovalCondition`
+			,`approvalCondition`
 			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
@@ -267,5 +287,197 @@
 		WHERE
 			`id` = #{postId}			
  	</select>
+ 	
+ 	<select id="selectApplyProductListbyMemberIdForPaging" parameterType="map" resultType="com.reviewcow.sellpost.model.SellPost">
+		SELECT A.*, B.`status`,  B.`createdAt` applicationCreatedAt
+		FROM `sell_post` AS A
+		LEFT JOIN `application` AS B
+		ON A.id = B.sellPostId
+		WHERE B.`memberId` = #{memberId}
+		ORDER BY B.`createdAt` DESC
+		LIMIT ${skipLimit} ,${limit};
+ 	</select>
+ 	
+ 	<select id="countSellPostStatusbyMemberId" parameterType="map" resultType="int">
+ 		SELECT count(*)
+		FROM 
+			`sell_post`
+		WHERE 
+			`memberId` = #{memberId}
+		<if test='approvalCondition == 4'>
+		AND approvalCondition = 1
+		<![CDATA[AND TIMESTAMPDIFF(DAY, now(), `endDate`) < 0]]> 
+		</if>
+		<if test="approvalCondition == 0">
+		AND approvalCondition = #{approvalCondition}
+		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		</if>
+		<if test="approvalCondition == 1">
+		AND approvalCondition = #{approvalCondition}
+		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		</if>
+		<if test="approvalCondition == 2 or approvalCondition == 3">
+		AND approvalCondition = #{approvalCondition}
+		</if>
+ 	</select>
+ 	
+ 	<select id="countApplicantsStatusByMemberId" parameterType="map" resultType="int">
+ 		SELECT 
+	 	    count(*)
+		FROM 
+			`sell_post` AS A
+		RIGHT JOIN 
+			`application` AS B
+		ON A.`id` = B.`sellPostId`
+        RIGHT JOIN
+			`member` AS C
+        ON B.`memberId` = C.`id`     
+		WHERE A.`memberId` = #{memberId}
+		<if test="approvalCondition == 1 or approvalCondition == 2 or approvalCondition == 3 or approvalCondition == 4">
+		AND (A.`approvalCondition` = 1
+		OR A.`approvalCondition` = 4
+		OR A.`approvalCondition` = 3)
+		</if>
+		<if test="approvalCondition == 0">
+		AND A.`approvalCondition` = 1
+		AND TIMESTAMPDIFF(DAY, now(), A.`endDate`) >= 0
+		</if>
+		AND B.`status` = #{approvalCondition}
+
+ 	</select>
+ 	
+ 	<select id="selectSellPostListStatusByMemberId" parameterType="map" resultType="com.reviewcow.sellpost.model.SellPost">
+ 		SELECT
+ 			`id`
+			,`memberId`
+			,`serviceCategory1`
+			,`serviceCategory2Online`
+			,`serviceCategory2Offline`
+			,`productName`
+			,`numberOfApplicants`
+			,`startDate`
+			,`endDate`
+			,`productDescriptions`
+			,`thumbnailImgPath`
+			,`productUrl`
+			,`sellPrice`
+			,`discountRate`
+			,`storeName`
+			,`storeAddress`
+			,`scriptFees`
+			,`corpsFile`
+			,`approvalCondition`
+			,`cancelBySeller`
+			,`createdAt`
+			,`updatedAt`
+		FROM 
+			`sell_post`
+		WHERE 
+			`memberId` = #{memberId}
+		<if test='approvalCondition == 4'>
+		AND approvalCondition = 1
+		<![CDATA[AND TIMESTAMPDIFF(DAY, now(), `endDate`) < 0]]> 
+		OR approvalCondition = 4
+		</if>
+		<if test="approvalCondition == 0">
+		AND approvalCondition = #{approvalCondition}
+		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		</if>
+		<if test="approvalCondition == 1">
+		AND approvalCondition = #{approvalCondition}
+		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		</if>
+		<if test="approvalCondition == 2 or approvalCondition == 3">
+		AND approvalCondition = #{approvalCondition}
+		</if>
+		LIMIT ${skipLimit} ,${limit};
+ 	</select>
+	
+	<select id="countSellPostListStatusByMemberId" parameterType="map" resultType="int">
+ 		SELECT
+ 			count(*)
+		FROM 
+			`sell_post`
+		WHERE 
+			`memberId` = #{memberId}
+		<if test='approvalCondition == 4'>
+		AND approvalCondition = 1
+		<![CDATA[AND TIMESTAMPDIFF(DAY, now(), `endDate`) < 0]]> 
+		OR approvalCondition = 4
+		</if>
+		<if test="approvalCondition == 0">
+		AND approvalCondition = #{approvalCondition}
+		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		</if>
+		<if test="approvalCondition == 1">
+		AND approvalCondition = #{approvalCondition}
+		AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
+		</if>
+		<if test="approvalCondition == 2 or approvalCondition == 3">
+		AND approvalCondition = #{approvalCondition}
+		</if>
+ 	</select>
+ 	
+ 	<select id="selectNumberSellPostApplicantNumberBySellPostId" resultType="int">
+ 		SELECT 
+ 			`numberOfApplicants`
+ 		FROM 
+ 			`sell_post`
+        WHERE `id` = #{sellPostId};
+ 	</select>
+ 	
+ 	
+ 	
+ 	<select id="countSellPostBeforeApproval" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+			`sell_post`
+		<if test="allPost == 0">	
+		WHERE
+			`approvalCondition` = 0
+		</if>
+ 	</select>
+ 	
+ 	<select id="selectSellPostListBeforeApproval" parameterType="map" resultType="com.reviewcow.sellpost.model.SellPost">
+ 		SELECT
+ 			 `id`
+			,`memberId`
+			,`serviceCategory1`
+			,`serviceCategory2Online`
+			,`serviceCategory2Offline`
+			,`productName`
+			,`numberOfApplicants`
+			,`startDate`
+			,`endDate`
+			,`productDescriptions`
+			,`thumbnailImgPath`
+			,`productUrl`
+			,`sellPrice`
+			,`discountRate`
+			,`storeName`
+			,`storeAddress`
+			,`scriptFees`
+			,`corpsFile`
+			,`approvalCondition`
+			,`cancelBySeller`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`sell_post`
+		<if test="status == 0">
+		WHERE
+			`approvalCondition` = 0
+		</if>
+ 		LIMIT ${skipLimit} ,${limit};
+ 	</select>
+ 	
+ 	<update id="approveSellPost" parameterType="map">
+ 		UPDATE `sell_post`
+ 			SET
+ 				`approvalCondition` = #{approvalCondition}
+ 			WHERE
+ 				`id` = #{id}
+ 	</update>
 
  </mapper>

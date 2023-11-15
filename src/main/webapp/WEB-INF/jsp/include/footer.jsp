@@ -6,15 +6,15 @@
 	<!-- width:1200px -->
 	<div id="footer">
 		<div class="d-flex justify-content-between">
-			<div class="footer01 footer-logo">
-			logo-bottom
+			<div class="footer01 footer-logo footer-mini-logotext">
+			YSY주식회사
 			</div>
 			<div>
-				<ul class="footer01 ">
+				<ul class="footer01">
 					<li class=""><a href="#" class="">회사소개</a></li>
 					<li class=""><a href="#" class="">이용가이드</a></li>
-					<li class=""><a href="#" class="">공지사항</a></li>
-					<li class=""><a href="#" class="">고객센터</a></li>
+					<li class=""><a href="/board/notice_list" class="">공지사항</a></li>
+					<li class=""><a href="/board/helpdesk_view" class="">고객센터</a></li>
 				</ul>
 			</div>
 		</div>

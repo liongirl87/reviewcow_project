@@ -5,17 +5,17 @@
 <div id="mainOfflineProduct" class="mainView-i-style">
 	<div class="deadline d-flex justify-content-center">
 		<div class="title1">
-		체험단 모집
+		오프라인 체험단
 		</div>
 	</div>
 	<div class="d-flex justify-content-center">
 		<div class="online-product d-flex justify-content-center"><!-- w:1200px -->
 			<div class="top-category-bar d-flex"><!--w:100%  -->
-				<div class="top-category-child" onclick="moveCategory(1)"><span>카페</span></div>
-				<div class="top-category-child" onclick="moveCategory(2)">맛집</div>
-				<div class="top-category-child" onclick="moveCategory(3)">여행</div>
-				<div class="top-category-child" onclick="moveCategory(4)">뷰티</div>
-				<div class="top-category-child" onclick="moveCategory(5)">그외</div>
+				<div class="top-category-child ${offlineCategory == 'cafe' ? 'active':'' }" onclick="moveCategory(1)">카페</div>
+				<div class="top-category-child ${offlineCategory == 'foodstore' ? 'active':'' }" onclick="moveCategory(2)">맛집</div>
+				<div class="top-category-child ${offlineCategory == 'travel' ? 'active':'' }" onclick="moveCategory(3)">여행</div>
+				<div class="top-category-child ${offlineCategory == 'beauty' ? 'active':'' }" onclick="moveCategory(4)">뷰티</div>
+				<div class="top-category-child ${offlineCategory == 'other' ? 'active':'' }" onclick="moveCategory(5)">그외</div>
 			</div>
 		</div>
 	</div>
@@ -80,7 +80,7 @@
 	</div>
 	<div class="deadline-more d-flex justify-content-center">
 		<div class="more-product-btn">
-		<a href="#">체험단 더 보기</a>
+		<a href="/main/offline_product_view">체험단 더 보기</a>
 		</div>
 	</div>
 </div>
@@ -96,7 +96,7 @@ $(document).ready(function(){
 		} else if (n == 4) {
 			$("#mainOfflineProduct").load("/sellpost/main_changeoffline_category2?categoryOffline2=beauty");
 		} else if (n == 5) {
-			$("#mainOfflineProduct").load("/sellpost/main_changeoffine_category2?categoryOffline2=other");
+			$("#mainOfflineProduct").load("/sellpost/main_changeoffline_category2?categoryOffline2=other");
 		}
 	};
 });

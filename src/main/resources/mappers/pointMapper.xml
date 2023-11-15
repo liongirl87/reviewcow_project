@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.reviewcow.point.dao.PointMapper">
+ 	<select id="selectPointListByMemberId" resultType="com.reviewcow.point.model.Point">
+ 		SELECT
+ 			`id`
+			, `memberId`
+			, `sellPostId`
+			, `point`
+			, `sort`
+			, `status`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`point`
+		WHERE
+			`memberId` = #{memberId}
+		ORDER BY `createdAt` DESC;		
+ 	</select>
+ 	
+ 	<select id="selectNowPointByMemberId" resultType="int">
+ 		SELECT COALESCE( sum(`point`) , 0)
+ 		FROM `point`
+        WHERE `memberId` = #{memberId}
+        AND `status` = 1;
+ 	</select>
+ 	
+ 	<select id="countPointContentsByMemberId" parameterType="map" resultType="int">
+ 		SELECT count(*)
+ 		FROM `point`
+ 		WHERE `memberId` = #{memberId}
+ 		<if test="status != null">
+		AND `status` = #{status} 		
+ 		</if>
+ 		
+ 	</select>
+ 	
+ 	<select id="selectPointListByMemberIdForPaging" parameterType="map" resultType="com.reviewcow.point.model.Point">
+ 		SELECT
+ 			`id`
+			, `memberId`
+			, `sellPostId`
+			, `point`
+			, `sort`
+			, `status`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`point`
+		WHERE
+			`memberId` = #{memberId}
+		<if test="status != null">
+		AND `status` = #{status} 		
+ 		</if>	
+		ORDER BY `createdAt` DESC
+		
+		LIMIT #{skipLimit} ,#{limit};		
+ 	</select>
+ 	<insert id="addPointByMemberIdAndSellPostId" parameterType="map">
+ 	INSERT INTO `point`
+ 	(
+		`memberId`
+		, `sellPostId`
+		, `point`
+		, `sort`
+		, `status`
+		, `createdAt`
+		, `updatedAt`
+ 	)
+ 	VALUES
+ 	(
+ 		#{memberId}
+ 		, #{sellPostId}
+ 		, #{point}
+ 		, #{sort}
+ 		, 1
+ 		, NOW()
+ 		, NOW()
+ 	)
+ 	</insert>
+ 	
+ 	<insert id="insertPointByMemberId" parameterType="map" useGeneratedKeys="true" keyProperty="pointId" keyColumn="id">
+ 	 	INSERT INTO `point`
+ 	(
+		`memberId`
+		, `point`
+		, `sort`
+		, `status`
+		, `createdAt`
+		, `updatedAt`
+ 	)
+ 	VALUES
+ 	(
+ 		#{memberId}
+ 		, #{point}
+ 		, #{sort}
+ 		, 0
+ 		, NOW()
+ 		, NOW()
+ 	)
+ 	</insert>
+ 	
+ 	<insert id="withdrawPointByPointId" parameterType="map">
+ 		INSERT INTO `point_withdraw`
+ 		(
+ 			`pointId`
+			, `bank`
+			, `depositor`
+			, `accountNumber`
+			, `createdAt`
+			, `updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{pointId}
+ 			, #{bank}
+ 			, #{depositor}
+ 			, #{accountNumber}
+ 			, NOW()
+ 			, NOW()
+ 		)
+ 	</insert>
+ 	<select id="countChargePointBeforeApproval" parameterType="map" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`point`
+ 		WHERE
+ 			`sort` = #{sort}
+ 		AND `status` = #{status}			
+ 	</select>
+ 	
+ 	<select id="selectChargePointBeforeApproval" parameterType="map" resultType="com.reviewcow.point.model.Point">
+ 		SELECT
+ 			`id`
+			, `memberId`
+			, `sellPostId`
+			, `point`
+			, `sort`
+			, `status`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`point`
+		<if test="sort == 0 or sort == 2 or sort == 4">
+		WHERE
+			`point` >= 0
+		</if>
+		<if test="sort == 1 or sort == 3 or sort == 5">
+		WHERE
+		<![CDATA[`point` < 0]]> 
+		</if>
+		AND `status` = #{status}
+		ORDER BY `createdAt` DESC
+		LIMIT #{skipLimit} ,#{limit};
+ 	</select>
+ 
+ 	<update id="approvalChargePoint" parameterType="map">
+ 		UPDATE `point`
+ 		SET
+ 			`status` = #{approvalCondition}
+ 		WHERE
+ 			`id` = #{id} 
+ 	</update>
+ 	
+ 	<insert id="insertPointDepositByPointId" parameterType="map">
+ 		INSERT INTO `point_deposit`
+	 	(
+			`pointId`
+			, `methodsOfPayment`
+			, `createdAt`
+			, `updatedAt`
+		 )
+		 VALUES
+		 (
+		 	#{pointId}
+		 	, #{methodsOfPayment}
+		 	, NOW()
+		 	, NOW()
+		 )	
+ 	</insert>
+ 	
+ 	
+ </mapper>

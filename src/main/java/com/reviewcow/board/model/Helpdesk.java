@@ -13,7 +13,6 @@ public class Helpdesk {
 	private String inquiryType;
 	private String inquiryTitle;
 	private String inquiryContent;
-	private int replyOrNot;
 	private Date createdAt;
 	private Date updatedAt;
 }

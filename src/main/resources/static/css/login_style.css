@@ -43,8 +43,7 @@
 
 #login .login-btn:hover {
 	border: none;
-	background-color: rgb(210,210,210);
-	color: #333;
+	background-color: rgb(0,0,0,0.7);
 }
 #login .small-btn-style:hover {
 	background-color: #000;

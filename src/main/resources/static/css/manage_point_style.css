@@ -9,23 +9,33 @@
 	position: absolute;
 	width: 110px;
 	height: 30px;
-	background-color: #6495ED;
+	background-color: #1E90FF;
 	border: none;
 	border-radius: 8px;
 	margin: 20px 20px 0 84%;
 	color: white;
 	font-size: 10pt;
+	opacity: 0.8;
 }
 #managePoint-view #withdrawPointBtn {
 	position: absolute;
 	width: 110px;
 	height: 30px;
-	background-color: #6495ED;
+	background-color:#FF6666;
 	border: none;
 	border-radius: 8px;
 	margin: 20px 20px 0 67.7%;
 	color: white;
 	font-size: 10pt;
+	opacity: 0.8;
+}
+
+#managePoint-view #withdrawPointBtn:hover {
+	opacity: 1;
+}
+
+#managePoint-view #chargePointBtn:hover {
+	opacity: 1;
 }
 
 #managePoint-view .mp-bottom-text-line {
@@ -56,9 +66,20 @@
 }
 
 #managePoint-view .mp-menu {
-	width: 12%;
+	width: 25%;
 	text-align:center;
 	border-right:1px solid #C0C0C0;
+}
+
+#managePoint-view .mp-menu-select {
+	background-color: #C0C0C0;
+	font-weight: bold;
+}
+
+
+#managePoint-view .mp-menu:hover {
+	background-color: #C0C0C0;
+	font-weight: bold;
 }
 
 #managePoint-view .mp-menu:last-child {
@@ -71,4 +92,195 @@
 
 #managePoint-view .mp-contentList-div {
 	min-height: 300px;
+}
+#managePoint-view .small-date-font {
+	font-size: 10pt;
+	color: #A0A0A0;
+}
+
+/* status_product 영역 */
+#managePoint-view .statusProduct-header-childText1 {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+#managePoint-view .statusProduct-header-childText2 {
+	margin:0 0 0 0px;
+	width: 25%;
+}
+#managePoint-view .statusProduct-header-childText3 {
+	margin:0 0 0 0px;
+	width: 40%;
+}
+#managePoint-view .statusProduct-header-childText4 {
+	margin:0 0 0 0px;
+	width: 10%;
+}
+#managePoint-view .statusProduct-header-childText5 {
+	margin:0 0 0 0px;
+	width: 10%;
+}
+
+#managePoint-view .statusProduct-header-approval-childText1 {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+
+/*온라인상품, 기자단,오프라인  */
+#managePoint-view .statusProduct-category-style {
+	font-size: 10px;
+	background-color: #333;
+	border-radius: 10px;
+	color: white;
+	padding: 2px 10px 2px 10px;
+} 
+
+/* status_applicants 영역 */
+#managePoint-view .statusApplicants-header-childText1 {
+	margin:0 0 0 0px;
+	width: 30%;
+}
+#managePoint-view .statusApplicants-header-childText2 {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+#managePoint-view .statusApplicants-header-childText3 {
+	margin:0 0 0 0px;
+	width: 30%;
+}
+#managePoint-view .statusApplicants-header-childText4 {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+#managePoint-view .statusApplicants-header-childText5 {
+	margin:0 0 0 0px;
+	width: 30%;
+}
+
+#managePoint-view .statusApplicants-header-childText1-ap4 {
+	margin:0 0 0 0px;
+	width: 20%;
+}
+#managePoint-view .statusApplicants-header-childText2-ap4 {
+	margin:0 0 0 0px;
+	width: 15%;
+}
+#managePoint-view .statusApplicants-header-childText3-ap4 {
+	margin:0 0 0 0px;
+	width: 30%;
+}
+#managePoint-view .statusApplicants-header-childText4-ap4 {
+	margin:0 0 0 0px;
+	width: 30%;
+}
+#managePoint-view .statusApplicants-header-childText5-ap4 {
+	margin:0 0 0 0px;
+	width: 30%;
+}
+
+.product-list-postname:hover {
+	font-weight:bold !important;
+}
+
+
+
+#managePoint-view .statusApplicants-btn-style {
+	font-size: 10pt;
+	background-color: white;
+	border: 1px solid #C0C0C0;
+	border-radius: 2px;
+}
+
+
+
+#managePoint-view .statusApplicants-btn-style-notsize {
+	background-color: white;
+	border: 1px solid #C0C0C0;
+	border-radius: 2px;
+}
+
+#managePoint-view .statusApplicants-btn-style-notsize:hover {
+	background-color: rgba(0,0,0,.05);
+}
+
+
+#managePoint-view .statusApplicants-btn-style:hover {
+	background-color: rgba(0,0,0,.05);
+}
+#managePoint-view .displayNone {
+	display:none;
+}
+#managePoint-view .rotation {
+	transform: rotate( 90deg );
+	transition: all ease 0.5s;
+}
+
+#managePoint-view .remove-rotation {
+	transform: rotate( -90deg );
+	
+}
+#managePoint-view i {
+	transition: all ease 0.5s;
+}
+
+#managePoint-view i.star {
+  color: #e6e6e6;
+  font-size: 16px;
+}
+#managePoint-view i.active {
+  color: #ff9c1a;
+}
+#managePoint-view .star-div {
+	margin:0 0 0 0px;
+}
+
+#managePoint-view .review-image-div {
+	width: 70%;
+	overflow: hidden;
+	border-radius: 30px;
+}
+#managePoint-view .review-image {
+	object-fit: cover;
+	width: 100%;
+}
+#managePoint-view .review-grey-div {
+	background-color:rgb(0,0,0,0.035);
+	padding: 30px 20px 30px 20px;
+	border-radius: 10px;
+}
+#managePoint-view .reviewCreatedAt-text {
+	color:rgb(0,0,0,0.4);
+}
+
+#managePoint-view .member-profile-img {
+	width: 35px;
+	height: 35px;
+	background-color:rgb(0,0,0,0.035);
+	border-radius: 50%;
+}
+
+#managePoint-view .review-point-btn-div {
+	margin: 10px 0 0 368px;
+}
+
+/* status_product 영역 */
+#managePoint-view .applicants-slide-div {
+	margin: 0 0 0 55px;
+	font-size: 10pt;
+	color: rgb(0,0,0,0.7);
+}
+#managePoint-view .applicants-slide-div-childText1 {
+	width: 30%;
+	margin: 0 0 0 -10px;
+}
+#managePoint-view .applicants-slide-div-childText2 {
+	width: 40%;
+	margin: 0 0 0 90px;
+}
+#managePoint-view .applicants-slide-div-childText0 {
+	width: 10%;
+	margin: 0 0 0 0;
+}
+#managePoint-view .applicants-slide-div-childText3 {
+	width: 20%;
+	margin: 0 0 0 30px;
 }

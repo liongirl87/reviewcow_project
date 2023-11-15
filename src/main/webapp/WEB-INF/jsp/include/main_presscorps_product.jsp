@@ -68,7 +68,7 @@
 	</div>
 	<div class="deadline-more d-flex justify-content-center">
 		<div class="more-product-btn">
-		<a href="#">기자단 더 보기</a>
+		<a href="/main/presscorps_product_view">기자단 더 보기</a>
 		</div>
 	</div>
 </div>

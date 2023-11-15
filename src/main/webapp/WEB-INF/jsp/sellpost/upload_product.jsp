@@ -49,15 +49,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="product-div-line-box d-none commonDisplay">
-		<div class="product-semi-title">판매상품 URL<span class="red-stress-text">*</span></div>
+		<div class="product-div-line-box d-none onlineCorpsCommonDisplay">
+			<div class="product-semi-title">판매상품 URL<span class="red-stress-text">*</span></div>
 			<div class="line-top">
 				<div class="d-flex justify-content-center product-text-wrap-div">
 					<input type="text" id="productUrl" class="form-control produc-input-box text-left" placeholder="판매 할 상품 URL링크를 입력해주세요.">
 				</div>
 			</div>
 		</div>
-		
 		<!-- 매장주소-[오프라인상품] -->
 		<div class="product-div-line-box d-none offlineDisplay">
 		<div class="product-semi-title">매장주소<span class="red-stress-text">*</span></div>
@@ -113,7 +112,7 @@
 						 </div>
 					</div>
 				</div>
-				<div class="d-flex justify-content-start">
+<!-- 				<div class="d-flex justify-content-start">
 					<div class="only-line-div line-top"></div>
 				</div>
 				<div class="d-flex justify-content-start product-text-wrap-div">
@@ -124,7 +123,7 @@
 						<label><input type="radio" name="salesMethod" value="byOrderOfArrival" class="radio-btn" checked="checked"><span class="ml-1">선착순모집</span></label>
 						<label><input type="radio" name="salesMethod" value="beChosenBySeller" class="radio-btn ml-2"><span class="ml-1">판매자선정</span></label>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		
@@ -369,28 +368,35 @@
 		$('#serviceCategory1').on('change' ,function(){
 			$('.commonDisplay').removeClass('d-none');
 			
+			// 온라인 상품을 선택했을 경우
 			if($('#serviceCategory1 option:checked').val() == 'onlineProduct') {
 				$('#serviceCategory2-onlineProduct').removeClass('d-none');
 				$('#serviceCategory2-offlineStore').addClass('d-none');
 				
+				$('.onlineCorpsCommonDisplay').removeClass('d-none');
 				$('.onlineAndCorpsDisplay').removeClass('d-none');
 				$('.onlineDisplay').removeClass('d-none');
 				$('.offlineDisplay').addClass('d-none');
 				$('.corpsDisplay').addClass('d-none');
 				return;
+			// 오프라인 상품을 선택했을 경우	
 			} else if ($('#serviceCategory1 option:checked').val() == 'offlineStore') {
 				$('#serviceCategory2-offlineStore').removeClass('d-none');
 				$('#serviceCategory2-onlineProduct').addClass('d-none');
 				
-				$('.onlineAndCorpsDisplay').addClass('d-none');
+				
+				$('.onlineCorpsCommonDisplay').addClass('d-none');
 				$('.offlineDisplay').removeClass('d-none');
+				$('.onlineAndCorpsDisplay').addClass('d-none');
 				$('.onlineDisplay').addClass('d-none');
 				$('.corpsDisplay').addClass('d-none');
 				return;
+			// 기자단 선택의 경우	
 			} else if($('#serviceCategory1 option:checked').val() == 'pressCorps') {
 				$('#serviceCategory2-onlineProduct').addClass('d-none');
 				$('#serviceCategory2-offlineStore').addClass('d-none');
 				
+				$('.onlineCorpsCommonDisplay').removeClass('d-none');
 				$('.onlineAndCorpsDisplay').removeClass('d-none');
 				$('.corpsDisplay').removeClass('d-none');
 				$('.onlineDisplay').addClass('d-none');
@@ -430,6 +436,7 @@
 			console.log(fileName);
 			$('#fileNameInput').val(fileName)
 		});
+		
 		$('#startDate').on('change', function(){
 			let startDate = $('#startDate').val();
 			let endDate = $('#endDate').val();
@@ -470,18 +477,19 @@
 		});
 		
 		$('#productSubmitBtn').on('click', function(){
-			alert("1111");
 			/* 판매카테고리[공통] */
 			let serviceCategory1 = $('#serviceCategory1 option:checked').val();
 			let serviceCategory2Online = $('#serviceCategory2-onlineProduct option:checked').val();
 			let serviceCategory2Offline = $('#serviceCategory2-offlineStore option:checked').val();
+			
 			/* 상품이름[공통] */
 			let productName = $('#productName').val();
 			/* 모집인원[공통] */
 			let numberOfApplicants = $('#numberOfApplicants').val();
 			
+			// 모집방식 삭제
 			/* 모집방식(판매방식)[공통] - byOrderOfArrival/beChosenBySeller */
-			let salesMethod =$('input[name=salesMethod]:checked').val();
+			/* let salesMethod =$('input[name=salesMethod]:checked').val(); */
 			
 			/* 모집기간(시작일, 종료일)[공통] */
 			let startDate = $('#startDate').val();
@@ -492,7 +500,6 @@
 			
 			/* 썸네일 이미지[공통] */
 			let thumbnailImgPath = $('#file')[0].files[0];
-			console.log(thumbnailImgPath);
 			
 			/* 상품주소[온라인] */
 			let productUrl = $('#productUrl').val();
@@ -517,7 +524,7 @@
 			formData.append("serviceCategory2Online", serviceCategory2Online);
 			formData.append("productName", productName);
 			formData.append("numberOfApplicants", numberOfApplicants);
-			formData.append("salesMethod", salesMethod);
+			/* formData.append("salesMethod", salesMethod); */
 			formData.append("startDate", startDate);
 			formData.append("endDate", endDate);
 			formData.append("productDescriptions", productDescriptions);
@@ -529,7 +536,6 @@
 			formData.append("sellPrice", sellPrice);
 			formData.append("discountRate", discountRate);
 			}
-			
 			
 			/* 오프라인 - 주소 때문에 조건문으로 오프라인시에만 stroName과 storeAddress를 입력처리*/
 			if($('#serviceCategory1 option:checked').val() == 'offlineStore') {
@@ -544,26 +550,82 @@
 				formData.append("corpsFileOri", corpsFile);
 				}
 			
-			console.log("서비스카테고리1:" + serviceCategory1);
-			console.log("서비스카테고리2(온라인):" + serviceCategory2Online);
-			console.log("상품명:" + productName);
-			console.log("모집인원:" + numberOfApplicants);
-			console.log("모집방법:" + salesMethod);
-			console.log("시작일:" + startDate);
-			console.log("종료일:" + endDate);
-			console.log("상품설명:" + productDescriptions);
-			console.log("썸네일이미지:" + thumbnailImgPath);
-			console.log("****온라인 영역****");
-			console.log("인터넷주소:" + productUrl);
-			console.log("판매가격:" + sellPrice);
-			console.log("할인가격(율):" + discountRate);
-			console.log("****오프라인 영역****");
-			console.log("오프라인카테고리2:" + serviceCategory2Offline);
-			console.log("가계명:" + storeName);
-			console.log(storeAddress);
-			console.log("****기자단 영역****");
-			console.log("원고료:" + scriptFees);
-			console.log("기자단양식:" + corpsFile);
+			// 유효성 검사
+			
+			// 1.상품명 입력
+			if (!productName){
+				alert("상품명을 입력해주세요");
+				return;
+			}
+			
+			// 2.모집인원 입력
+			if (!numberOfApplicants) {
+				alert("모집인원을 입력해주세요");
+				return;
+			}
+			// 3.진행기간
+			if (!startDate || !endDate){
+				alert("진행기간을 입력해주세요");
+				return;
+			}
+			// 4.상품설명
+			if (!productDescriptions) {
+				alert("상품설명을 입력해주세요");
+				return;
+			}
+			// 5.상품이미지
+			if (!thumbnailImgPath) {
+				alert("상품이미지를 입력해주세요");
+				return;
+			}
+			
+			// 6.온라인경우 유효성검사 *
+			if($('#serviceCategory1 option:checked').val() == 'onlineProduct') {
+				if(!productUrl) {
+					alert("판매상품URL을 입력해주세요");
+					return;
+				}
+				if(!sellPrice) {
+					alert("판매가격을 입력해주세요");
+					return;
+				}
+				if(!discountRate) {
+					alert("할인가격을 입력해주세요");
+					return;
+				}
+			}
+			
+			// 7.오프라인경우 유효성검사 *
+			if($('#serviceCategory1 option:checked').val() == 'offlineStore') {
+				if(!storeName) {
+					alert("매장이름을 입력해주세요");
+					return;
+				}
+				
+				if(!storeAddress) {
+					alert("매장주소를 입력해주세요");
+					return;
+				}
+			}
+			
+			// 8.기자단 유효성검사
+			if($('#serviceCategory1 option:checked').val() == 'pressCorps') {
+				if(!productUrl) {
+					alert("판매상품URL을 입력해주세요");
+					return;
+				}
+				
+				if(!scriptFees) {
+					alert("원고료를 입력해주세요");
+					return;
+				}
+				if(!corpsFile) {
+					alert("기자단 양식을 첨부해주세요");
+					return;
+				}
+				
+			}
+			
 			
 			$.ajax({
 				type:"POST"
@@ -576,7 +638,8 @@
 				//response
 				,success:function(data){
 					if(data.code == 1) {
-						alert("success");
+						alert("체험단을 등록했습니다.");
+						location.href="/application/manage_applicants_view";
 					} else {
 						alert("체험단 등록에 실패하였습니다.");
 					}

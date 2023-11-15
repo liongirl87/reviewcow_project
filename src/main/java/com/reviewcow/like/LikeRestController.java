@@ -25,14 +25,17 @@ public class LikeRestController {
 			HttpSession session) {
 		
 		Map<String, Object>result = new HashMap<>();
-		// 세션에서 현재 로그인 회원 정보 가져오기
 		
+		// 세션에서 현재 로그인 회원 정보 가져오기
 		Member sessionMember = (Member)session.getAttribute("member");
+		
+		// 비 로그인시("로그인 후 이용해 주세요 창 출력")
 		if (sessionMember == null) {
 			result.put("code", 300);
-			result.put("errorMessage", "로그인을 해주세요");
+			result.put("errorMessage", "로그인 후 이용해 주세요.");
 			return result;
 		}
+		
 		Integer memberId = (Integer)sessionMember.getId();
 		
 		likeBo.checkLike(memberId, sellPostId);

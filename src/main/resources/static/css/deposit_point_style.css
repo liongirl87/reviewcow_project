@@ -1,0 +1,71 @@
+ .deposit-point .sub-title-grey {
+  color: rgb(0,0,0,0.5);
+ }
+ 
+.deposit-point .price-button {
+	width: 15%;
+	padding: 3px 10px 3px 10px;
+	margin: 3px 5px 3px 5px;
+	border: none;
+	border-radius: 5px;
+}  
+.deposit-point .price-button:hover {
+	background-color: rgb(0,0,0,0.2);
+}  
+
+.deposit-point .price-button-div {
+	flex-wrap: wrap;
+	margin: 0 auto;
+}
+
+.deposit-point .price-button-div .active {
+	/* border: 2px solid black; */
+	box-shadow: 0 0 0 2px black inset;
+}
+.deposit-point .input-price {
+	border: none;
+	border-bottom: 1px solid rgb(0,0,0,0.3);
+	outline: none;
+}
+
+.deposit-point .direct-input-div {
+	transition: all ease 0.5s;
+}
+
+.deposit-point .payment-div {
+	margin: 10px 0 0 20px;
+	border: 1px solid rgb(0, 0, 0, 0.3);
+	border-radius: 5px;
+	width: 97%;
+}
+
+.deposit-point .payment-method-text {
+	margin: 0 0 0 0;
+}
+
+.deposit-point .payment-botline {
+	border-bottom: 1px solid rgb(0, 0, 0, 0.3);
+}
+	
+.deposit-point .payment-child {
+	padding: 3px 0 3px 10px;
+}
+.deposit-point .after{
+	background-color: rgb(0, 0, 0, 0.05);
+}
+.deposit-point .payment-title-text {
+	font-size: 18pt;
+}
+.deposit-point .confirm-depositBtn {
+	margin: 10px 0 0 0;
+	width: 180px;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 5px 10px 5px;
+	background-color:#1E90FF;
+	color: white;
+	opacity: 0.8;
+}
+.deposit-point .confirm-depositBtn:hover {
+	opacity: 1;
+}

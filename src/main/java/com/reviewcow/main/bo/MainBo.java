@@ -63,7 +63,6 @@ public class MainBo {
 			// 할인 후 실제 판매가격
 			card.setPrice(sellPost.getSellPrice() - sellPost.getDiscountRate());
 			
-			
 			// cardViewList에 채우기
 			cardViewList.add(card);
 		}
@@ -118,10 +117,10 @@ public class MainBo {
 	}
 	
 	// 메인화면 온라인 상품 영역 불러오기
-	public List<CardView> generateOnlineProductByCategory(Integer memberId, String categoryOnline2) {
+	public List<CardView> generateOnlineProductByCategory(Integer memberId, String categoryOnline2, Integer limit) {
 		List<CardView> cardViewList = new ArrayList<>();
 		
-		List<SellPost> sellPostList = sellPostBo.getSellPostListOnlineProductByCategory(categoryOnline2);
+		List<SellPost> sellPostList = sellPostBo.getSellPostListOnlineProductByCategory(categoryOnline2, limit);
 		
 		for (SellPost sellPost: sellPostList) {
 			CardView card = new CardView();
@@ -164,10 +163,10 @@ public class MainBo {
 	}	
 	
 	// 메인화면 오프라인상품 영역 불러오기
-	public List<CardView> generateOfflineProductByCategory(Integer memberId, String categoryOffline2) {
+	public List<CardView> generateOfflineProductByCategory(Integer memberId, String categoryOffline2, Integer limit) {
 		List<CardView> cardViewList = new ArrayList<>();
 		
-		List<SellPost> sellPostList = sellPostBo.getSellPostListOfflineProductByCategory(categoryOffline2);
+		List<SellPost> sellPostList = sellPostBo.getSellPostListOfflineProductByCategory(categoryOffline2, limit);
 		
 		for (SellPost sellPost: sellPostList) {
 			CardView card = new CardView();

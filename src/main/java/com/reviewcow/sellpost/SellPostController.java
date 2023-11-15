@@ -54,11 +54,29 @@ public class SellPostController {
 			Model model
 			) {
 		Integer memberId = (Integer)session.getAttribute("memberId");
-		List<CardView> onlineProductList = mainBo.generateOnlineProductByCategory(memberId, category);
+		List<CardView> onlineProductList = mainBo.generateOnlineProductByCategory(memberId, category,null);
 		model.addAttribute("onlineProductList", onlineProductList);
+		model.addAttribute("onlineCategory", category);
 		
 		return "include/main_online_product";
 	}
+	
+	@GetMapping("/category_changeonline_category2")
+	public String changeCategoryOnlineProduct(
+			@RequestParam("categoryOnline2") String category,
+			HttpSession session,
+			Model model
+			) {
+		Integer memberId = (Integer)session.getAttribute("memberId");
+		
+		
+		List<CardView> onlineProductList = mainBo.generateOnlineProductByCategory(memberId, category, 0);
+		model.addAttribute("onlineProductList", onlineProductList);
+		model.addAttribute("category", category);
+		
+		return "category/online_product";
+	}
+	
 	
 	@GetMapping("/main_changeoffline_category2")
 	public String changeMainOfflineProduct(
@@ -67,9 +85,25 @@ public class SellPostController {
 			Model model
 			) {
 		Integer memberId = (Integer)session.getAttribute("memberId");
-		List<CardView> offlineProductList = mainBo.generateOfflineProductByCategory(memberId, category);
+		List<CardView> offlineProductList = mainBo.generateOfflineProductByCategory(memberId, category, null);
 		model.addAttribute("offlineProductList", offlineProductList);
+		model.addAttribute("offlineCategory", category);
 		
 		return "include/main_offline_product";
+	}
+	
+	@GetMapping("/category_changeoffline_category2")
+	public String changeCategoryOfflineProduct(
+			@RequestParam("categoryOffline2") String category,
+			HttpSession session,
+			Model model
+			) {
+		Integer memberId = (Integer)session.getAttribute("memberId");
+		
+		List<CardView> offlineProductList = mainBo.generateOfflineProductByCategory(memberId, category, 0);
+		model.addAttribute("offlineProductList", offlineProductList);
+		model.addAttribute("category", category);
+		
+		return "category/offline_product";
 	}
 }

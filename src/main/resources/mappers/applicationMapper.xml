@@ -31,6 +31,15 @@
  			</if>
  	</select>
  	
+ 	<select id="countApplyProductbyMemberId" resultType="int">
+        SELECT count(*)
+        FROM `sell_post` AS A
+		LEFT JOIN `application` AS B
+		ON A.id = B.sellPostId
+		WHERE B.`memberId` = #{memberId} 
+ 	</select>
+ 	
+ 	
  	<delete id="deleteApplyProductByMemberIdAndSellPostId" parameterType="map">
  		DELETE
  		FROM
@@ -39,7 +48,126 @@
 			`memberId` = #{memberId} AND
 			`sellPostId` = #{sellPostId}
  	</delete>
+ 	<select id="selectStatusApplicantsList" parameterType="map" resultType="com.reviewcow.applyproduct.model.ManageApplicants">
+ 	    SELECT 
+ 	    A.`id` sellPostId
+ 	    , A.`productName`
+ 	    , A.`discountRate`
+ 	    , B.`id` applicationId
+ 	    , B.`status` applicationStatus
+ 	    , B.`createdAt` applicationCreatedAt
+ 	    , B.`updatedAt` applicationUpdatedAt
+ 	    , C.`id` memberId
+ 	    , C.`loginId` memberLoginId
+ 	    , C.`name` memberName
+		FROM 
+			`sell_post` AS A
+		RIGHT JOIN 
+			`application` AS B
+		ON A.`id` = B.`sellPostId`
+        RIGHT JOIN
+			`member` AS C
+        ON B.`memberId` = C.`id`     
+		WHERE A.`memberId` = #{memberId}
+		<if test="approvalCondition == 1 or approvalCondition == 2 or approvalCondition == 3 or approvalCondition == 4">
+		AND (A.`approvalCondition` = 1
+		OR A.`approvalCondition` = 4
+		OR A.`approvalCondition` = 3)
+		</if>
+		<if test="approvalCondition == 0">
+		AND A.`approvalCondition` = 1
+		AND TIMESTAMPDIFF(DAY, now(), A.`endDate`) >= 0
+		</if>
+		AND B.`status` = #{approvalCondition}
+		LIMIT ${skipLimit} ,${limit};
+ 	</select>
  	
+ 	<update id="approvalApplicantBySellpostId" parameterType="map">
+ 		UPDATE `application`
+ 		SET
+ 			`status` = #{status},
+ 			`updatedAt` = NOW()
+ 		WHERE
+ 			`memberId` = #{memberId}
+ 		AND `sellPostId` = #{sellPostId};		
+ 	</update>
  	
+ 	<select id="selectApplicantsListBySellPostId" resultType="com.reviewcow.applyproduct.model.Application">
+  		SELECT
+	 		A.`id`
+			, A.`memberId`
+			, A.`sellPostId`
+			, A.`status`
+			, A.`createdAt`
+			, A.`updatedAt`
+            , B.`loginId` memberLoginId
+            , B.`name` memberName
+		FROM
+			`application` AS A
+        LEFT JOIN
+			`member` AS B
+        ON A.`memberId` = B.`id`    
+		WHERE
+			`sellPostId` = #{sellPostId}
+ 	</select>
+ 	<select id="countApplicantsStatusByMemberId" parameterType="map" resultType="int">
+		SELECT 
+	 	    count(*)
+		FROM 
+			`sell_post` AS A
+		RIGHT JOIN 
+			`application` AS B
+		ON A.`id` = B.`sellPostId`
+        RIGHT JOIN
+			`member` AS C
+        ON B.`memberId` = C.`id`     
+		WHERE A.`memberId` = #{memberId}
+		<if test="approvalCondition == 1 or approvalCondition == 2 or approvalCondition == 3 or approvalCondition == 4">
+		AND (A.`approvalCondition` = 1
+		OR A.`approvalCondition` = 4
+		OR A.`approvalCondition` = 3)
+		</if>
+		<if test="approvalCondition == 0">
+		AND A.`approvalCondition` = 1
+		AND TIMESTAMPDIFF(DAY, now(), A.`endDate`) >= 0
+		</if>
+		AND B.`status` = #{approvalCondition}
+ 	</select>
+ 	
+ 	<select id="applicationNumberCheckAtApplication" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`application`
+        WHERE
+			`sellPostId` = #{sellPostId}
+		AND `status` IN(1,4);
+ 	</select>
+ 	
+ 	<select id="selectApplicationByMemberId" parameterType="map" resultType="com.reviewcow.applyproduct.model.Application">
+ 	 	SELECT
+ 			`id`
+			, `memberId`
+			, `sellPostId`
+			, `status`
+			, `createdAt`
+			, `updatedAt`
+ 		FROM
+ 			`application`
+        WHERE
+			`memberId` = #{memberId}
+		AND `status` IN(1, 2, 4)
+		LIMIT #{skipLimit}, #{limit};
+ 	</select>
+ 	
+ 	<select id="countApplicationListByMemberId" resultType="int">
+ 	 	SELECT
+ 			count(*)
+ 		FROM
+ 			`application`
+        WHERE
+			`memberId` = #{memberId}
+		AND `status` IN(1, 2, 4);
+ 	</select>
  
  </mapper>

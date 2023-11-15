@@ -76,7 +76,7 @@
 						<div class="product-name">${card.sellPost.productName}</div>
 					</div>
 					<div class="d-flex align-items-center">
-						<div class="sale-per"><fmt:formatNumber value="${card.sellPost.discountRate / card.price * 100}" pattern="#" />%</div>
+						<div class="sale-per"><fmt:formatNumber value="${card.sellPost.discountRate / card.sellPost.sellPrice * 100}" pattern="#" />%</div>
 						<div class="sale-price"><fmt:formatNumber value="${card.price}" type="number" />원</div>
 						<div class="original-price"><fmt:formatNumber value="${card.sellPost.sellPrice}" type="number" />원</div>
 					</div>
@@ -106,10 +106,10 @@
  		
 			,success:function(data) {
 				if(data.code == 1) {
-					alert("좋아요성공");
 					location.reload();
 				} else {
-					alert("좋아요 실패, 로그인 해주세요");
+					alert(data.errorMessage);
+					location.href="/member/login_view"
 				}
 			}
 			,error:function(request, status, error) {

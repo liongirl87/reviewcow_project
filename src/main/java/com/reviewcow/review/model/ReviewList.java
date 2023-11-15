@@ -1,43 +1,17 @@
 package com.reviewcow.review.model;
 
-import java.util.Date;
+import com.reviewcow.applyproduct.model.Application;
+import com.reviewcow.sellpost.model.SellPost;
 
+import lombok.Getter;
 import lombok.Setter;
 
 @Setter
-
+@Getter
 public class ReviewList {
-	private int id;
-	private String productName;
-	private Integer reviewPoint;
-	private int point;
-	private int source;
-	private int status;
-	private Date updatedAt;	
-	
-	public int getId() {
-		return id;
-	}
-	public String getProductName() {
-		return productName;
-	}
-	public Integer getReviewPoint() {
-		return reviewPoint;
-	}
-	public int getPoint() {
-		return point;
-	}
-	public int getSource() {
-		return source;
-	}
-	public int getStatus() {
-		return status;
-	}
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-	
-	
-	
-	
+	private Application application;
+
+	private SellPost sellPost;
+	private Review review;
+		
 }

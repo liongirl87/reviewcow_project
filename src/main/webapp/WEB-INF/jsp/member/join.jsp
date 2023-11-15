@@ -309,7 +309,7 @@ $(document).ready(function(){
 			,success:function(data){
 				if(data.code == 1) {
 					alert(data.result);
-					/* location.href="/main/main_view" */
+					location.href="/main/main_view"
 				} else {
 					alert(data.errorMessage);
 				}
