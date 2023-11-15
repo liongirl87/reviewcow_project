@@ -99,7 +99,7 @@
 		WHERE B.`memberId` = #{memberId}
 		</if>
 		AND TIMESTAMPDIFF(DAY, now(), A.`endDate`) >= 0
-		AND `approvalCondition` = 1
+		AND A.`approvalCondition` = 1
 		GROUP BY B.`sellPostId`
 		ORDER BY count(B.`sellPostId`) DESC
 		<if test="memberId == null">
