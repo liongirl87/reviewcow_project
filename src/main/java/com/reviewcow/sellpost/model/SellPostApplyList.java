@@ -28,7 +28,6 @@ public class SellPostApplyList {
 	private int scriptFees;
 	private String corpsFile;
 	private int approvalCondition;
-	private int cancelBySeller;
 	private Date createdAt;
 	private Date updatedAt;
 	

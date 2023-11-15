@@ -71,7 +71,6 @@
 			,`scriptFees`
 			,`corpsFile`
 			,`approvalCondition`
-			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
 		FROM
@@ -162,7 +161,6 @@
 			,`scriptFees`
 			,`corpsFile`
 			,`approvalCondition`
-			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
 		FROM
@@ -198,7 +196,6 @@
 			,`scriptFees`
 			,`corpsFile`
 			,`approvalCondition`
-			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
 		FROM
@@ -235,7 +232,6 @@
 			,`scriptFees`
 			,`corpsFile`
 			,`approvalCondition`
-			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
 		FROM
@@ -279,7 +275,6 @@
 			,`scriptFees`
 			,`corpsFile`
 			,`approvalCondition`
-			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
 		FROM
@@ -367,7 +362,6 @@
 			,`scriptFees`
 			,`corpsFile`
 			,`approvalCondition`
-			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
 		FROM 
@@ -460,7 +454,6 @@
 			,`scriptFees`
 			,`corpsFile`
 			,`approvalCondition`
-			,`cancelBySeller`
 			,`createdAt`
 			,`updatedAt`
 		FROM
