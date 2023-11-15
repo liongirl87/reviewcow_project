@@ -16,7 +16,6 @@ public class SellPostApplyList {
 	private String serviceCategory2Offline;
 	private String productName;
 	private int numberOfApplicants;
-	private String salesMethod;
 	private Date startDate;
 	private Date endDate;
 	private String productDescriptions;
@@ -28,8 +27,7 @@ public class SellPostApplyList {
 	private String storeAddress;
 	private int scriptFees;
 	private String corpsFile;
-	private int nowApplicants;
-	private int aprovalCondition;
+	private int approvalCondition;
 	private int cancelBySeller;
 	private Date createdAt;
 	private Date updatedAt;

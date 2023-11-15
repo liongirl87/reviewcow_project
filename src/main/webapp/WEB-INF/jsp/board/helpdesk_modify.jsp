@@ -33,7 +33,11 @@ $(document).ready(function(){
 	$('#helpdeskUpdateBtn').on('click',function(){
 		let content = $('.helpdesk-textarea').val().replace(/\n/g, "<br>");
 		let postId = $(this).data('postid');
-		alert(postId);
+
+		if (content.length <= 30) {
+			alert("문의내용을 30자이상 입력해주세요");
+			return;
+		}
 		
 		$.ajax({
 			type:"PUT"
@@ -42,13 +46,14 @@ $(document).ready(function(){
 				
 			,success:function(data) {
 				if(data.code == 1) {
-					alert("성공");
+					alert("문의글을 수정하였습니다.");
+					location.href = "/board/helpdesk_view";
 				} else {
-					alert("실패");
+					alert("실패하였습니.");
 				}
 			}
 			,error:function(request, status, error) {
-				alert("실패, 관리자에게 문의")
+				alert("실패, 관리자에게 문의해주세요.")
 			}
 		});
 	});

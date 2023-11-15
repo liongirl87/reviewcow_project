@@ -1,0 +1,42 @@
+@charset "EUC-KR";
+
+.withdraw-point .withdraw-content-div {
+	margin: 10px 0 0 10px;
+}
+.withdraw-point .withdraw-content-child {
+	padding: 8px 0 8px 0;
+	position: relative;
+}
+.withdraw-point .help-text-small {
+	margin: 0 0 0 165px;
+	font-size: 9pt;
+	color: rgb(0,0,0,0.5);
+}
+.withdraw-point .withdraw-input-div-location, .select-div {
+	position:absolute;
+	margin: 0 0 0 100px;
+}
+
+
+.withdraw-point .withdraw-input-box {
+	width: 300px;
+	border: 1pt solid rgb(0,0,0,0.3);
+	border-radius: 3px;
+}
+
+.withdraw-point .withdrawBtn {
+	margin: 10px 0 0 0;
+	width: 180px;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 5px 10px 5px;
+	background-color:#FF6666;
+	color: white;
+	opacity: 0.8;
+}
+
+.withdraw-point .withdrawBtn:hover {
+	opacity: 1;
+	}
+
+

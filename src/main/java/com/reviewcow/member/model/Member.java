@@ -7,6 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 public class Member {
 	private int id;
 	private String memberType;
@@ -18,7 +19,7 @@ public class Member {
 	private String address;
 	private String telePhoneNumber;
 	private String mobilePhoneNumber;
-	private int nowPoint;
+	private int approvalCondition;
 	private Date createdAt;
 	private Date updatedAt;
 }

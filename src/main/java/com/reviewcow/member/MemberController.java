@@ -37,10 +37,21 @@ public class MemberController {
 	}
 	
 	// 내정보 수정하기
-	
 	@RequestMapping("/modify_myinfo_view")
-	public String sideView(Model model) {
+	public String modifyMyInfo(
+			Model model
+			,HttpSession session) {
+		
+		Integer memberId = (Integer)session.getAttribute("memberId");
+		
 		List<String> viewList = new ArrayList<>();
+		
+		// 비로그인 시 로그인 화면으로 이동 
+		if(memberId == null) {
+			viewList.add("member/login");
+			model.addAttribute("viewList", viewList);
+			return "template/layout";
+		}
 		
 		viewList.add("include/side_menu");
 		viewList.add("member/modify_myinfo");

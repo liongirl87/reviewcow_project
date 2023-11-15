@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<div class="d-flex justify-content-center">   
+<div id="main-bn" class="d-flex justify-content-center">   
 	<div class="main-bnr">
 		<div class="mySlides">
 		  <div class="numbertext numbertext-bg">1 / 6</div>
@@ -41,7 +41,7 @@
 	<div class="d-flex justify-content-center">
 		<div class="row">
 		  <div class="column column-box cursor demo" onclick="currentSlide(1)">
-		   패밀리세일 UP TO 50%
+		   REVIEWCOW
 		  </div>
 		  <div class="column column-box demo cursor" onclick="currentSlide(2)">
 		  23 S/S 시즌오프 전체세일

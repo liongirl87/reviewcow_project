@@ -22,3 +22,6 @@
 	color: #606060;
 	font-size: 11pt;
 }
+.category-box-top .category-box-child:hover {
+	color: white;
+}

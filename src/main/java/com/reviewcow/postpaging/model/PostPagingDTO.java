@@ -3,10 +3,7 @@ package com.reviewcow.postpaging.model;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * @author liong
- *
- */
+
 @Getter
 @Setter
 public class PostPagingDTO {
@@ -38,6 +35,7 @@ public class PostPagingDTO {
 	// MYSQL 에 넘겨줄 limit에서 사용할 스킵(skip)개수
 	private int mysqlSkip;
 	
+	// 생성자
 	public PostPagingDTO(int nowPageNum, int totalPosts) {
 		
 		this.totalPosts = totalPosts;

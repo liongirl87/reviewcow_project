@@ -135,19 +135,6 @@
 	color:red;
 }
 
-/* helpdesk 영역*/
-.helpdesk-div #helpdeskInquireBtn {
-/* 	position: absolute; */
-	width: 100px;
-	height: 30px;
-	background-color: #6495ED;
-	border: none;
-	border-radius: 8px;
-	margin: 12px -25px 0 0;
-/* 	margin: 20px 20px 0 84%; */
-	color: white;
-	font-size: 10pt;
-}
 
 /* 찜목록 영역 */
 
@@ -186,7 +173,7 @@
 	width: 5%;
 }
 
-.like_product_list .text-margin05-applyList  i {
+.like_product_list .text-margin04-applyList  i {
 	font-size: 16pt;
 }
 .like_product_list .like-thumnailImg {

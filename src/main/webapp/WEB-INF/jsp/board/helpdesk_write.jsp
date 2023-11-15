@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<div class="form-textbox d-flex align-items-center">
-			<textarea class="helpdesk-textarea"></textarea>
+			<textarea class="helpdesk-textarea p-2"></textarea>
 		</div>
 		<div class="d-flex justify-content-end">
 			<input type="button" id="helpdeskSubmitBtn" class="text-center" value="저장">		
@@ -33,13 +33,28 @@ $(document).ready(function(){
 		let subject = $('.helpdesk-subject-input').val();
 		let content = $('.helpdesk-textarea').val().replace(/\n/g, "<br>");
 		
+		// 유효성 검사
+		if (!category) {
+			alert("카테고리를 선택해주세요");
+			return;
+		}
+		
+		if (!subject) {
+			alert("문의제목을 입력해주세요");
+			return;
+		}
+		
+		if (content.length <= 30) {
+			alert("문의내용을 30자이상 입력해주세요");
+			return;
+		}
+		
 		$.ajax({
 			url:"/board/helpdesk_write"
 			, data:{"category":category,"subject":subject,"content":content}
-				
 			,success:function(data) {
 				if(data.code == 1) {
-					alert("성공");
+					alert("문의글을 작성하였습니다.");
 					location.href = "/board/helpdesk_view";
 				} else {
 					alert("실패");
@@ -52,6 +67,5 @@ $(document).ready(function(){
 	});
 	
 });
-
 
 </script>

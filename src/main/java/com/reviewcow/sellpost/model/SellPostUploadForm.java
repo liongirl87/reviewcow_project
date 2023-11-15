@@ -14,7 +14,6 @@ public class SellPostUploadForm {
 	private String serviceCategory2Offline;
 	private String productName;
 	private int numberOfApplicants;
-	private String salesMethod;
 	private String startDate;
 	private String endDate;
 	private String productDescriptions;
@@ -60,10 +59,6 @@ public class SellPostUploadForm {
 
 	public void setNumberOfApplicants(String numberOfApplicants) {
 		this.numberOfApplicants = Integer.parseInt(numberOfApplicants);
-	}
-
-	public void setSalesMethod(String salesMethod) {
-		this.salesMethod = salesMethod;
 	}
 
 	public void setStartDate(String startDate) {

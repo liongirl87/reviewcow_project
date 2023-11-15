@@ -3,18 +3,17 @@ package com.reviewcow.like;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.reviewcow.board.model.Helpdesk;
 import com.reviewcow.postpaging.model.PostPagingDTO;
 import com.reviewcow.sellpost.bo.SellPostBo;
 import com.reviewcow.sellpost.model.SellPost;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class LikeController {
@@ -30,6 +29,13 @@ public class LikeController {
 			Model model) {
 		List<String> viewList = new ArrayList<>();
 		Integer memberId = (Integer)session.getAttribute("memberId");
+		
+		// 비로그인 시 로그인 화면으로 이동 
+		if(memberId == null) {
+			viewList.add("member/login");
+			model.addAttribute("viewList", viewList);
+			return "template/layout";
+		}
 		
 		//List<SellPost> likeSellPostList = sellPostBo.getLikeSellPostListbyMemberId(memberId);
 		

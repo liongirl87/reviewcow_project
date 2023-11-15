@@ -12,6 +12,5 @@ public class Business_Member {
 	private String memberLoginId;
 	private String businessName;
 	private String businessLicenseNumber;
-	private Date createdAt;
 	private Date updatedAt;
 }

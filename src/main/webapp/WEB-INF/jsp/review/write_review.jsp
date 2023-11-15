@@ -91,6 +91,25 @@ $(document).ready(function(){
 		let comment = $('#reviewComment').val();
 		let sellPostId = $(this).data("post-id");
 		
+		
+		if (!reviewImgPath) {
+			alert("리뷰 사진을 첨부해주세요");
+			return;
+		}
+		if (!point) {
+			alert("평점을 눌러주세요");
+			return;
+		} else if (point == 0) {
+			alert("평점을 눌러주세요");
+			return;
+		}
+		
+		if (!comment) {
+			alert("한줄리뷰를 작성해주세요");
+			return;
+		} 
+		
+		
 		console.log(sellPostId);
 		let formData = new FormData();
 		formData.append("point", point);
@@ -109,7 +128,8 @@ $(document).ready(function(){
 			//response
 			,success:function(data){
 				if(data.code == 1) {
-					alert("success");
+					alert("리뷰를 작성하였습니다");
+					location.href = "/review/myreview_list_view"
 				} else {
 					alert("리뷰 등록에 실패하였습니다.");
 				}

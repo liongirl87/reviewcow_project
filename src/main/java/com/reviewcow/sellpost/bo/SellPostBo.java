@@ -25,10 +25,11 @@ public class SellPostBo {
 		// 서버에 이미지 파일 업로드 후 imagePaht받아옴
 		sellPostForm.setThumbnailImgPath(fileManager.saveFile(sellPostForm.getMemberLoginId(), sellPostForm.getThumbnailImgPathOri()));
 		
+		// 기자단 양식
 		if(sellPostForm.getServiceCategory1().equals("pressCorps")) {
 			sellPostForm.setCorpsFile(fileManager.saveFile(sellPostForm.getMemberLoginId(), sellPostForm.getCorpsFileOri()));
 		}
-		return sellPostMapper.selectSellPost(sellPostForm);
+		return sellPostMapper.insertSellPost(sellPostForm);
 	}
 	// 마감임박 상품 불러오기
 	public List<SellPost> getSellPostListOrderByDeadlineForOnline() {
@@ -39,6 +40,7 @@ public class SellPostBo {
 	public List<SellPost> getSellPostListForHotItem() {
 		return sellPostMapper.selectSellPostListForHotItem(null);
 	}
+	
 	// 신청한 체험단 리스트 불러오기 (인기 상품 불러오기와 함께 Mapper 사용)
 	public List<SellPost> getApplySellPostListbyMemberId(Integer memberId) {
 		return sellPostMapper.selectSellPostListForHotItem(memberId);
@@ -63,16 +65,14 @@ public class SellPostBo {
 		return sellPostMapper.countLikeSellPostListbyMemberId(memberId);
 	}
 	
-	
-	
 	// 온라인 상품 카테고리별 불러오기
-	public List<SellPost> getSellPostListOnlineProductByCategory(String categoryOnline2) {
-		return sellPostMapper.selectSellPostListOnlineProductByCategory(categoryOnline2);
+	public List<SellPost> getSellPostListOnlineProductByCategory(String categoryOnline2, Integer limit) {
+		return sellPostMapper.selectSellPostListOnlineProductByCategory(categoryOnline2, limit);
 	}
 	
 	// 오프라인 상품 카테고리별 불러오기
-	public List<SellPost> getSellPostListOfflineProductByCategory(String categoryOffline2) {
-		return sellPostMapper.selectSellPostListOfflineProductByCategory(categoryOffline2);
+	public List<SellPost> getSellPostListOfflineProductByCategory(String categoryOffline2, Integer limit) {
+		return sellPostMapper.selectSellPostListOfflineProductByCategory(categoryOffline2, limit);
 	}
 	
 	public List<SellPost> getSellPostListPressProduct() {
@@ -100,13 +100,17 @@ public class SellPostBo {
 		manageList.setReject(sellPostMapper.countSellPostStatusbyMemberId(memberId, 2));
 		// 취소(판매자 신청)
 		manageList.setCancelProduct(sellPostMapper.countSellPostStatusbyMemberId(memberId, 3));
+		// 마감
+		manageList.setFinish(sellPostMapper.countSellPostStatusbyMemberId(memberId, 4));
 		
 		// 지원자 관리
-		
 		// 신청인원(승인전)
 		manageList.setApplicants(sellPostMapper.countApplicantsStatusByMemberId(memberId, 0));
 		// 승인인원
 		manageList.setApproval(sellPostMapper.countApplicantsStatusByMemberId(memberId, 1));
+		// 지급완료
+		manageList.setPaid(sellPostMapper.countApplicantsStatusByMemberId(memberId, 4));
+		
 		// 검토요청
 		manageList.setComplain(sellPostMapper.countApplicantsStatusByMemberId(memberId, 2));
 		// 취소
@@ -114,21 +118,33 @@ public class SellPostBo {
 
 		return manageList;
 	}
-	// 마감된 상품 count
-	public int countSellPostStatusFinishedByMemberId(int memberId) {
-		return sellPostMapper.countSellPostStatusFinishedByMemberId(memberId);
-	}
-	
 	// 내가 작성한 판매글 가져오기
-	public List<SellPost> getSellPostListStatusByMemberId(int memberId, int aprovalCondition, int skipLimit, int limit) {
-		return sellPostMapper.selectSellPostListStatusByMemberId(memberId, aprovalCondition, skipLimit, limit);
+	public List<SellPost> getSellPostListStatusByMemberId(int memberId, int approvalCondition, int skipLimit, int limit) {
+		return sellPostMapper.selectSellPostListStatusByMemberId(memberId, approvalCondition, skipLimit, limit);
 	}
 	// (사업자) manage_applicants_view/status_product_view 하단페이징 count
-	public int countSellPostListStatusByMemberId(int memberId, int aprovalCondition) {
-		return sellPostMapper.countSellPostListStatusByMemberId(memberId, aprovalCondition);
+	public int countSellPostListStatusByMemberId(int memberId, int approvalCondition) {
+		return sellPostMapper.countSellPostListStatusByMemberId(memberId, approvalCondition);
 	}
 	
-	public int countApplicantsStatusByMemberId(int memberId, int aprovalCondition) {
-		return sellPostMapper.countSellPostStatusbyMemberId(memberId, aprovalCondition);
+	// 포스트별 승인(총)인원 가져오기
+	public int getNumberSellPostApplicantNumberBySellPostId(int sellPostId) {
+		return sellPostMapper.selectNumberSellPostApplicantNumberBySellPostId(sellPostId);
 	}
+	
+	// 체험단 카운팅
+	public int countSellPostBeforeApproval(Integer allPost) {
+		return sellPostMapper.countSellPostBeforeApproval(allPost);
+	}
+	
+	// 승인대기중 체험단 가져오기(admin)
+	public List<SellPost> getSellPostListBeforeApproval(int skipLimit, int limit, Integer status){
+		return sellPostMapper.selectSellPostListBeforeApproval(skipLimit, limit, status);
+	}
+	
+	// 체험단 승인하기(admin)
+	public void approveSellPost (int id, int approvalCondition) {
+		sellPostMapper.approveSellPost(id, approvalCondition);
+	}
+	
 }

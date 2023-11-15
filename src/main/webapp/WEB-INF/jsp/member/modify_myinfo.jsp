@@ -19,8 +19,26 @@
 		<div class="form-inputBox-pm line-top d-flex align-items-center">
 			<span class="text-style">비밀번호</span>
 			<input type="text" class="form-inputBox form-control" id="password" readonly/>
-			<input type="button" id="change-passwordBtn" class="input-side-btn" value="변경">
+			<input type="button" id="change-passwordBtn" class="input-side-btn" value="변경하기">
 		</div>
+		<div class="pw-change" style="display:none">
+			<div class="form-inputBox-pm line-top d-flex align-items-center ml-2">
+				<span class="text-style">> 현재 비밀번호</span>
+				<input type="password" class="form-inputBox-on form-control nowPassword">
+				<input type="button" id="check-passwordBtn" class="input-side-btn" value="확인">
+			</div>
+			<div>
+				<span class="pw-matches-text hiden hidden-pw-text1 text-primary" style="display:none">비밀번호가 일치합니다.</span>
+				<span class="pw-notmatches-text hidden-pw-text text-danger" style="display:none">비밀번호가 일치하지 않습니다.</span>
+			</div>
+			<div class="pw-change-div" style="display:none">
+				<div class="form-inputBox-pm line-top d-flex align-items-center ml-2">
+					<span class="text-style">> 변경할 비밀번호</span>
+					<input type="password" class="form-inputBox-on form-control" id="password-changed">
+				</div>
+			</div>
+		</div>
+		
 		<div class="form-inputBox-pm line-top d-flex align-items-center">
 			<span class="text-style">휴대전화</span>
 			<input type="text" class="form-inputBox-on form-control" id="mobilePhoneNumber" value="${member.mobilePhoneNumber}">
@@ -74,20 +92,83 @@
 			</c:if>	
 			<div class="d-flex justify-content-center">
 				<input type="button" id="modify-myInfoBtn" value="회원정보수정">
-				<input type="button" id="modify-myInfoBtn-cancel" value="취소">
+			<!-- 	<input type="button" id="modify-myInfoBtn-cancel" value="취소"> -->
 			</div>
 		</div>
 	</div>
 </div>
 <script>
 	$(document).ready(function(){
+		
+		$('#check-passwordBtn').on('click', function(){
+			let password = $('.nowPassword').val();
+			
+			$.ajax({
+				type: 'POST'
+				, url: '/member/check_pw'
+				, data: {"password" : password}
+				, success:function(data) {
+					if(data.code == "success" ) {
+						$('.pw-matches-text').css("display", "block");
+						if($('.pw-notmatches-text').is(":visible")) {
+							$('.pw-notmatches-text').css("display", "none");
+						}
+					} else if(data.code == "fail") {
+						$('.pw-notmatches-text').css("display", "block");
+						if($('.pw-matches-text').is(":visible")) {
+							$('.pw-matches-text').css("display", "none");
+						}
+					}
+				}
+				, error:function(request, status, error) {
+					alert("요청에 실패하였습니다, 관리자에게 문의해주세요");
+				}
+			});
+		});
+		
+		
+		$('#change-passwordBtn').on('click', function(){
+			if($('.pw-change').is(":visible")){
+				$('.pw-change').slideUp();
+			} else { 
+				$('.pw-change').slideDown();
+			}
+			
+		});
+		
 		$('#modify-myInfoBtn').on('click', function(){
-			//alert("111");
 			let loginId =$('#loginId').val();
-			let password = $('#password').val();
 			let email = $('#email').val().trim();
 			let mobilePhoneNumber = $('#mobilePhoneNumber').val();
+			let password = $('#password-changed').val()
 			
+			let result = confirm("정보를 수정하시겠습니까?");
+	
+			if(result) {
+			}else {
+				return;
+			}
+	
+			if($('.pw-matches-text').is(':visible')) {
+				// 비밀번호를 변경하려고 했을때
+				if (password.length < 5) {
+					alert("변경할 비밀번호를 5자 이상입력해주세요");
+					return;
+				}
+				
+			} else {}
+			
+			// 핸드폰번호 010시작 유효성 검사
+			if (!mobilePhoneNumber.startsWith('010')){
+				alert("핸드폰 번호는 010으로 시작해야합니다.");
+				return;
+			}
+			
+			// 이메일 유효성 검사
+			if (!email.endsWith('.com')) {
+				alert("정상적인 email주소가 아닙니다.");
+				return;
+			}
 			
 			/* memberType:influencerMember */
 			let instagramId = $("#instagramId").val();

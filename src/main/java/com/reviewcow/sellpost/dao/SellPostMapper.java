@@ -11,7 +11,7 @@ import com.reviewcow.sellpost.model.SellPostUploadForm;
 @Repository
 public interface SellPostMapper {
 
-	public int selectSellPost(SellPostUploadForm sellPostForm);
+	public int insertSellPost(SellPostUploadForm sellPostForm);
 	
 	public List<SellPost> selectSellPostListOrderByDeadlineForOnline();
 	
@@ -31,9 +31,15 @@ public interface SellPostMapper {
 			@Param("skipLimit") int skipLimit,
 			@Param("limit") int limit);
 	
-	public List<SellPost> selectSellPostListOnlineProductByCategory(String categoryOnline2);
+	public List<SellPost> selectSellPostListOnlineProductByCategory(
+			@Param("categoryOnline2") String categoryOnline2,
+			@Param("limit") Integer limit
+			);
 	
-	public List<SellPost> selectSellPostListOfflineProductByCategory(String categoryOffline2);
+	public List<SellPost> selectSellPostListOfflineProductByCategory(
+			@Param("categoryOffline2") String categoryOffline2,
+			@Param("limit") Integer limit
+			);
 	
 	public List<SellPost> selectSellPostListPressProduct();
 	
@@ -43,21 +49,34 @@ public interface SellPostMapper {
 	
 	public int countSellPostStatusbyMemberId(
 			@Param("memberId") int memberId,
-			@Param("aprovalCondition") int aprovalCondition);
+			@Param("approvalCondition") int approvalCondition);
 	
 	public int countApplicantsStatusByMemberId(
 			@Param("memberId") int memberId,
-			@Param("aprovalCondition") int aprovalCondition);
+			@Param("approvalCondition") int approvalCondition);
 	
-	public int countSellPostStatusFinishedByMemberId(int memberId);
 	
 	public List<SellPost> selectSellPostListStatusByMemberId(
 			@Param("memberId") int memberId,
-			@Param("aprovalCondition") int aprovalCondition,
+			@Param("approvalCondition") int approvalCondition,
 			@Param("skipLimit") int skipLimit,
 			@Param("limit") int limit);
 	
 	public int countSellPostListStatusByMemberId(
 			@Param("memberId") int memberId,
-			@Param("aprovalCondition") int aprovalCondition);
+			@Param("approvalCondition") int approvalCondition);
+	
+	public int selectNumberSellPostApplicantNumberBySellPostId(int sellPostId);
+	
+	public int countSellPostBeforeApproval(Integer allPost);
+	
+	public List<SellPost> selectSellPostListBeforeApproval(
+			@Param("skipLimit") int skipLimit,
+			@Param("limit") int limit,
+			@Param("status") Integer status
+			);
+	
+	public void approveSellPost (
+			@Param("id") int id,
+			@Param("approvalCondition") int approvalCondition);
 }

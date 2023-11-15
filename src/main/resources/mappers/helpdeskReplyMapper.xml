@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.reviewcow.board.dao.HelpdeskReplyMapper">
+ 
+ 	<insert id="insertHelpdeskReply" parameterType="map">
+ 		INSERT INTO `helpdesk_reply`
+ 		(
+			`memberId`
+			,`helpdeskId`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		)
+ 		VALUES
+ 		(
+ 			#{memberId}
+ 			, #{helpdeskId}
+ 			, #{content}
+ 			, NOW()
+ 			, NOW()
+ 		)
+ 	</insert>
+ 	
+ 	<select id="selectHelpdeskReplybyHelpdeskId" resultType="com.reviewcow.board.model.HelpdeskReply">
+ 		SELECT 
+ 			`id`
+			, `memberId`
+			, `helpdeskId`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+ 		FROM
+ 			`helpdesk_reply`
+ 		WHERE
+ 			`helpdeskId` = #{helpdeskId};
+ 	</select>
+ 	
+ 	<delete id="delHelpdeskReplyByReplyId">
+ 		DELETE FROM `helpdesk_reply`
+ 		WHERE
+ 			`id` = #{helpdeskId};
+ 	</delete>
+ 
+ </mapper>

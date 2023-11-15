@@ -170,13 +170,19 @@
 #upload-product #productSubmitBtn {
 	width: 180px;
 	height: 40px;
-	background-color: #6495ED;
+	background-color: #1E90FF;
 	border: none;
 	border-radius: 8px;
 	margin: 10px 0 0 0;
 	color: white;
 	font-size: 13pt;
+	opacity: 0.8;
 }
+#upload-product #productSubmitBtn:hover {
+	opacity: 1;
+	
+}
+
 #upload-product .start-date-text-font {
 	position: absolute;
 	color: #404040;

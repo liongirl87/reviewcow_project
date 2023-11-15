@@ -23,7 +23,7 @@
 
 
 .mainView-i-style .like-productText{
-	margin: 0 0 0 -15px;
+	margin: 0 0 1px -15px;
 }
 .dealine-product {
 	width:1200px;
@@ -56,6 +56,8 @@
 	outline: #D3D3D3 solid 1px;
 }
 .product-name {
+	margin: 0 0 3px 2px;
+	width: 85%;
 	font-size:14px;
 /* 	font-weight: bold; */
 }
@@ -99,7 +101,7 @@
 }
 .like-productBtn {
 	font-size: 10pt;
-	margin: 0 0 0 3px;
+	margin:10px 0 0 3px;
 }
 .numberOf-applicant {
 	font-size: 10pt;
@@ -110,10 +112,11 @@
 	color: #009900;
 }
 .product-icon {
+	width: 15%;
 	width: 25px;
 	height: 25px;
 	margin: 0 3px 3px 5px;
-	overflow:hidden
+ 	overflow:hidden 
 }
 .product-icon-img {
 	margin: 0 0 2px 0;
@@ -149,7 +152,7 @@
 	margin: 0 0 5px 0;
 }
 .prduct-IN {
-	margin: 7px 0 0 0;
+	margin: 10px 0 0 0;
 	border-bottom: 1px solid rgb(211, 211, 211);
 }
 
@@ -173,6 +176,13 @@
 	background-color: rgb(230, 230, 230);
 	cursor: pointer;
 }
+
+.top-category-child.active {
+	background-color: rgb(0, 0, 0, 0.8);
+	color: white;	
+	
+}
+
 .top-category-child:first-child {
 	border-left: none;
 	border-radius: 20px 0 0 20px;

@@ -73,9 +73,6 @@ public class ApplicationController {
 		
 		manageList = sellPostBo.countSellPostStatusbyMemberId(memberId);
 		
-		// 마감
-		manageList.setFinish(sellPostBo.countSellPostStatusFinishedByMemberId(memberId));
-		
 		viewList.add("include/side_menu");
 		viewList.add("application/manage_applicants");
 		model.addAttribute("viewList", viewList);
@@ -89,14 +86,14 @@ public class ApplicationController {
 			@RequestParam(value = "prevId", required=false) Integer prevIdParam,
 			@RequestParam(value = "nextId", required=false) Integer nextIdParam,
 			@RequestParam(value = "postPage" ,required=false) Integer postPage,
-			@RequestParam("aprovalCondition") int aprovalCondition,
+			@RequestParam("approvalCondition") int approvalCondition,
 			Model model,
 			HttpSession session) {
 		List<String> viewList = new ArrayList<>();
 		List<CardView> cardViewList = new ArrayList<>();
 		
 		int memberId = (int)session.getAttribute("memberId");
-		int nowAprovalCondition = aprovalCondition;
+		int nowapprovalCondition = approvalCondition;
 		// 하단 페이징
 		Integer prevId = 0;
 		Integer nextId = 0;
@@ -105,36 +102,39 @@ public class ApplicationController {
 			postPage = 1;
 		}
 		
-		PostPagingDTO postpaging = new PostPagingDTO(postPage, sellPostBo.countSellPostListStatusByMemberId(memberId, aprovalCondition));
+		PostPagingDTO postpaging = new PostPagingDTO(postPage, sellPostBo.countSellPostListStatusByMemberId(memberId, approvalCondition));
 	
 		model.addAttribute("postPaging", postpaging);
 		model.addAttribute("prevId", prevId);
 		model.addAttribute("nextId", nextId);
 		
 		// 하단 페이징 끝
-		cardViewList = applicationtBo.generateStatusProduct(memberId, aprovalCondition, postpaging.getMysqlSkip() ,postpaging.getPostsperpage());
+		
+		cardViewList = applicationtBo.generateStatusProduct(memberId, approvalCondition, postpaging.getMysqlSkip() ,postpaging.getPostsperpage());
 		
 		viewList.add("include/side_menu");
 		viewList.add("application/status_product");
 		model.addAttribute("viewList", viewList);
 		model.addAttribute("cardViewList", cardViewList);
-		model.addAttribute("nowAprovalCondition", nowAprovalCondition);
+		model.addAttribute("nowapprovalCondition", nowapprovalCondition);
 		return "template/layout";
 	}
 	
+	// 지원자 관리
 	@GetMapping("/manage_applicants_view/status_applicants_view")
 	public String statusApplicantsView(
 			@RequestParam(value = "prevId", required=false) Integer prevIdParam,
 			@RequestParam(value = "nextId", required=false) Integer nextIdParam,
 			@RequestParam(value = "postPage" ,required=false) Integer postPage,
-			@RequestParam("aprovalCondition") int aprovalCondition,
+			@RequestParam("approvalCondition") int approvalCondition,
 			Model model,
 			HttpSession session) {
 		List<String> viewList = new ArrayList<>();
 		List<ManageApplicants> applicantsList = new ArrayList<>();
 		
 		int memberId = (int)session.getAttribute("memberId");
-		int nowAprovalCondition = aprovalCondition;
+		int nowapprovalCondition = approvalCondition;
+		
 		// 하단 페이징
 		Integer prevId = 0;
 		Integer nextId = 0;
@@ -143,20 +143,20 @@ public class ApplicationController {
 			postPage = 1;
 		}
 		
-		PostPagingDTO postpaging = new PostPagingDTO(postPage, sellPostBo.countApplicantsStatusByMemberId(memberId, aprovalCondition));
+		PostPagingDTO postpaging = new PostPagingDTO(postPage, applicationtBo.countApplicantsStatusByMemberId(memberId, approvalCondition));
 	
 		model.addAttribute("postPaging", postpaging);
 		model.addAttribute("prevId", prevId);
 		model.addAttribute("nextId", nextId);
 		
 		// 하단 페이징 끝
-		applicantsList = applicationtBo.generateStatusApplicantsList(memberId, aprovalCondition, postpaging.getMysqlSkip() ,postpaging.getPostsperpage());
+		applicantsList = applicationtBo.generateStatusApplicantsList(memberId, approvalCondition, postpaging.getMysqlSkip() ,postpaging.getPostsperpage());
 		
 		viewList.add("include/side_menu");
 		viewList.add("application/status_applicants");
 		model.addAttribute("viewList", viewList);
 		model.addAttribute("applicantsList", applicantsList);
-		model.addAttribute("nowAprovalCondition", nowAprovalCondition);
+		model.addAttribute("nowapprovalCondition", nowapprovalCondition);
 		return "template/layout";
 	}
 }

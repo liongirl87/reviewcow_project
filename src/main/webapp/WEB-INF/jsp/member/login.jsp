@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
 <div id="login-top-div" class="d-flex justify-content-center">
 	<div id="login" class="mt-3">
-		<div class="login-title"><i class="xi-angle-left"></i>로그인</div>
+		<div class="login-title"><a href="javascript:history.back()"><i class="xi-angle-left"></i></a>로그인</div>
 		<form id="loginForm" action="/member/login" method="post">
 			<div id="login-form-div" class="d-flex justify-content-center">
 				<div>
@@ -32,15 +32,22 @@
 			let params = $('#loginForm').serialize();
 			console.log(params);
 			
+			if (loginId.length <3) {
+				alert("아이디를 입력해주세요");
+				return;
+			}
+			if (password.length < 5) {
+				alert("비밀번호는 5자이상입니다")
+				return;
+			}
+			
 			$.post(url,params)
 			.done(function(data){
 				if(data.code == 1) {	// 성공
-					alert(data.result);
-					location.reload();
+					location.href= '/main/main_view';
 				} else {	// 실패
 					alert(data.result);
 					location.reload();
-					location.href="/"
 				}
 			});
 		});

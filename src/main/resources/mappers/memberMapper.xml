@@ -15,6 +15,7 @@
 		    ,`address`
 		    ,`telePhoneNumber`
 		    ,`mobilePhoneNumber`
+		    ,`approvalCondition`
 		    ,`createdAt`
 			,`updatedAt`
  		)
@@ -29,6 +30,7 @@
  			,#{address}
  			,#{telePhoneNumber}
  			,#{mobilePhoneNumber}
+ 			,#{approvalCondition}
  			,NOW()
  			,NOW()
  		)
@@ -45,7 +47,6 @@
 			,`blogUrl`
 			,`twitterUrl`
 			,`OtherUrl`
-			,`createdAt`
 			,`updatedAt`
  		)
  		values
@@ -58,7 +59,6 @@
  			,#{twitterUrl}
  			,#{OtherUrl}
  			,NOW()
- 			,NOW()
  		)
  	
  	</insert>
@@ -69,7 +69,6 @@
 			`memberLoginId`
 			,`businessName`
 			,`businessLicenseNumber`
-			,`createdAt`
 			,`updatedAt`
  		)
  		values
@@ -77,7 +76,6 @@
  			#{loginId}
  			,#{businessName}
  			,#{businessLicenseNumber}
- 			,NOW()
  			,NOW()
  		)
  	
@@ -94,7 +92,7 @@
 			,`address`
 			,`telePhoneNumber`
 			,`mobilePhoneNumber`
-			,`nowPoint`
+			,`approvalCondition`
 			,`createdAt`
 			,`updatedAt`
 		FROM
@@ -112,7 +110,6 @@
 			,`blogUrl`
 			,`twitterUrl`
 			,`OtherUrl`
-			,`createdAt`
 			,`updatedAt`
 		FROM
 			`influencer_member`
@@ -125,7 +122,6 @@
 			,`memberLoginId`
 			,`businessName`
 			,`businessLicenseNumber`
-			,`createdAt`
 			,`updatedAt`
 		FROM
 			`business_member`
@@ -144,14 +140,95 @@
 			,`address`
 			,`telePhoneNumber`
 			,`mobilePhoneNumber`
-			,`nowPoint`
+			,`approvalCondition`
 			,`createdAt`
 			,`updatedAt`
 		FROM
 			`member`
 		WHERE
 			`id` = #{memberId};	
-		
+ 	</select>
+ 	<select id="selectMemberList" parameterType="map" resultType="com.reviewcow.member.model.Member">
+	 	SELECT
+			`id`
+			,`memberType`
+			,`loginId`
+			,`password`
+			,`salt`
+			,`name`
+			,`email`
+			,`address`
+			,`telePhoneNumber`
+			,`mobilePhoneNumber`
+			,`approvalCondition`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`member`
+		WHERE
+			`approvalCondition` = 1
+		ORDER BY `createdAt` DESC
+		LIMIT ${skipLimit} ,${limit};
+ 	</select>
+ 	
+ 	<select id="selectMemberListByMemberType" parameterType="map" resultType="com.reviewcow.member.model.Member">
+	 	SELECT
+			`id`
+			,`memberType`
+			,`loginId`
+			,`password`
+			,`salt`
+			,`name`
+			,`email`
+			,`address`
+			,`telePhoneNumber`
+			,`mobilePhoneNumber`
+			,`approvalCondition`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`member`
+		WHERE
+			`approvalCondition` = 1
+		AND `memberType` = #{memberType}
+		ORDER BY `createdAt` DESC
+		LIMIT ${skipLimit} ,${limit};
+ 	</select>
+ 	
+ 	
+ 	<select id="selectBusinessMemberList" parameterType="map" resultType="com.reviewcow.member.model.Business_Member_List">
+        SELECT A.*, B.`businessName`, B.`businessLicenseNumber`
+		FROM `member` AS A
+		LEFT JOIN `business_member` AS B
+        ON A.`loginId` = B.`memberLoginId`
+        WHERE A.`memberType` = 'businessMember'
+        AND A.`approvalCondition` = 0
+        ORDER BY A.`createdAt` DESC
+        LIMIT ${skipLimit} ,${limit};
+ 	</select>
+ 	
+ 	<select id="countBusinessMember" resultType="int">
+ 		SELECT count(*)
+		FROM `member` AS A
+		LEFT JOIN `business_member` AS B
+        ON A.`loginId` = B.`memberLoginId`
+        WHERE A.`memberType` = 'businessMember'
+        ORDER BY A.`createdAt` DESC;
+ 	</select>
+ 	
+ 	 <select id="countMember" resultType="int">
+ 		SELECT count(*)
+		FROM `member`
+		WHERE `approvalCondition` = 1
+        ORDER BY `createdAt` DESC;
+ 	</select>
+ 	
+ 	 <select id="countMemberByMemberType" resultType="int">
+ 	 	SELECT count(*)
+		FROM `member`
+		WHERE `approvalCondition` = 1
+		AND `memberType` = #{memberType}
+        ORDER BY `createdAt` DESC;
  	</select>
  	
  	<update id="updateMemberByLoginId" parameterType="com.reviewcow.member.model.MemberJoinForm">
@@ -160,6 +237,10 @@
 	 			`email` = #{email}
 	 			, `mobilePhoneNumber` = #{mobilePhoneNumber}
 	 			, `updatedAt` = NOW()
+	 		<if test="password != null and !password.equals('')">
+	 			, `password` = #{password}
+	 			, `salt` = #{salt}
+	 		</if>	
 	 		WHERE
 	 			`loginId` = #{loginId}
  	</update>
@@ -181,8 +262,17 @@
 	 		SET
 				`businessName` = #{businessName}
 				,`businessLicenseNumber` = #{businessLicenseNumber}
+				, `updatedAt` = NOW()
 	 		WHERE
 	 			`memberLoginId` = #{loginId}
+ 	</update>
+ 	
+ 	<update id="updateBusinessMemberById" parameterType="map">
+ 		UPDATE `member`
+ 			SET
+ 				`approvalCondition` = #{approvalCondition}
+ 			WHERE
+ 				`id` = #{id}
  	</update>
  	
  	<select id="selectMemberLoginIdForHelpdesk" resultType="String">
@@ -190,8 +280,6 @@
  		FROM `member`
         WHERE `id` = #{memberId}
  	</select>
- 	
- 	
  	
  	
  </mapper>

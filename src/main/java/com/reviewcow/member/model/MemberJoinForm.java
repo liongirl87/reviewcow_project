@@ -16,6 +16,7 @@ public class MemberJoinForm {
 	private String address;
 	private String telePhoneNumber;
 	private String mobilePhoneNumber;
+	private int approvalCondition;
 	private String instagramId;
 	private String facebookUrl;
 	private String youtubeUrl;

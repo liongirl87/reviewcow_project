@@ -31,7 +31,7 @@
 					</c:when>
 				</c:choose>
 				
-				<div class="text-margin03-applyList text-center"><a href="/sellpost/product_detail_view?postId=${applyList.id}">${applyList.productName}</a></div>
+				<div class="text-margin03-applyList text-center "><a href="/sellpost/product_detail_view?postId=${applyList.id}"><span class="product-list-postname">${applyList.productName}</span></a></div>
 				<c:choose>
 					<c:when test="${applyList.status == 0}">
 						<div class="text-margin04-applyList text-center font-weight-bold">대기중</div>
@@ -42,11 +42,17 @@
 					<c:when test="${applyList.status == 2}">
 						<div class="text-margin04-applyList refuse text-center  font-weight-bold">승인거절</div>
 					</c:when>
+					<c:when test="${applyList.status == 3}">
+						<div class="text-margin04-applyList refuse text-center  font-weight-bold">취소</div>
+					</c:when>
+					<c:when test="${applyList.status == 4}">
+						<div class="text-margin04-applyList approval text-center  font-weight-bold">지급완료</div>
+					</c:when>
 				</c:choose>
 				<div class="text-margin05-applyList text-center"><a href="#" class="cancelBtn" data-postid="${applyList.id}" data-toggle="modal" data-target="#modal"><i class="xi-close-circle"></i></a></div>
 			</div>
 			</c:forEach>
-			<!-- 페이징 버튼 TEST -->
+			<!-- 페이징 버튼 -->
 			<div class="list_number">
 	    		<div>
 		        	<div class="list_n_menu">
@@ -59,7 +65,7 @@
 		        	</div>
 	    		</div>
 			</div>
-			<!--  페이징 버튼 TEST 끝 -->
+			<!--  페이징 버튼 끝 -->
 		</div>	
 	</div>
 </div>
@@ -96,16 +102,16 @@ $(document).ready(function(){
 	
 	
 	$('#modal #modalApplyBtn').on('click', function(){
-		let postId = $('#modal').data('postid');
+		let sellPostId = $('#modal').data('postid');
 		
-		let sellPostUrl = "/application/apply_product/" + postId;
+		let sellPostUrl = "/application/apply_product/" + sellPostId;
 	    
 	 	$.ajax({
 			url: sellPostUrl
 	 		
 			,success:function(data) {
 				if(data.code == 1) {
-					alert("신청성공");
+					alert("체험단 취소를 완료하였습니다.");
 					location.reload();
 				} else {
 					alert("신청 실패, 로그인 해주세요");

@@ -5,11 +5,11 @@
     
 <div id="managePoint-view" class="d-flex justify-content-center">
 	<div id="side-view-right-Tdiv" class="mt-3">
-		<div class="main-title"><i class="xi-angle-left"></i>포인트관리</div>
+		<div class="main-title"><a href="javascript:history.back()"><i class="xi-angle-left"></i></a>포인트관리</div>
 		<div class="d-flex justify-content-between point-button-parentDiv">
 			<div class="semi-title">보유포인트</div>
-			<input type="button" id="chargePointBtn" value="충전하기">
-			<input type="button" id="withdrawPointBtn" value="출금하기">
+			<input type="button" id="chargePointBtn" value="충전하기" onclick="location.href='/point/manage_point_view/deposit_view'">
+			<input type="button" id="withdrawPointBtn" value="출금하기" onclick="location.href='/point/manage_point_view/withdraw_view'">
 		</div>
 		<div class="mp-bottom-text-line"></div>
 		<div class="now-point-div d-flex align-items-center justify-content-center">

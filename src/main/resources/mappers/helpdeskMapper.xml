@@ -24,6 +24,7 @@
  		)
  	
  	</insert>
+ 	
  	<select id="selectHelpdeskWritingListByMemberId" resultType="com.reviewcow.board.model.Helpdesk">
  		SELECT
  			`id`
@@ -31,7 +32,6 @@
 			, `inquiryType`
 			, `inquiryTitle`
 			, `inquiryContent`
-			, `replyOrNot`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -48,14 +48,13 @@
  			`memberId` = #{memberId}
  	</select>
  	
- 	<select id="selectHelpdeskContentsByMemberIdForPaging" parameterType="map" resultType="com.reviewcow.board.model.Helpdesk">
+ 	<select id="selectHelpdeskListByMemberId" parameterType="map" resultType="com.reviewcow.board.model.Helpdesk">
  		SELECT
  			`id`
 			, `memberId`
 			, `inquiryType`
 			, `inquiryTitle`
 			, `inquiryContent`
-			, `replyOrNot`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -74,7 +73,6 @@
 			, `inquiryType`
 			, `inquiryTitle`
 			, `inquiryContent`
-			, `replyOrNot`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -82,6 +80,7 @@
  		WHERE
  			`id` = #{postId}
  	</select>
+ 	
  	<delete id="deleteHelpdsekByPostId" parameterType="int">
  		DELETE
 	 	FROM
@@ -89,6 +88,7 @@
 	 	WHERE
 	 		`id` = #{postId}
  	</delete>
+ 	
  	<update id="updateHelpdeskByPostId" parameterType="map">
  		UPDATE `helpdesk`
  		SET
@@ -97,5 +97,37 @@
  		WHERE
  			`id` = #{postId}
  	</update>
+ 	
+ 	<select id="countHelpdesk" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`helpdesk`
+ 	</select>
+ 	
+ 	<select id="selectHelpdeskList" parameterType="map" resultType="com.reviewcow.board.model.Helpdesk">
+ 		SELECT
+ 			`id`
+			,`memberId`
+			,`inquiryType`
+			,`inquiryTitle`
+			,`inquiryContent`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`helpdesk`
+		ORDER BY `createdAt` DESC	
+		LIMIT ${skipLimit} ,${limit};
+ 	</select>
+ 	
+ 	<select id="countHelpdeskRepliesByHelpdeskId" resultType="int">
+	 	SELECT count(*)
+		FROM
+			`helpdesk` AS A
+		RIGHT JOIN `helpdesk_reply` AS B
+		ON A.`id` = B.`helpdeskId`
+		WHERE A.`id` = #{helpdeskId};
+ 	</select>
+ 	
  
  </mapper>

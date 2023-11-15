@@ -12,8 +12,8 @@
 						<span class="ml-3">제목</span>
 					</div>
 					<div class="helpdesk-content-title-Rline text-center"></div>
-					<div class="helpdesk-content-title-child2 text-center">${helpdesk.inquiryType}</div>
-					<div class="helpdesk-content-title-child3">${helpdesk.inquiryTitle}</div>
+					<div class="helpdesk-content-title-child2 text-center">${helpdeskMember.helpdesk.inquiryType}</div>
+					<div class="helpdesk-content-title-child3">${helpdeskMember.helpdesk.inquiryTitle}</div>
 				</div>
 			</div>
 			<div>
@@ -22,31 +22,34 @@
 						<span class="ml-3">작성자</span>
 					</div>
 					<div class="helpdesk-content-title-Rline text-center"></div>
-					<div class="helpdesk-content-title-child3">${memberLoginId}</div>
+					<div class="helpdesk-content-title-child3">${helpdeskMember.member.loginId}</div>
 				</div>
 			</div>
 			<div class="d-flex helpdesk-createdAt-div bot-line">
 				<div class="helpdesk-createdAt-text"> 작성일</div>
-				<fmt:formatDate var="createDate" value="${helpdesk.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<fmt:formatDate var="createDate" value="${helpdeskMember.helpdesk.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				<div class="helpdesk-createdAt-text2">${createDate}</div>
 			</div>
 			<div class="content-text-div bot-line">
-				<div>${helpdesk.inquiryContent}</div>
+				<div>${helpdeskMember.helpdesk.inquiryContent}</div>
 			</div>
 			<div class="d-flex justify-content-end mt-3">
-				<input type="button" id="helpdeskModifyBtn" class="helpdesk-bot-buttons text-center mr-1" value="수정" onclick="location.href='/board/helpdesk_modify?postId=${helpdesk.id}'">		
-				<input type="button" id="helpdeskDeleteBtn" class="helpdesk-bot-buttons text-center mr-1" value="삭제" data-postid="${helpdesk.id}">		
+				<input type="button" id="helpdeskModifyBtn" class="helpdesk-bot-buttons text-center mr-1" value="수정" onclick="location.href='/board/helpdesk_modify?postId=${helpdeskMember.helpdesk.id}'">		
+				<input type="button" id="helpdeskDeleteBtn" class="helpdesk-bot-buttons text-center mr-1" value="삭제" data-postid="${helpdeskMember.helpdesk.id}">		
 				<input type="button" class="helpdesk-bot-buttons text-center" value="목록" onclick="location.href='/board/helpdesk_view'">		
 			</div>
-			<div class="helpdesk-reply-div mt-3">
-				<div class="d-flex align-items-center helpdesk-reply-div-writer bot-line">
-					<div class="helpdesk-reply-div-child1">ReviewCow</div>
-					<div class="ml-3 helpdesk-createdAt-text2">2023-06-14 20:11:50</div>
+			<c:forEach items="${helpdeskMember.helpdeskReply}" var="reply">
+				<div class="helpdesk-reply-div mt-3">
+					<div class="d-flex align-items-center helpdesk-reply-div-writer bot-line">
+						<div class="helpdesk-reply-div-child1">${reply.member.name}</div>
+						<fmt:formatDate var="createdAt" value="${reply.createdAt}" pattern="yyyy-MM-dd HH:mm:ss" />
+						<div class="ml-3 helpdesk-createdAt-text2">${createdAt}</div>
+					</div>
+					<div class="helpdesk-reply-div-content">
+						${reply.content}
+					</div>
 				</div>
-				<div class="helpdesk-reply-div-content">
-					안녕하세요~문의 답변입니다 안녕하세요~문의 답변입니다 안녕하세요~문의 답변입니다 안녕하세요~문의 답변입니다 안녕하세요~문의 답변입니다 안녕하세요~문의 답변입니다
-				</div>
-			</div>
+			</c:forEach>
 		</div>	
 	</div>
 </div>
@@ -63,14 +66,14 @@ $(document).ready(function(){
 			, data: {"postId":postId}
 			, success:function(data){
 				if(data.code == 1){
-					alert("성공");
+					alert("문의글을 삭제하였습니다.");
 					location.href = "/board/helpdesk_view";
 				} else {
 					alert(data.errorMessage);
 				}
 			}
 			, error:function(request, status, error) {
-				alert("삭제실패, 관리자에게 문의");
+				alert("삭제실패, 관리자에게 문의해주세요.");
 			}
 		});
 	});

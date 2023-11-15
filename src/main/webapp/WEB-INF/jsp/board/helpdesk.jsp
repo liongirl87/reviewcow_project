@@ -19,23 +19,23 @@
 					<div class="text-margin04 text-center">상태</div>
 				</div>
 			</div>
-			<c:forEach items="${helpdeskList}" var="helpdeskList">
+			<c:forEach items="${helpdeskMemberList}" var="helpdesk">
 				<div class="d-flex align-items-center reveiwList-content-div">
-					<fmt:formatDate var="dateOfCreated" value="${helpdeskList.createdAt}" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate var="dateOfCreated" value="${helpdesk.helpdesk.createdAt}" pattern="yyyy-MM-dd"/>
 					<div class="text-margin01 text-center">${dateOfCreated}</div>
-					<div class="text-margin02 text-center">${helpdeskList.inquiryType}</div>
-					<div class="text-margin03 text-center"><a href="/board/helpdesk_detail?postId=${helpdeskList.id}">${helpdeskList.inquiryTitle}</a></div>
+					<div class="text-margin02 text-center">${helpdesk.helpdesk.inquiryType}</div>
+					<div class="text-margin03 text-center"><a href="/board/helpdesk_detail?postId=${helpdesk.helpdesk.id}" class="helpdesk-title-text">${helpdesk.helpdesk.inquiryTitle} <span class="replies-count-text">(${helpdesk.numberOfReplies})</span></a></div>
 					<c:choose>
-						<c:when test="${helpdeskList.replyOrNot == 0}">
-							<div class="text-margin04 text-center">미답변</div>
+						<c:when test="${helpdesk.numberOfReplies <= 0}">
+							<div class="text-margin04 text-center text-danger">미답변</div>
 						</c:when>
-						<c:when test="${helpdeskList.replyOrNot == 1}">
-							<div class="text-margin04 text-center">답변완료</div>
+						<c:when test="${helpdesk.numberOfReplies >= 1}">
+							<div class="text-margin04 text-center text-primary">답변완료</div>
 						</c:when>
 					</c:choose>
 				</div>
 			</c:forEach>
-		<!-- 페이징 버튼 TEST -->
+		<!-- 페이징 버튼 -->
 			<div class="list_number">
 	    		<div>
 		        	<div class="list_n_menu">
@@ -48,7 +48,7 @@
 		        	</div>
 	    		</div>
 			</div>
-		<!--  페이징 버튼 TEST 끝 -->
+		<!--  페이징 버튼 끝 -->
 		</div>
 	</div>
 </div>

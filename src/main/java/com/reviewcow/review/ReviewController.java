@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.reviewcow.applyproduct.bo.ApplicationtBo;
+import com.reviewcow.postpaging.model.PostPagingDTO;
 import com.reviewcow.review.bo.ReviewBo;
 import com.reviewcow.review.model.ReviewList;
 import com.reviewcow.sellpost.bo.SellPostBo;
@@ -24,18 +26,32 @@ public class ReviewController {
 	private ReviewBo reviewBo;
 	@Autowired
 	private SellPostBo sellPostBo;
+	@Autowired
+	private ApplicationtBo applicationBo;
 	
 	@RequestMapping("/myreview_list_view")
-	public String myReviewList(Model model, HttpSession session) {
+	public String myReviewList(
+			@RequestParam(value = "prevId", required=false) Integer prevIdParam,
+			@RequestParam(value = "nextId", required=false) Integer nextIdParam,
+			@RequestParam(value = "postPage" ,required=false) Integer postPage,
+			Model model,
+			HttpSession session) {
 		List<String> viewList = new ArrayList<>();
 		Integer memberId = (Integer)session.getAttribute("memberId");
 		
+		Integer prevId = 0;
+		Integer nextId = 0;
 		
-		List<ReviewList> reviewList = reviewBo.getReviewListByMemberId(memberId);
-
+		if (postPage == null) {
+			postPage = 1;
+		}
+		PostPagingDTO postpaging = new PostPagingDTO(postPage, reviewBo.countApplicationListByMemberId(memberId));
 		
-/*		List<SellPost> reviewList = sellPostBo.getSellPostListForReviewListBymemberId(memberId);*/
+		List<ReviewList> reviewList = reviewBo.getReviewListByMemberId(memberId,postpaging.getMysqlSkip(),postpaging.getPostsperpage());
 		
+		model.addAttribute("postPaging", postpaging);
+		model.addAttribute("prevId", prevId);
+		model.addAttribute("nextId", nextId);
 		
 		viewList.add("include/side_menu");
 		viewList.add("review/list_review");

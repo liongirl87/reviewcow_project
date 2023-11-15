@@ -16,6 +16,5 @@ public class Influencer_Member {
 	private String blogUrl;
 	private String twitterUrl;
 	private String otherUrl;
-	private Date createdAt;
 	private Date updatedAt;
 }
