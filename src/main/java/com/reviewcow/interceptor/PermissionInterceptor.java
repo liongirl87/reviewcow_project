@@ -86,6 +86,12 @@ public class PermissionInterceptor implements HandlerInterceptor{
 			response.getWriter().println("<script>alert('로그인 후 이용해주세요');location.href='/member/login_view';</script>"); 
 			return false; 
 		}
+
+		// 신청한 체험단
+		if(member == null && uri.equals("/application/manage_applicants_view")) { 
+			response.getWriter().println("<script>alert('로그인 후 이용해주세요');location.href='/member/login_view';</script>"); 
+			return false; 
+		}
 		
 		// 로그인후 로그인화면 접근 불가
 		if (member != null && uri.equals("/member/login_view")) {
@@ -98,6 +104,8 @@ public class PermissionInterceptor implements HandlerInterceptor{
 			response.getWriter().println("<script>alert('관리자 계정으로 로그인해주세요11');location.href='/admin/login_view';</script>");
 			return false;
 		}
+		
+		
 		
 		// 어드민 계정외에 접근 불가
 		if (member != null) {

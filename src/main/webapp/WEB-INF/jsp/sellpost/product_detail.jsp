@@ -166,20 +166,37 @@
 							<span class="">${cardView.nowApplicants} /
 								${cardView.sellPost.numberOfApplicants} </span><span
 								class="h2 applicantsSideText"> 명</span>
+							<span class="approval-applicants">(승인: ${cardView.approvedApplicants})</span>	
 						</div>
 					</div>
 					<div class="applyBtnDiv">
 						<c:choose>
-							<c:when test="${cardView.checkedApply == true}">
-								<input type="button" value="취소하기" class="applyBtn"
-									data-toggle="modal" data-target="#modal"
-									data-postid="${cardView.sellPost.id}">
+							<c:when test="${cardView.sellPost.numberOfApplicants <= cardView.approvedApplicants}">
+								<c:choose>
+									<c:when test="${cardView.checkedApply == true}">
+										<input type="button" value="취소하기" class="applyBtn"
+										data-toggle="modal" data-target="#modal"
+										data-postid="${cardView.sellPost.id}">
+									</c:when>
+									<c:when test="${cardView.checkedApply == false}">
+										<input type="button" value="마감" class="closedBtn" >
+									</c:when>
+								</c:choose>
 							</c:when>
-							<c:when test="${cardView.checkedApply == false}">
-								<input type="button" value="지금신청하기" class="applyBtn"
-									data-toggle="modal" data-target="#modal"
-									data-postid="${cardView.sellPost.id}">
-							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${cardView.checkedApply == true}">
+										<input type="button" value="취소하기" class="applyBtn"
+										data-toggle="modal" data-target="#modal"
+										data-postid="${cardView.sellPost.id}">
+									</c:when>
+									<c:when test="${cardView.checkedApply == false}">
+										<input type="button" value="지금신청하기" class="applyBtn"
+										data-toggle="modal" data-target="#modal"
+										data-postid="${cardView.sellPost.id}">
+									</c:when>
+								</c:choose>
+							</c:otherwise>
 						</c:choose>
 					</div>
 					<div class="likeAndShareBtnDiv d-flex justify-content-between">
@@ -318,6 +335,9 @@ $(document).ready(function(){
 		window.navigator.clipboard.writeText(window.location.href).then(() => {alert("현재 링크를 복사하였습니다.")});
 	});
 	
+	$('.closedBtn').on("click", function() {
+		alert("마감되었습니다.");
+	});
 	
 	$('#modalApplyBtn').on("click",function(){
 		let sellPostId = "/application/apply_product/" + $('.applyBtn').data("postid");

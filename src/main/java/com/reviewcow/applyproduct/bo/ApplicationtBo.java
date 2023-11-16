@@ -92,8 +92,6 @@ public class ApplicationtBo {
 			// 할인 후 실제 판매가격
 			card.setPrice(sellPost.getSellPrice() - sellPost.getDiscountRate());
 			
-			
-			
 			// cardViewList에 채우기
 			cardViewList.add(card);
 		}

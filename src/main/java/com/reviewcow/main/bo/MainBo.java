@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.reviewcow.applyproduct.bo.ApplicationtBo;
+import com.reviewcow.applyproduct.dao.ApplicationMapper;
 import com.reviewcow.like.bo.LikeBo;
 import com.reviewcow.main.model.CardView;
 import com.reviewcow.sellpost.bo.SellPostBo;
@@ -23,6 +24,8 @@ public class MainBo {
 	private LikeBo likeBo;
 	@Autowired
 	private ApplicationtBo applicationBo;
+	@Autowired
+	private ApplicationMapper applicationMapper;
 	
 	
 	public List<CardView> generateDeadLineItem(Integer memberId) {
@@ -45,6 +48,9 @@ public class MainBo {
 			
 			// 현재 지원자 수
 			card.setNowApplicants(applicationBo.applyApplicantsCount(sellPost.getId()));
+			
+			// 승인된 지원자 수
+			card.setApprovedApplicants(applicationMapper.applicationNumberCheckAtApplication(sellPost.getId()));
 			
 			// 로그인유저 지원했는지 여부
 			card.setCheckedApply(applicationBo.checkedApply(memberId, sellPost.getId()));
@@ -90,6 +96,9 @@ public class MainBo {
 			
 			// 현재 지원자 수
 			card.setNowApplicants(applicationBo.applyApplicantsCount(sellPost.getId()));
+			
+			// 승인된 지원자 수
+			card.setApprovedApplicants(applicationMapper.applicationNumberCheckAtApplication(sellPost.getId()));
 			
 			// 로그인유저 지원했는지 여부
 			card.setCheckedApply(applicationBo.checkedApply(memberId, sellPost.getId()));
@@ -137,6 +146,9 @@ public class MainBo {
 			// 현재 지원자 수
 			card.setNowApplicants(applicationBo.applyApplicantsCount(sellPost.getId()));
 			
+			// 승인된 지원자 수
+			card.setApprovedApplicants(applicationMapper.applicationNumberCheckAtApplication(sellPost.getId()));
+			
 			// 로그인유저 지원했는지 여부
 			card.setCheckedApply(applicationBo.checkedApply(memberId, sellPost.getId()));
 			
@@ -183,6 +195,10 @@ public class MainBo {
 			// 현재 지원자 수
 			card.setNowApplicants(applicationBo.applyApplicantsCount(sellPost.getId()));
 			
+			// 승인된 지원자 수
+			card.setApprovedApplicants(applicationMapper.applicationNumberCheckAtApplication(sellPost.getId()));
+						
+			
 			// 로그인유저 지원했는지 여부
 			card.setCheckedApply(applicationBo.checkedApply(memberId, sellPost.getId()));
 			
@@ -227,6 +243,9 @@ public class MainBo {
 			
 			// 현재 지원자 수
 			card.setNowApplicants(applicationBo.applyApplicantsCount(sellPost.getId()));
+			
+			// 승인된 지원자 수
+			card.setApprovedApplicants(applicationMapper.applicationNumberCheckAtApplication(sellPost.getId()));
 			
 			// 로그인유저 지원했는지 여부
 			card.setCheckedApply(applicationBo.checkedApply(memberId, sellPost.getId()));
@@ -273,6 +292,9 @@ public class MainBo {
 			
 		// 현재 지원자 수
 		cardView.setNowApplicants(applicationBo.applyApplicantsCount(sellPost.getId()));
+		
+		// 승인된 지원자 수
+		cardView.setApprovedApplicants(applicationMapper.applicationNumberCheckAtApplication(sellPost.getId()));
 			
 		// 로그인유저 지원했는지 여부
 		cardView.setCheckedApply(applicationBo.checkedApply(memberId, sellPost.getId()));

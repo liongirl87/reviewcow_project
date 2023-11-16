@@ -63,7 +63,7 @@
 						<div class="product-name">${card.sellPost.productName}</div>
 					</div>
 					<div class="d-flex justify-content-end align-items-center">
-						<div class="sale-price"><fmt:formatNumber value="${card.sellPost.scriptFees}" type="number" />원</div>
+						<div class="sale-price">오프라인 체험단</div>
 					</div>
 					<div class="d-flex justify-content-end align-items-center">
 						<div class="d-flex align-items-center acquire-point">

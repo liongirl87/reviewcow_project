@@ -602,6 +602,10 @@
 					return;
 				}
 				
+				if(!sellPrice) {
+					alert("판매가격을 입력해주세요");
+					return;
+				}
 				if(!storeAddress) {
 					alert("매장주소를 입력해주세요");
 					return;

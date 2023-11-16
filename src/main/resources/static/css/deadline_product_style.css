@@ -55,6 +55,19 @@
 	border-radius: 0 0 8px 8px;
 	outline: #D3D3D3 solid 1px;
 }
+
+.closed-text {
+	position: absolute;
+	margin: 5px 0 100px 5px;
+	/* z-index:5; */
+	font-size: 11pt;
+	background-color:black;
+	border-radius: 8px;
+	color: white;
+	padding:5px 10px 5px 10px;
+	opacity: 0.8;
+}
+
 .product-name {
 	margin: 0 0 3px 2px;
 	width: 85%;

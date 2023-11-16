@@ -12,6 +12,9 @@
 		<div class="dealine-product d-flex justify-content-start">
 			<c:forEach items="${hotItemList}" var="card">
 			<div class="dealine-product-child">
+				<c:if test="${card.sellPost.numberOfApplicants <= card.approvedApplicants}">
+					<div class="closed-text">¸¶°¨</div>
+				</c:if>
 				<div class="product-img-box">
 					<div class="product-img">
 						<a href="/sellpost/product_detail_view?postId=${card.sellPost.id}" class="goToSellPostDetail" data-post="${card.sellPost.id}">

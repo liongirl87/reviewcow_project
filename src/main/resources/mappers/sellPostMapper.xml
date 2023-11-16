@@ -84,10 +84,54 @@
  	 
  	 <select id="selectSellPostListForHotItem" resultType="com.reviewcow.sellpost.model.SellPost">
  		<if test="memberId != null">
- 		SELECT A.*, B.`status`,  B.`createdAt` applicationCreatedAt
+ 		SELECT 
+ 			A.id
+ 			, A.`memberId`
+ 			, A.`serviceCategory1`
+ 			, A.`serviceCategory2Online`
+ 			, A.`serviceCategory2Offline`
+ 			, A.`productName`
+ 			, A.`numberOfApplicants`
+ 			, A.`startDate`
+ 			, A.`endDate`
+ 			, A.`productDescriptions`
+ 			, A.`thumbnailImgPath`
+ 			, A.`productUrl`
+ 			, A.`sellPrice`
+ 			, A.`discountRate`
+ 			, A.`storeName`
+ 			, A.`storeAddress`
+ 			, A.`scriptFees`
+ 			, A.`corpsFile`
+ 			, A.`approvalCondition`
+ 			, A.`createdAt`
+ 			, A.`updatedAt`
+ 			, B.`status`
+ 			, B.`createdAt` applicationCreatedAt
  		</if>
  		<if test="memberId == null">
- 		SELECT A.*
+ 		SELECT
+ 			A.id
+ 			, A.`memberId`
+ 			, A.`serviceCategory1`
+ 			, A.`serviceCategory2Online`
+ 			, A.`serviceCategory2Offline`
+ 			, A.`productName`
+ 			, A.`numberOfApplicants`
+ 			, A.`startDate`
+ 			, A.`endDate`
+ 			, A.`productDescriptions`
+ 			, A.`thumbnailImgPath`
+ 			, A.`productUrl`
+ 			, A.`sellPrice`
+ 			, A.`discountRate`
+ 			, A.`storeName`
+ 			, A.`storeAddress`
+ 			, A.`scriptFees`
+ 			, A.`corpsFile`
+ 			, A.`approvalCondition`
+ 			, A.`createdAt`
+ 			, A.`updatedAt`
  		</if>
 		FROM `sell_post` AS A
 		LEFT JOIN `application` AS B
@@ -100,7 +144,7 @@
 		</if>
 		AND TIMESTAMPDIFF(DAY, now(), A.`endDate`) >= 0
 		AND A.`approvalCondition` = 1
-		GROUP BY B.`sellPostId`
+		GROUP BY A.`id`
 		ORDER BY count(B.`sellPostId`) DESC
 		<if test="memberId == null">
 		LIMIT 8;
@@ -203,8 +247,8 @@
 		WHERE
 			`serviceCategory2Offline` = #{categoryOffline2}
 			AND TIMESTAMPDIFF(DAY, now(), `endDate`) >= 0
-			ORDER BY TIMESTAMPDIFF(DAY, `startDate`, `endDate`)
 			AND `approvalCondition` = 1
+			ORDER BY TIMESTAMPDIFF(DAY, `startDate`, `endDate`)
 			<if test="limit == null">
 			LIMIT 8;		
 			</if>	

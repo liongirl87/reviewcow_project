@@ -1,7 +1,13 @@
 package com.reviewcow.sellpost;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.reviewcow.main.bo.MainBo;
 import com.reviewcow.main.model.CardView;
-
-import javax.servlet.http.HttpSession;
+import com.reviewcow.member.model.Member;
 
 @RequestMapping("/sellpost")
 @Controller
@@ -22,8 +27,26 @@ public class SellPostController {
 	private MainBo mainBo;
 	
 	@RequestMapping("/upload_product_view")
-	public String uploadProduct (Model model) {
+	public String uploadProduct (
+			Model model,
+			HttpSession session,
+			HttpServletResponse response
+			) throws IOException {
 		List<String> viewList = new ArrayList<>();
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		Member member = (Member)session.getAttribute("member");
+		
+		if (member.getApprovalCondition() == 0) {
+			out.println("<script>alert('사업자 승인전에는 이용하실 수 없습니다.')</script>");
+			out.flush();
+			viewList.add("include/side_menu");
+			viewList.add("member/modify_myinfo");
+			model.addAttribute("viewList", viewList);
+			return "template/layout";
+		}
 		
 		viewList.add("include/side_menu");
 		viewList.add("sellpost/upload_product");
